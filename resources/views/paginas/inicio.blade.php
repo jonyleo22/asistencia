@@ -1,7 +1,13 @@
 @extends('plantilla')
 
 @section('content')
- <div class="content-wrapper" >
+ <div class="content-wrapper">
+
+    <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">Content</div>
+        <div class="card-footer">Footer</div>
+      </div>
 
  </div>
 @endsection
