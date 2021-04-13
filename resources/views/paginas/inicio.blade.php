@@ -2,11 +2,10 @@
 
 @section('content')
  <div class="content-wrapper">
-
-    <div class="card">
-        <div class="card-header">Header</div>
-        <div class="card-body">Content</div>
-        <div class="card-footer">Footer</div>
+    <div class="jumbotron text-center">
+        <h1>Bienvenidos</h1>
+        <h4><p>Sistema de registro </p></h4>
+        <h4><p>Sistema de control de asistencia </p></h4>
       </div>
 
  </div>

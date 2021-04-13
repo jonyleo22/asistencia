@@ -13,7 +13,7 @@
     <div class="col-lg-2">
         <div class="card">
             <div class="btn-group">
-                <button type="button" class="btn btn-block btn-primary">Nuevo Usuario</button>
+                <a href="{{route ('formulario_usuario') }}" type="button" class="btn btn-block btn-primary" > Nuevo usuario</a>
             </div>
         </div>
     </div>
