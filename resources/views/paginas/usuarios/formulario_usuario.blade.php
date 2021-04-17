@@ -16,7 +16,7 @@
                             <h3 class="card-title">Datos del usuarios</h3>
                         </div>
 
-                        <form role="form" method="POST" action="#">
+                        <form role="form" method="POST" action="{{route('registrar.usuario')}}">
                             @csrf
 
                             <div class="card-body">
@@ -24,16 +24,16 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="Usuario">Usuario</label>
-                                            <input type="text" name="usuario" class="form-control @error('name') is-invalid @enderror placeholder="Ingrese usuario" required>
-                                            @error('name')
+                                            <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" placeholder="Ingrese usuario" required>
+                                            @error('username')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
-                                        <div class="form-group @error('nombre') is-invalid @enderror">
+                                        <div class="form-group">
                                             <label for="Nombre">Nombre</label>
-                                            <input type="text" name="nombre" class="form-control" placeholder="Ingrese Nombre"required>
+                                            <input type="text" name="nombre" class="form-control" @error('nombre') is-invalid @enderror placeholder="Ingrese Nombre"required>
                                             @error('nombre')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -41,9 +41,9 @@
 
                                     </div>
                                     <div class="col-lg-4">
-                                        <div class="form-group @error('apellido') is-invalid @enderror">
+                                        <div class="form-group">
                                             <label for="Apellido">Apellido</label>
-                                            <input type="text"name="apellido" class="form-control" placeholder="Ingrese Apellido"required>
+                                            <input type="text"name="apellido" class="form-control @error('apellido') is-invalid @enderror"  placeholder="Ingrese Apellido"required>
                                             @error('apellido')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -52,17 +52,17 @@
                                     </div>
 
                                 </div>
-                                <div class="form-group @error('email') is-invalid @enderror">
+                                <div class="form-group">
                                     <label for="Email">Email</label>
-                                    <input type="email"name="email" class="form-control" placeholder="Ingrese email" required>
+                                    <input type="email"name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Ingrese email " required>
                                     @error('email')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                 </div>
-                                <div class="form-group @error('contraseña') is-invalid @enderror ">
+                                <div class="form-group">
                                     <label for="Contraseña">Contraseña</label>
-                                    <input type="password" name="contraseña" class="form-control" placeholder="Ingrese contraseña" required>
-                                    @error('contraseña')
+                                    <input type="password" name="password" class="form-control @error('contraseña') is-invalid @enderror" placeholder="Ingrese contraseña" required>
+                                    @error('password')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                 </div>

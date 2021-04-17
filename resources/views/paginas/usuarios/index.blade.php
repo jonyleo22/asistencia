@@ -18,4 +18,12 @@
         </div>
     </div>
 </div>
+@if (Session::has("ok"))
+
+<script>
+    toastr.success('Usuario registrado correctamente')
+</script>
+
+@endif
+
 @endsection

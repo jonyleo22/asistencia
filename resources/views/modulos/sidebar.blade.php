@@ -14,8 +14,12 @@
         <div class="image">
           <img src="{{ url('/') }}/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+        <div class="info text-white">
+            @if (Auth::User()->roles_id == 1)
+                Administrador
+            @else
+                Supervisor
+            @endif
         </div>
       </div>
 
