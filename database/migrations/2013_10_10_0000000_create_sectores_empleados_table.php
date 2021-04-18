@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCargoEmpleadoTable extends Migration
+class CreateSectoresEmpleadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateCargoEmpleadoTable extends Migration
      */
     public function up()
     {
-        Schema::create('cargo_empleado', function (Blueprint $table) {
+        Schema::create('sectores_empleados', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre_sector');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateCargoEmpleadoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargo_empleado');
+        Schema::dropIfExists('sectores_empleados');
     }
 }

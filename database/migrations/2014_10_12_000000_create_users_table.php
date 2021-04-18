@@ -18,7 +18,17 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('nombre');
             $table->string('apellido');
+            $table->string('direccion_empleado');
+            $table->string('telefono_empleado');
+            $table->unsignedBigInteger('tipo_dni_id');
+            $table->foreign('tipo_dni_id')->references('id')->on('tipo_documento');
+            $table->string('dni_empleado',8)->unique();
             $table->string('email')->unique();
+            $table->string('fecha_ingreso_empleado');
+            $table->unsignedBigInteger('sector_id');
+            $table->foreign('sector_id')->references('id')->on('sectores_empleados');
+            $table->unsignedBigInteger('cargo_id');
+            $table->foreign('cargo_id')->references('id')->on('cargo_empleado');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedBigInteger('roles_id');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSectoresTable extends Migration
+class CreateTipoDocumentoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateSectoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('sectores', function (Blueprint $table) {
+        Schema::create('tipo_documento', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('serctor_informatica');
-            $table->string('sector_contable');
+            $table->string('nombre_tipo_documento');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateSectoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sectores');
+        Schema::dropIfExists('tipo_documento');
     }
 }

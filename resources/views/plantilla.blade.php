@@ -9,7 +9,10 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     {{-- TOASTR CSS --}}
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,6 +26,8 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
@@ -33,6 +38,8 @@
     <script src="https://kit.fontawesome.com/8d7c09d224.js" crossorigin="anonymous"></script>
 
     <script src="{{ url('/') }}/js/plugins/jquery.overlayScrollbars.min.js"></script>
+
+    <script src="{{ url('/') }}/js/usuarios.js"></script>
 
     <script src="{{ url('/') }}/js/plugins/adminlte.js"></script>
 
