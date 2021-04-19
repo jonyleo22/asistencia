@@ -38,9 +38,6 @@ class asistenciaController extends Controller
             $asistencia->save();
             return redirect('asistencias-index')->with('okey-salida','');
         }
-        if ($buscardni->isEmpty() && $request ->tipo_asistencia == 1 ) {
-            return redirect('asistencias-index')->with('error','');
-        }
 
     }
 
