@@ -17,3 +17,7 @@ Route::get ('/usuarios','usuariosController@index')->name('mostrar.index.usuario
 Route::get('/formulario-usuarios','usuariosController@formulario')->name('formulario_usuario');
 
 Route::post('/registrar-usuario','usuariosController@registrar_usuario')->name('registrar.usuario');
+
+Route::get('/asistencias-index','asistenciaController@index')->name('asistencias.index');
+
+Route::post('/registrar-asistencia','asistenciaController@registrar_asistencia')->name('registrar.asistencia');
