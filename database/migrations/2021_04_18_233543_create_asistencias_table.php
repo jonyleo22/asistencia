@@ -21,7 +21,9 @@ class CreateAsistenciasTable extends Migration
             $table->string('estado');
             $table->unsignedBigInteger('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('users');
+            $table->date('fecha');
             $table->timestamps();
+
         });
     }
 
