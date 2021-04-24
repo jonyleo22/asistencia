@@ -53,7 +53,8 @@ class usuariosController extends Controller
             'sector_id'=>$request->sector_id,
             'cargo_id'=>$request->cargo_id,
             'password' => Hash::make($request->password),
-            'roles_id' =>$request->roles_id
+            'roles_id' =>$request->roles_id,
+            'justificativo' =>$request->justificativo
          ]);
 
 

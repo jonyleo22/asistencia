@@ -225,6 +225,21 @@
 
 
                                     </div>
+                                    <div class="col-lg-6">
+                                        <label for="justificativo">Posee justifivativo para inasistencias:</label>
+                                            <br>
+                                            <select class="form-control @error('justificativo') is-invalid @enderror"
+                                            name="justificativo" style="width: 100%;" required>
+                                            <option selected value="2">No</option>
+                                            <option value="1">Si</option>
+                                            </select>
+
+                                            @error('justificativo')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong> {{ $message }} </strong>
+                                                </span>
+                                            @enderror
+                                    </div>
 
 
                                 </div>

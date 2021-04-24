@@ -1,15 +1,31 @@
 @extends('plantilla')
 @section('content')
 
-    <div class="content-wrapper">
-        <div class="jumbotron text-center">
-            <h1>Asistencias</h1>
-        </div>
+<div class="content-wrapper">
+    <div class="jumbotron text-center">
+        <h1>Bienvenido</h1>
+        <h4>
+            <p>Favor de registrar su asistencia antes de comenzar.</p>
+        </h4>
+    </div>
+
+    @if (!$resultado->isEmpty())
+    @if ($resultado[0]->hora_entrada && $resultado[0]->hora_salida)
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form method="POST" action="{{route ('registrar.asistencia')}}">
-                        @csrf
+               <h3> {{ "Usted ya ha registrado su asistencia el dia de hoy" }} </h3>
+                </div>
+            </div>
+        </div>
+    @endif
+    @endif
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <form method="POST" action="{{route ('registrar.asistencia')}}">
+                    @csrf
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             Registro de asistencia
@@ -26,14 +42,15 @@
 
                                     </select>
                                     @error('tipo_asistencia')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-6">
-                                    <label for="dni">Ingrese DNI</label>
-                                    <input type="text" name="dni" placeholder="Ingrese DNI" class="form-control @error('dni') is-invalid @enderror" required>
-                                    @error('dni')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    <label for="password">Ingrese su contraseña</label>
+                                    <input type="password" name="password" placeholder="Ingrese su contraseña"
+                                        class="form-control @error('password') is-invalid @enderror" required>
+                                    @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
@@ -43,37 +60,70 @@
                                 <button type="submit" class="btn btn-info" style="width: 400px;">GUARDAR</button>
                             </div>
                         </div>
-                    </form>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    @if (!$resultado->isEmpty())
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        Asistencia registrada
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                            Hora de entrada registrada: {{ $resultado[0]->hora_entrada }}
+                            </div>
+                            <div class="col-lg-6">
+                            Hora de salida registrada: {{ $resultado[0]->hora_salida }}
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @endif
 
-    @if (Session::has('okey-asistencia'))
+        @if (Session::has('okey-asistencia'))
 
         <script>
             toastr.success('Asistencia registrada correctamente')
 
         </script>
+        @endif
 
-    @endif
-    @if (Session::has('okey-salida'))
+        @if (Session::has('okey-salida'))
 
         <script>
             toastr.success('Salida registrada correctamente')
 
         </script>
 
-    @endif
-    @if (Session::has('error'))
+        @endif
+
+        @if (Session::has('error'))
 
         <script>
-            toastr.danger('EL DNI NO PERTENECE A UN EMPLEADO REGISTRADO')
-
+            toastr.error('LA CONTRASEÑA NO COINCIDE CON NUESTROS REGISTROS')
         </script>
 
-    @endif
+        @endif
 
+        @if (Session::has('error1'))
 
+        <script>
+            toastr.error('LA HORA DE ENTRADA YA HA SIDO REGISTRADA')
+        </script>
+
+        @endif
+    </div>
+</div>
 @endsection

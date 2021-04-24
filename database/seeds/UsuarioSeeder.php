@@ -107,8 +107,8 @@ class UsuarioSeeder extends Seeder
             'cargo_id' => '1',
             'password' => Hash::make('12345'),
             'roles_id' => '1',
+            'justificativo' => '2',
         ]);
-
 
     }
 

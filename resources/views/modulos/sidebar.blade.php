@@ -53,7 +53,19 @@
 
                             <a href="{{route('asistencias.index')}}" class="nav-link">
                                 <i class=" far fa-circle nav-icon"></i>
-                                <p>Tomar asistencias</p>
+                                <p>Informar asistencia</p>
+                            </a>
+
+                        </li>
+
+                    </ul>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+
+                            <a href="{{ route('asistencias.informe') }}" class="nav-link">
+                                <i class=" far fa-circle nav-icon"></i>
+                                <p>Informes</p>
                             </a>
 
                         </li>
