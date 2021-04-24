@@ -26,7 +26,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
+                @if (Auth::User()->roles_id == 1)
                 <li class="nav-item">
 
                     <a href="{{ route('mostrar.index.usuarios') }}" class="nav-link">
@@ -35,7 +35,8 @@
                     </a>
 
                 </li>
-
+                @endif
+                @if (Auth::User()->roles_id == 1 || Auth::User()->roles_id == 2)
                 <li class="nav-item has-treeview menu-close">
 
                     <a href="#" class="nav-link">
@@ -47,6 +48,7 @@
                         </p>
 
                     </a>
+                    @if (Auth::User()->roles_id == 1 || Auth::User()->roles_id == 2)
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
@@ -59,6 +61,9 @@
                         </li>
 
                     </ul>
+                    @endif
+
+                    @if (Auth::User()->roles_id == 1)
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
@@ -71,10 +76,10 @@
                         </li>
 
                     </ul>
-
+                    @endif
 
                 </li>
-
+                @endif
 
             </ul>
         </nav>
