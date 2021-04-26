@@ -8,19 +8,13 @@
             <p>Favor de registrar su asistencia antes de comenzar.</p>
         </h4>
     </div>
-
+    {{--
     @if (!$resultado->isEmpty())
-    @if ($resultado[0]->hora_entrada && $resultado[0]->hora_salida)
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-               <h3> {{ "Usted ya ha registrado su asistencia el dia de hoy" }} </h3>
-                </div>
-            </div>
-        </div>
+    @if
     @endif
-    @endif
+    @endif  --}}
 
+    @if ($resultado->isEmpty())
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -65,6 +59,51 @@
         </div>
     </div>
 
+    @elseif ($resultado[0]->hora_entrada && $resultado[0]->hora_salida == NULL )
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <form method="POST" action="{{route ('registrar.asistencia')}}">
+                    @csrf
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            Registro de asistencia
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="e/s">Selecione E/S</label>
+                                    <select name="tipo_asistencia"
+                                        class="form-control @error('tipo_asistencia') is-invalid @enderror" required>
+                                        <option disabled selected value>Seleccionar</option>
+                                        <option value="1">Entrada</option>
+                                        <option value="2">Salida</option>
+
+                                    </select>
+                                    @error('tipo_asistencia')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-6">
+                                    <label for="password">Ingrese su contraseña</label>
+                                    <input type="password" name="password" placeholder="Ingrese su contraseña"
+                                        class="form-control @error('password') is-invalid @enderror" required>
+                                    @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <div>
+                                <button type="submit" class="btn btn-info" style="width: 400px;">GUARDAR</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @endif
 
 
     @if (!$resultado->isEmpty())
@@ -72,16 +111,16 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        Asistencia registrada
+                    <div class="card-header text-center">
+                        <h3>Asistencia registrada</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-6">
-                            Hora de entrada registrada: {{ $resultado[0]->hora_entrada }}
+                             <strong>Hora de entrada registrada:</strong> {{ $resultado[0]->hora_entrada }}
                             </div>
                             <div class="col-lg-6">
-                            Hora de salida registrada: {{ $resultado[0]->hora_salida }}
+                             <strong>Hora de salida registrada:</strong>  {{ $resultado[0]->hora_salida }}
                             </div>
                         </div>
 
@@ -92,38 +131,38 @@
     </div>
     @endif
 
-        @if (Session::has('okey-asistencia'))
+    @if (Session::has('okey-asistencia'))
 
-        <script>
-            toastr.success('Asistencia registrada correctamente')
+    <script>
+        toastr.success('Asistencia registrada correctamente')
 
-        </script>
-        @endif
+    </script>
+    @endif
 
-        @if (Session::has('okey-salida'))
+    @if (Session::has('okey-salida'))
 
-        <script>
-            toastr.success('Salida registrada correctamente')
+    <script>
+        toastr.success('Salida registrada correctamente')
 
-        </script>
+    </script>
 
-        @endif
+    @endif
 
-        @if (Session::has('error'))
+    @if (Session::has('error'))
 
-        <script>
-            toastr.error('LA CONTRASEÑA NO COINCIDE CON NUESTROS REGISTROS')
-        </script>
+    <script>
+        toastr.error('LA CONTRASEÑA NO COINCIDE CON NUESTROS REGISTROS')
+    </script>
 
-        @endif
+    @endif
 
-        @if (Session::has('error1'))
+    @if (Session::has('error1'))
 
-        <script>
-            toastr.error('LA HORA DE ENTRADA YA HA SIDO REGISTRADA')
-        </script>
+    <script>
+        toastr.error('LA HORA DE ENTRADA YA HA SIDO REGISTRADA')
+    </script>
 
-        @endif
-    </div>
+    @endif
+</div>
 </div>
 @endsection

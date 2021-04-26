@@ -28,6 +28,11 @@ class usuariosController extends Controller
     }
 
     public function registrar_usuario(Request $request){
+
+        $validarDatos = $request->validate([
+            'justificacion' => ['required'],
+        ]);
+
         //METODO DE REGUISTRO 1
         // $registro = new User();
         // $registro->username = $request->username;
@@ -39,6 +44,8 @@ class usuariosController extends Controller
         //  dd($request->all());
 
         // $registro->save();
+
+        // dd($request->all());
 
         User::create([
             'username'=>$request->username,
@@ -54,7 +61,7 @@ class usuariosController extends Controller
             'cargo_id'=>$request->cargo_id,
             'password' => Hash::make($request->password),
             'roles_id' =>$request->roles_id,
-            'justificativo' =>$request->justificativo
+            'justificativo' =>$request->justificativo,
          ]);
 
 

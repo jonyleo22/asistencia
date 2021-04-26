@@ -23,6 +23,10 @@
                     <input type="date" class="form-control" name="fecha_hasta" id="">
                 </div>
                 <div class="col-lg-2">
+                    <label for="dni">DNI</label>
+                    <input type="text" class="form-control" name="dni" id="">
+                </div>
+                <div class="col-lg-2">
                    <button type="submit" class="btn btn-secondary" style="margin-top: 30px;">Buscar</button>
                 </div>
             </div>
@@ -33,29 +37,37 @@
                 <table class="table table-striped" id="tabla-informe">
                     <thead>
                         <tr>
+                            <th>Fecha</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Dni</th>
                             <th>Sector</th>
                             <th>Cargo</th>
-                            <th>Asistencias</th>
-                            <th>Inasistencias</th>
+                            <th>Hora entrada</th>
+                            <th>Hora salida</th>
 
                         </tr>
                     </thead>
+
                     <tbody>
+
                         @foreach ($asistencias as $element)
-                         <tr>
-                         <td>{{ $element->nombre }}</td>
-                         <td>{{ $element->apellido }}</td>
-                         <td>{{ $element->dni_empleado }}</td>
-                         <td>{{ $element->nombre_sector }}</td>
-                         <td>{{ $element->nombre_cargo }}</td>
-                         <td></td>
-                         <td></td>
-                         </tr>
-                        @endforeach
-                    </tbody>
+                        <tr>
+                        <td>@php
+                           echo date('d-m-Y', strtotime($element->fecha))
+                        @endphp</td>
+                        <td>{{ $element->nombre }}</td>
+                        <td>{{ $element->apellido }}</td>
+                        <td>{{ $element->dni_empleado }}</td>
+                        <td>{{ $element->nombre_sector }}</td>
+                        <td>{{ $element->nombre_cargo }}</td>
+                        <td>{{ $element->hora_entrada }}</td>
+                        <td>{{ $element->hora_salida }}</td>
+                        </tr>
+                       @endforeach
+                   </tbody>
+
+
                 </table>
 
 

@@ -15,16 +15,23 @@ class asistenciaController extends Controller
         $fecha = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
         $fecha_actual = $fecha->format('Y-m-d');
         $id_user = Auth::User()->id;
+
         $resultado = asistensiaModel::where('id_usuario',  $id_user)
         ->where('fecha', $fecha_actual )
         ->get();
-        return view('paginas.asistencias.index',compact('resultado'));
+
+        $existencia_entrada = asistensiaModel::where('id_usuario',  $id_user)
+        ->where('fecha', $fecha_actual )
+        ->where('hora_entrada', '!=', null)
+        ->get();
+
+        return view('paginas.asistencias.index',compact('resultado','existencia_entrada'));
     }
 
     public function registrar_asistencia(Request $request){
 
         $dni = $request->dni;
-        $buscardni = User::where('dni_empleado','=',$dni)->get();
+        // $buscardni = User::where('dni_empleado','=',$dni)->get();
         $fecha = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
         $fecha_actual = $fecha->format('Y-m-d');
         $id_user = Auth::User()->id;
@@ -34,9 +41,10 @@ class asistenciaController extends Controller
 
         // validar que ya exista la entrada y la salida
 
-        // $resultado = asistensiaModel::where('id_usuario',  $id_user)
-        // ->where('fecha', $fecha_actual )
-        // ->get();
+        $existencia_entrada = asistensiaModel::where('id_usuario',  $id_user)
+        ->where('fecha', $fecha_actual )
+        ->where('hora_entrada', '!=', null)
+        ->get();
 
         // if (!$resultado->isEmpty()) {
         //     $hora_entrada = $resultado[0]->hora_entrada;
@@ -45,6 +53,14 @@ class asistenciaController extends Controller
         // estado = 1 para asistencia normal
         // estado = 2 para asistencia justificada
         $justificativo = Auth::User()->justificativo;
+
+        if ($request->tipo_asistencia == 1) {
+            if (Hash::check($request->password, $pass_usuario)) {
+                if (!$existencia_entrada->isEmpty()) {
+                    return redirect()->back()->with('error1','');
+                }
+            }
+        }
 
         if ($request->tipo_asistencia == 1) {
             if (Hash::check($request->password, $pass_usuario)) {
@@ -89,17 +105,33 @@ class asistenciaController extends Controller
         $fecha_desde = $request->fecha_desde;
         $fecha_hasta = $request->fecha_hasta;
 
+
+    if ($request->fecha_desde && $request->fecha_hasta) {
         $asistencias = User::join('asistencias','asistencias.id_usuario','users.id')
         ->join('sectores_empleados','sectores_empleados.id', 'users.sector_id')
         ->join('cargo_empleado','cargo_empleado.id','users.cargo_id')
         ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
         ->get();
-
-
-        return view('paginas.asistencias.informe',compact('asistencias'));
     }
 
+    if ($request->fecha_desde && $request->fecha_hasta && $request->dni) {
+        $asistencias = User::join('asistencias','asistencias.id_usuario','users.id')
+        ->join('sectores_empleados','sectores_empleados.id', 'users.sector_id')
+        ->join('cargo_empleado','cargo_empleado.id','users.cargo_id')
+        ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
+        ->where('dni_empleado', $request->dni)
+        ->get();
+    }
 
+    if ($request->fecha_desde == null && $request->fecha_hasta == null  && $request->dni == null) {
+        $asistencias = User::join('asistencias','asistencias.id_usuario','users.id')
+        ->join('sectores_empleados','sectores_empleados.id', 'users.sector_id')
+        ->join('cargo_empleado','cargo_empleado.id','users.cargo_id')
+        ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
+        ->get();
+    }
+    return view('paginas.asistencias.informe',compact('asistencias'));
 
+}
 }
 
