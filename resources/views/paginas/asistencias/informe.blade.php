@@ -45,6 +45,7 @@
                             <th>Cargo</th>
                             <th>Hora entrada</th>
                             <th>Hora salida</th>
+                            <th>Estado</th>
 
                         </tr>
                     </thead>
@@ -63,6 +64,16 @@
                         <td>{{ $element->nombre_cargo }}</td>
                         <td>{{ $element->hora_entrada }}</td>
                         <td>{{ $element->hora_salida }}</td>
+                        <td>
+                            @if ($element->estado == 1)
+                            <div class='badge badge-success'>PRESENTE
+                            </div>
+                            @else
+                            <div class='badge badge-warning'>JUSTIFICADA
+                            </div>
+
+                            @endif
+                        </td>
                         </tr>
                        @endforeach
                    </tbody>

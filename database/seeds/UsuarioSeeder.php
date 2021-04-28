@@ -21,6 +21,10 @@ class UsuarioSeeder extends Seeder
             'nombre_rol' => 'Supervisor',
         ]);
 
+        DB::table('roles')->insert([
+            'nombre_rol' => 'Empleado',
+        ]);
+
 
 
         DB::table('sectores_empleados')->insert([

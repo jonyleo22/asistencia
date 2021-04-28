@@ -18,7 +18,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username', 'nombre', 'apellido','direccion_empleado','telefono_empleado',
         'tipo_dni_id','dni_empleado','email','fecha_ingreso_empleado','sector_id',
-        'cargo_id','password','roles_id','justiricativo'
+        'cargo_id','password','roles_id','justificativo'
     ];
 
     /**

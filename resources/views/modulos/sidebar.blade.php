@@ -17,8 +17,12 @@
             <div class="info text-white">
                 @if (Auth::User()->roles_id == 1)
                     Administrador
-                @else
+                @endif
+                @if (Auth::User()->roles_id == 2)
                     Supervisor
+                @endif
+                @if  (Auth::User()->roles_id == 3)
+                    Empleado
                 @endif
             </div>
         </div>
@@ -27,16 +31,16 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 @if (Auth::User()->roles_id == 1)
-                <li class="nav-item">
+                 <li class="nav-item">
 
-                    <a href="{{ route('mostrar.index.usuarios') }}" class="nav-link">
+                     <a href="{{ route('mostrar.index.usuarios') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-plus"></i>
                         <p>Usuarios</p>
-                    </a>
+                     </a>
 
-                </li>
+                 </li>
                 @endif
-                @if (Auth::User()->roles_id == 1 || Auth::User()->roles_id == 2)
+                @if (Auth::User()->roles_id == 1 || Auth::User()->roles_id == 2 || Auth::User()->roles_id == 3 )
                 <li class="nav-item has-treeview menu-close">
 
                     <a href="#" class="nav-link">
@@ -48,7 +52,7 @@
                         </p>
 
                     </a>
-                    @if (Auth::User()->roles_id == 1 || Auth::User()->roles_id == 2)
+                    @if (Auth::User()->roles_id == 1 || Auth::User()->roles_id == 2 || Auth::User()->roles_id == 3 )
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
