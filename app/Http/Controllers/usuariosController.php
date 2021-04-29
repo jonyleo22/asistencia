@@ -13,7 +13,15 @@ use Illuminate\Support\Facades\Hash;
 class usuariosController extends Controller
 {
     public function index ()    {
-        $usuarios =User::all();
+
+        // $usuarios =User::all();
+
+        $usuarios = User::join('sectores_empleados', 'sectores_empleados.id', 'users.sector_id')
+        ->join('cargo_empleado','cargo_empleado.id','users.cargo_id')
+        ->join('roles','roles.id','users.roles_id')
+        ->select('users.*','sectores_empleados.*','cargo_empleado.*','roles.*')
+        ->get();
+
         return view('paginas.usuarios.index',compact('usuarios'));
 
     }
@@ -29,8 +37,23 @@ class usuariosController extends Controller
 
     public function registrar_usuario(Request $request){
 
+        // dd($request->all());
+
         $validarDatos = $request->validate([
-            'justificacion' => ['required'],
+            'username' => ['required', 'unique:users'],
+            'nombre' => ['required'],
+            'apellido' => ['required'],
+            'direccion_empleado' => ['required'],
+            'telefono_empleado' => ['required'],
+            'tipo_dni_id' => ['required'],
+            'dni_empleado' => ['required'],
+            'email' => ['required'],
+            'sector_id' => ['required'],
+            'cargo_id' => ['required'],
+            'password' => ['required'],
+            'roles_id' => ['required'],
+            'justificativo' => ['required'],
+            'fecha_ingreso_empleado' => ['required'],
         ]);
 
         //METODO DE REGUISTRO 1
@@ -45,27 +68,27 @@ class usuariosController extends Controller
 
         // $registro->save();
 
-        dd($request->all());
-
-        // User::create([
-        //     'username'=>$request->username,
-        //     'nombre'=>$request->nombre,
-        //     'apellido'=>$request->apellido,
-        //     'direccion_empleado' =>$request->direccion_empleado,
-        //     'telefono_empleado' =>$request->telefono_empleado,
-        //     'tipo_dni_id' =>$request->tipo_dni_id,
-        //     'dni_empleado'=>$request->dni_empleado,
-        //     'email'=>$request->email,
-        //     'fecha_ingreso_empleado'=>$request->fecha_ingreso_empleado,
-        //     'sector_id'=>$request->sector_id,
-        //     'cargo_id'=>$request->cargo_id,
-        //     'password' => Hash::make($request->password),
-        //     'roles_id' =>$request->roles_id,
-        //     'justificativo' =>$request->justificativo,
-        //  ]);
 
 
-        // return redirect('/usuarios')->with('ok','');
+        User::create([
+            'username'=>$request->username,
+            'nombre'=>$request->nombre,
+            'apellido'=>$request->apellido,
+            'direccion_empleado' =>$request->direccion_empleado,
+            'telefono_empleado' =>$request->telefono_empleado,
+            'tipo_dni_id' =>$request->tipo_dni_id,
+            'dni_empleado'=>$request->dni_empleado,
+            'email'=>$request->email,
+            'fecha_ingreso_empleado'=>$request->fecha_ingreso_empleado,
+            'sector_id'=>$request->sector_id,
+            'cargo_id'=>$request->cargo_id,
+            'password' => Hash::make($request->password),
+            'roles_id' =>$request->roles_id,
+            'justificativo' =>$request->justificativo,
+         ]);
+
+
+        return redirect('/usuarios')->with('ok','');
 
      }
 }

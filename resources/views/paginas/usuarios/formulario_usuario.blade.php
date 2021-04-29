@@ -16,6 +16,16 @@
                             <h3 class="card-title">Datos del usuarios</h3>
                         </div>
 
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+
                         <form role="form" method="POST" action="{{route('registrar.usuario')}}">
                             @csrf
 
@@ -31,7 +41,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="Nombre">Nombre</label>
-                                            <input type="text" name="nombre" class="form-control" @error('nombre') is-invalid @enderror placeholder="Ingrese Nombre" value="{{old ('nombre')}}" >
+                                            <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" placeholder="Ingrese Nombre" value="{{old ('nombre')}}" >
 
                                         </div>
 
@@ -174,7 +184,7 @@
                                     <div class="col-lg-6">
                                             <label for="id_consumo_persona">Seleccione Rol de usuario:</label>
                                             <br>
-                                            <select class="form-control @error('id_roles') is-invalid @enderror"
+                                            <select class="form-control @error('roles_id') is-invalid @enderror"
                                                 name="roles_id" style="width: 100%;" >
 
                                                 <option disabled selected value>Seleccionar</option>

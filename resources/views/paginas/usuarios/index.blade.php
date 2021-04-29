@@ -52,9 +52,9 @@
                                     <td>{{ $element->dni_empleado }}</td>
                                     <td>{{ $element->email }}</td>
                                     <td>{{ $element->fecha_ingreso_empleado }}</td>
-                                    <td>{{ $element->sector_id }}</td>
-                                    <td>{{ $element->cargo_id }}</td>
-                                    <td>{{ $element->roles_id }}</td>
+                                    <td>{{ $element->nombre_sector }}</td>
+                                    <td>{{ $element->nombre_cargo }}</td>
+                                    <td>{{ $element->nombre_rol }}</td>
                                     <td>
                                         <div class="btn-group">
                                             <div class="">
