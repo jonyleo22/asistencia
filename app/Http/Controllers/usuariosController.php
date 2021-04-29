@@ -45,27 +45,27 @@ class usuariosController extends Controller
 
         // $registro->save();
 
-        // dd($request->all());
+        dd($request->all());
 
-        User::create([
-            'username'=>$request->username,
-            'nombre'=>$request->nombre,
-            'apellido'=>$request->apellido,
-            'direccion_empleado' =>$request->direccion_empleado,
-            'telefono_empleado' =>$request->telefono_empleado,
-            'tipo_dni_id' =>$request->tipo_dni_id,
-            'dni_empleado'=>$request->dni_empleado,
-            'email'=>$request->email,
-            'fecha_ingreso_empleado'=>$request->fecha_ingreso_empleado,
-            'sector_id'=>$request->sector_id,
-            'cargo_id'=>$request->cargo_id,
-            'password' => Hash::make($request->password),
-            'roles_id' =>$request->roles_id,
-            'justificativo' =>$request->justificativo,
-         ]);
+        // User::create([
+        //     'username'=>$request->username,
+        //     'nombre'=>$request->nombre,
+        //     'apellido'=>$request->apellido,
+        //     'direccion_empleado' =>$request->direccion_empleado,
+        //     'telefono_empleado' =>$request->telefono_empleado,
+        //     'tipo_dni_id' =>$request->tipo_dni_id,
+        //     'dni_empleado'=>$request->dni_empleado,
+        //     'email'=>$request->email,
+        //     'fecha_ingreso_empleado'=>$request->fecha_ingreso_empleado,
+        //     'sector_id'=>$request->sector_id,
+        //     'cargo_id'=>$request->cargo_id,
+        //     'password' => Hash::make($request->password),
+        //     'roles_id' =>$request->roles_id,
+        //     'justificativo' =>$request->justificativo,
+        //  ]);
 
 
-        return redirect('/usuarios')->with('ok','');
+        // return redirect('/usuarios')->with('ok','');
 
      }
 }
