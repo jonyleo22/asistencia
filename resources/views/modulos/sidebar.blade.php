@@ -82,6 +82,21 @@
                     </ul>
                     @endif
 
+                    @if (Auth::User()->roles_id == 1)
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+
+                            <a href="{{ route('informe.ifai') }}" class="nav-link">
+                                <i class=" far fa-circle nav-icon"></i>
+                                <p>Informes ifai</p>
+                            </a>
+
+                        </li>
+
+                    </ul>
+                    @endif
+
                 </li>
                 @endif
 

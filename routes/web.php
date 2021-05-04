@@ -24,3 +24,5 @@ Route::post('/registrar-asistencia','asistenciaController@registrar_asistencia')
 
 Route::get('/informes','asistenciaController@informes')->name('asistencias.informe');
 
+Route::get('/informe-ifai','asistenciaController@informe_ifai')->name('informe.ifai');
+

@@ -133,5 +133,21 @@ class asistenciaController extends Controller
     return view('paginas.asistencias.informe',compact('asistencias'));
 
 }
+   public function informe_ifai(){
+
+    $usuario = User::join('asistencias','asistencias.id_usuario','users.id')
+    ->select('users.apellido','users.nombre')
+    ->select('asistencias.estado.count(*)')
+    ->get();
+
+
+
+
+    dd($usuario);
+
+    return view('paginas.asistencias.informe_ifai', compact('usuario'));
+
+
+    }
 }
 
