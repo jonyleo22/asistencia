@@ -15,11 +15,11 @@
             @csrf
             <div class="row">
                 <div class="col-lg-2">
-                    <label for="fecha_desde">Feche desde</label>
+                    <label for="fecha_desde">Feche desde:</label>
                     <input type="date" class="form-control" name="fecha_desde" id="">
                 </div>
                 <div class="col-lg-2">
-                    <label for="fecha_hasta">Feche hasta</label>
+                    <label for="fecha_hasta">Feche hasta:</label>
                     <input type="date" class="form-control" name="fecha_hasta" id="">
                 </div>
                 <div class="col-lg-2">
