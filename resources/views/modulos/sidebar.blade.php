@@ -74,7 +74,7 @@
 
                             <a href="{{ route('asistencias.informe') }}" class="nav-link">
                                 <i class=" far fa-circle nav-icon"></i>
-                                <p>Informes</p>
+                                <p>Listar asistencias</p>
                             </a>
 
                         </li>

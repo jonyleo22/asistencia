@@ -26,3 +26,6 @@ Route::get('/informes','asistenciaController@informes')->name('asistencias.infor
 
 Route::get('/informe-ifai','asistenciaController@informe_ifai')->name('informe.ifai');
 
+Route::get('/formulario-observacion/{id}','asistenciaController@formulario_observacion')->name('formulario.observacion');
+
+Route::put('/registrar-observacion', 'asistenciaController@registrar_observacion')->name('registrar.observacion');

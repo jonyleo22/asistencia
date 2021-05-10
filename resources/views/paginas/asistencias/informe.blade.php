@@ -3,7 +3,7 @@
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="jumbotron text-center">
-            <h1>Informe</h1>
+            <h1>Listado de asistencias</h1>
             <h4>
                 <p>Consultar por fecha</p>
             </h4>
@@ -16,15 +16,15 @@
             <div class="row">
                 <div class="col-lg-2">
                     <label for="fecha_desde">Feche desde:</label>
-                    <input type="date" class="form-control" name="fecha_desde" id="">
+                    <input type="date" class="form-control" name="fecha_desde" required>
                 </div>
                 <div class="col-lg-2">
                     <label for="fecha_hasta">Feche hasta:</label>
-                    <input type="date" class="form-control" name="fecha_hasta" id="">
+                    <input type="date" class="form-control" name="fecha_hasta" required>
                 </div>
                 <div class="col-lg-2">
                     <label for="dni">DNI</label>
-                    <input type="text" class="form-control" name="dni" id="">
+                    <input type="text" class="form-control" name="dni" required>
                 </div>
                 <div class="col-lg-2">
                    <button type="submit" class="btn btn-secondary" style="margin-top: 30px;">Buscar</button>
@@ -37,45 +37,44 @@
                 <table class="table table-striped" id="tabla-informe">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Fecha</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
                             <th>Dni</th>
-                            <th>Sector</th>
-                            <th>Cargo</th>
-                            <th>Hora entrada</th>
-                            <th>Hora salida</th>
-                            <th>Estado</th>
-
+                            <th>Apellido</th>
+                            <th>Nombre</th>
+                            <th>Hora de entrada</th>
+                            <th>Hora de salida</th>
+                            <th>Observación</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
 
                     <tbody>
-
-                        @foreach ($asistencias as $element)
+                        @foreach ($asistencia as $element)
                         <tr>
-                        <td>@php
-                           echo date('d-m-Y', strtotime($element->fecha))
-                        @endphp</td>
-                        <td>{{ $element->nombre }}</td>
-                        <td>{{ $element->apellido }}</td>
-                        <td>{{ $element->dni_empleado }}</td>
-                        <td>{{ $element->nombre_sector }}</td>
-                        <td>{{ $element->nombre_cargo }}</td>
-                        <td>{{ $element->hora_entrada }}</td>
-                        <td>{{ $element->hora_salida }}</td>
-                        <td>
-                            @if ($element->estado == 1)
-                            <div class='badge badge-success'>PRESENTE
-                            </div>
-                            @else
-                            <div class='badge badge-warning'>JUSTIFICADA
-                            </div>
-
-                            @endif
-                        </td>
+                            <td>{{ $element->id }}</td>
+                            <td>@php echo date('d/m/Y', strtotime($element->fecha)); @endphp</td>
+                            <td>{{ $element->dni_empleado }}</td>
+                            <td>{{ $element->apellido }}</td>
+                            <td>{{ $element->nombre }}</td>
+                            <td>{{ $element->hora_entrada }}</td>
+                            <td>{{ $element->hora_salida }}</td>
+                            <td>
+                                @if ($element->observacion_asistencia != null)
+                                {{$element->observacion_asistencia }}
+                                @else
+                                <div class='badge badge-danger'>No posee</div>
+                                @endif
+                            </td>
+                            <td>
+                                <div class="">
+                                    <a href="{{ route('formulario.observacion', $element->id ) }}" class="btn btn-primary btn-sm" title="Agregar observación"><i
+                                            class="fas fa-file-medical"></i></a>
+                                </div>
+                            </td>
                         </tr>
-                       @endforeach
+                        @endforeach
+
                    </tbody>
 
 
@@ -88,4 +87,11 @@
 
     </div>
 </div>
+
+@if (Session::has('ok-obs'))
+
+<script>
+    toastr.success('Observación agregada correctamente')
+</script>
+@endif
 @endsection

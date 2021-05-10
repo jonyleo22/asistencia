@@ -7,6 +7,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class asistenciaController extends Controller
@@ -90,7 +91,7 @@ class asistenciaController extends Controller
 
                 $guardar_modificacion = asistensiaModel::findOrFail($buscar_asistencia[0]->id)->update($datos);
 
-                return redirect('asistencias-index')->with('okey-salida','');
+                return redirect()->back()->with('okey-salida','');
                 }else{
                     return redirect()->back()->with('error','');
                 }
@@ -105,49 +106,73 @@ class asistenciaController extends Controller
         $fecha_desde = $request->fecha_desde;
         $fecha_hasta = $request->fecha_hasta;
 
-
-    if ($request->fecha_desde && $request->fecha_hasta) {
-        $asistencias = User::join('asistencias','asistencias.id_usuario','users.id')
-        ->join('sectores_empleados','sectores_empleados.id', 'users.sector_id')
-        ->join('cargo_empleado','cargo_empleado.id','users.cargo_id')
+        $asistencia = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
+        ->where('users.dni_empleado', $request->dni)
         ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
+        ->select('users.nombre','users.apellido','users.dni_empleado', 'asistencias.id', 'asistencias.hora_entrada'
+        ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia')
         ->get();
-    }
 
-    if ($request->fecha_desde && $request->fecha_hasta && $request->dni) {
-        $asistencias = User::join('asistencias','asistencias.id_usuario','users.id')
-        ->join('sectores_empleados','sectores_empleados.id', 'users.sector_id')
-        ->join('cargo_empleado','cargo_empleado.id','users.cargo_id')
-        ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
-        ->where('dni_empleado', $request->dni)
-        ->get();
-    }
+    // if ($request->fecha_desde && $request->fecha_hasta) {
+    //     $asistencias = asistensiaModel::join('users','users.id','asistencias.id_usuario')
+    //     ->select('users.nombre','users.dni_empleado','users.apellido','users.id')
+    //     ->groupBy('asistencias.id_usuario')
+    //     ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
+    //     ->get();
 
-    if ($request->fecha_desde == null && $request->fecha_hasta == null  && $request->dni == null) {
-        $asistencias = User::join('asistencias','asistencias.id_usuario','users.id')
-        ->join('sectores_empleados','sectores_empleados.id', 'users.sector_id')
-        ->join('cargo_empleado','cargo_empleado.id','users.cargo_id')
-        ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
-        ->get();
-    }
-    return view('paginas.asistencias.informe',compact('asistencias'));
+    // }
+
+    // if ($request->fecha_desde && $request->fecha_hasta && $request->dni) {
+    //     $asistencias = User::join('asistencias','asistencias.id_usuario','users.id')
+    //     ->join('sectores_empleados','sectores_empleados.id', 'users.sector_id')
+    //     ->join('cargo_empleado','cargo_empleado.id','users.cargo_id')
+    //     ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
+    //     ->where('dni_empleado', $request->dni)
+    //     ->get();
+    // }
+
+    // if ($request->fecha_desde == null && $request->fecha_hasta == null  && $request->dni == null) {
+    //     $asistencias = User::join('asistencias','asistencias.id_usuario','users.id')
+    //     ->join('sectores_empleados','sectores_empleados.id', 'users.sector_id')
+    //     ->join('cargo_empleado','cargo_empleado.id','users.cargo_id')
+    //     ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
+    //     ->get();
+    // }
+    return view('paginas.asistencias.informe',compact('asistencia'));
 
 }
-   public function informe_ifai(){
 
-    $usuario = User::join('asistencias','asistencias.id_usuario','users.id')
-    ->select('users.apellido','users.nombre')
-    ->select('asistencias.estado.count(*)')
-    ->get();
+    public function formulario_observacion($id){
 
+        $id_asistencia = $id;
+        return view('paginas.asistencias.formulario_observacion', compact('id_asistencia'));
+    }
 
+    public function registrar_observacion(Request $request){
 
+       $data = array(
+           'observacion_asistencia' => $request->observacion_asistencia
+       );
+       $actualizar_observacion = asistensiaModel::findOrFail($request->id_asistencia)->update($data);
 
-    dd($usuario);
-
-    return view('paginas.asistencias.informe_ifai', compact('usuario'));
-
+       return redirect('/informes')->with('ok-obs', '');
 
     }
+
+    public function informe_ifai(){
+
+        $usuario = User::join('asistencias','asistencias.id_usuario','users.id')
+        ->select('users.apellido','users.nombre')
+        ->select('asistencias.estado.count(*)')
+        ->get();
+
+
+
+
+        dd($usuario);
+
+        return view('paginas.asistencias.informe_ifai', compact('usuario'));
+
 }
 
+}
