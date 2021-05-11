@@ -99,6 +99,8 @@ class UsuarioSeeder extends Seeder
 
         DB::table('users')->insert([
             'username' => 'admin',
+            'numero_legajo' => '123',
+            'categoria' => '19',
             'nombre' => 'jonathan',
             'apellido' => 'estigarribia',
             'direccion_empleado' => 'av lavalle 3642',

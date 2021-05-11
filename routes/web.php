@@ -29,3 +29,8 @@ Route::get('/informe-ifai','asistenciaController@informe_ifai')->name('informe.i
 Route::get('/formulario-observacion/{id}','asistenciaController@formulario_observacion')->name('formulario.observacion');
 
 Route::put('/registrar-observacion', 'asistenciaController@registrar_observacion')->name('registrar.observacion');
+
+Route::get('/licencias-index','licenciaController@index')->name('licencia.index');
+Route::get('/formulario-maternidad','licenciaController@formulario_maternidad')->name('formulario.maternidad');
+Route::get('/formulario-enfermedad','licenciaController@formulario_enfermedad')->name('formulario.enfermedad');
+Route::get('/formulario-altamedica','licenciaController@formulario_altamedica')->name('formulario.altamedica');

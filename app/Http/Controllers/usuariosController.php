@@ -41,6 +41,8 @@ class usuariosController extends Controller
 
         $validarDatos = $request->validate([
             'username' => ['required', 'unique:users'],
+            'numero_legajo' => ['required'],
+            'categoria' => ['required'],
             'nombre' => ['required'],
             'apellido' => ['required'],
             'direccion_empleado' => ['required'],
@@ -72,6 +74,8 @@ class usuariosController extends Controller
 
         User::create([
             'username'=>$request->username,
+            'numero_legajo'=>$request->numero_legajo,
+            'categoria'=>$request->categoria,
             'nombre'=>$request->nombre,
             'apellido'=>$request->apellido,
             'direccion_empleado' =>$request->direccion_empleado,
