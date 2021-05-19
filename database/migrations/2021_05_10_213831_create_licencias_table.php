@@ -18,8 +18,8 @@ class CreateLicenciasTable extends Migration
             $table->string('numero_licencias')->unique();
             $table->string('hora_licencia');
             $table->date('fecha_licencia');
-            $table->date('fecha_desde');
-            $table->date('fecha_hasta');
+            $table->date('fecha_desde')->nullable();
+            $table->date('fecha_hasta')->nullable();
             $table->timestamps();
         });
     }

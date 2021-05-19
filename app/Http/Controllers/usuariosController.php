@@ -7,6 +7,7 @@ use App\rolesModel;
 use App\SectoresModel;
 use App\TipoDocumentoModel;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,6 +31,8 @@ class usuariosController extends Controller
         $tipo_documento = TipoDocumentoModel::all();
         $sectores = SectoresModel::all();
         $cargo = CargoModel::all();
+        //dd($fecha_nacimiento);
+
         return view('paginas.usuarios.formulario_usuario',compact('roles','tipo_documento','sectores','cargo'));
 
 
@@ -41,10 +44,11 @@ class usuariosController extends Controller
 
         $validarDatos = $request->validate([
             'username' => ['required', 'unique:users'],
-            'numero_legajo' => ['required'],
+            'numero_legajo' => ['required','unique:users'],
             'categoria' => ['required'],
             'nombre' => ['required'],
             'apellido' => ['required'],
+            'fecha_nacimiento' => ['required'],
             'direccion_empleado' => ['required'],
             'telefono_empleado' => ['required'],
             'tipo_dni_id' => ['required'],
@@ -70,6 +74,11 @@ class usuariosController extends Controller
 
         // $registro->save();
 
+        $fecha = Carbon::now();
+
+        $fecha_nacimiento = $request->fecha_nacimiento;
+        $edad = Carbon::parse($fecha_nacimiento)->age;
+
 
 
         User::create([
@@ -78,6 +87,8 @@ class usuariosController extends Controller
             'categoria'=>$request->categoria,
             'nombre'=>$request->nombre,
             'apellido'=>$request->apellido,
+            'edad' =>$edad,
+            'fecha_nacimiento'=>$request->fecha_nacimiento,
             'direccion_empleado' =>$request->direccion_empleado,
             'telefono_empleado' =>$request->telefono_empleado,
             'tipo_dni_id' =>$request->tipo_dni_id,

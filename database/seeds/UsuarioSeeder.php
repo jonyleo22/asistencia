@@ -103,6 +103,8 @@ class UsuarioSeeder extends Seeder
             'categoria' => '19',
             'nombre' => 'jonathan',
             'apellido' => 'estigarribia',
+            'edad' => '27',
+            'fecha_nacimiento' => '28/03/1994',
             'direccion_empleado' => 'av lavalle 3642',
             'telefono_empleado' => '3764-817554',
             'tipo_dni_id' => '1',

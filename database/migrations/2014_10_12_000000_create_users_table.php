@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('categoria');
             $table->string('nombre');
             $table->string('apellido');
+            $table->string('edad');
+            $table->string('fecha_nacimiento');
             $table->string('direccion_empleado');
             $table->string('telefono_empleado');
             $table->unsignedBigInteger('tipo_dni_id');

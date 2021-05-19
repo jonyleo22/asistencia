@@ -84,10 +84,10 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="direccion_empleado">Dirección</label>
+                                            <label for="direccion_empleado">Domicilio</label>
                                             <input type="text" name="direccion_empleado"
                                                 class="form-control @error('direccion_empleado') is-invalid @enderror"
-                                                placeholder="Ingrese su dirección" value="{{ old('direccion_empleado') }}">
+                                                placeholder="Ingrese su domicilio" value="{{ old('direccion_empleado') }}">
 
                                         </div>
                                     </div>
@@ -142,14 +142,28 @@
 
 
                                 </div>
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" name="email"
+                                                class="form-control @error('email') is-invalid @enderror"
+                                                placeholder="Ingrese email " value="{{ old('email') }}">
+                                        </div>
 
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email"
-                                        class="form-control @error('email') is-invalid @enderror"
-                                        placeholder="Ingrese email " value="{{ old('email') }}">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                                            <input type="date" name="fecha_nacimiento"
+                                                class="form-control @error('fecha_nacimiento') is-invalid @enderror"
+                                                value="{{ old('fecha_nacimiento') }}">
+                                        </div>
+                                    </div>
 
                                 </div>
+
+
                                 <div class="form-group row">
                                     <div class="col-lg-4">
                                         <label for="fecha_ingreso_empleado">Fecha ingreso</label>

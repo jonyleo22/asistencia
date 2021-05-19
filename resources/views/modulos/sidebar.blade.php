@@ -87,9 +87,9 @@
 
                         <li class="nav-item">
 
-                            <a href="{{ route('informe.ifai') }}" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class=" far fa-circle nav-icon"></i>
-                                <p>Informes ifai</p>
+                                <p>Informes SIAP</p>
                             </a>
 
                         </li>
