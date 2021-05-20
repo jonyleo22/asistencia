@@ -58,7 +58,7 @@
                                     <td>
                                         <div class="btn-group">
                                             <div class="">
-                                                <a href="#" class="btn btn-primary btn-sm" title="Editar usuario"><i
+                                                <a href="{{route ('formulario.edicion.usuario',$element->id )}}" class="btn btn-primary btn-sm" title="Editar usuario"><i
                                                         class="fas fa-pencil-alt"></i></a>
                                             </div>
                                         </div>

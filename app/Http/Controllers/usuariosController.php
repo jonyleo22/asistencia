@@ -106,4 +106,13 @@ class usuariosController extends Controller
         return redirect('/usuarios')->with('ok','');
 
      }
+      public function mostrar_edicion_usuario($id){
+        $roles =rolesModel::all();
+        $tipo_documento = TipoDocumentoModel::all();
+        $sectores = SectoresModel::all();
+        $cargo = CargoModel::all();
+        $datos_usuario = User::findOrFail($id);
+
+        return view('paginas.usuarios.editar_usuario', compact('roles','tipo_documento','sectores','cargo','datos_usuario'));
+      }
 }

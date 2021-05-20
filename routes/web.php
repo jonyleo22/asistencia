@@ -34,3 +34,5 @@ Route::get('/licencias-index','licenciaController@index')->name('licencia.index'
 Route::get('/formulario-maternidad','licenciaController@formulario_maternidad')->name('formulario.maternidad');
 Route::get('/formulario-enfermedad','licenciaController@formulario_enfermedad')->name('formulario.enfermedad');
 Route::get('/formulario-altamedica','licenciaController@formulario_altamedica')->name('formulario.altamedica');
+
+Route::get('/editar-usuario/{id}','usuariosController@mostrar_edicion_usuario')->name('formulario.edicion.usuario') ;
