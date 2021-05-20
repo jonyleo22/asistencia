@@ -47,14 +47,6 @@ class asistenciaController extends Controller
         ->where('hora_entrada', '!=', null)
         ->get();
 
-        // if (!$resultado->isEmpty()) {
-        //     $hora_entrada = $resultado[0]->hora_entrada;
-        // }
-
-        // estado = 1 para asistencia normal
-        // estado = 2 para asistencia justificada
-        $justificativo = Auth::User()->justificativo;
-
         if ($request->tipo_asistencia == 1) {
             if (Hash::check($request->password, $pass_usuario)) {
                 if (!$existencia_entrada->isEmpty()) {
@@ -67,11 +59,6 @@ class asistenciaController extends Controller
             if (Hash::check($request->password, $pass_usuario)) {
                 $asistencia = new asistensiaModel();
                 $asistencia->hora_entrada = $hora_actual->format('H:i:s');
-                if ( $justificativo == 1) {
-                    $asistencia->estado = 2;
-                }else {
-                    $asistencia->estado = 1;
-                }
                 $asistencia->id_usuario = $id_user;
                 $asistencia->fecha = $fecha_actual;
                 $asistencia->save();

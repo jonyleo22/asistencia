@@ -82,7 +82,8 @@
                                             <label for="numero_legajo">Categoría</label>
                                             <input type="text" name="categoria"
                                                 class="form-control @error('categoria') is-invalid @enderror"
-                                                placeholder="Ingrese su categoría" value="{{ $datos_usuario->categoria }}"
+                                                placeholder="Ingrese su categoría"
+                                                value="{{ $datos_usuario->categoria }}"
                                                 value="{{ old('categoria') }}">
 
                                         </div>
@@ -129,7 +130,8 @@
 
                                                 @else
 
-                                                    <option value="{{ $element->id }}">{{ $element->nombre_tipo_documento }}</option>
+                                                    <option value="{{ $element->id }}">
+                                                        {{ $element->nombre_tipo_documento }}</option>
 
                                                 @endif
 
@@ -204,11 +206,18 @@
 
                                             @foreach ($sectores as $element)
 
-                                                {{-- <option value="{{ $element->id }}">
-                                                    {{ $element->nombre_sector }}</option> --}}.
-                                                <option value="{{ $element->id }}"
-                                                    {{ old('sector_id') == $element->id ? 'selected' : '' }}>
-                                                    {{ $element->nombre_sector }}</option>
+                                                @if ($element->id == $datos_usuario->sector_id)
+
+                                                    <option selected value="{{ $datos_usuario->sector_id }}">
+                                                        {{ $element->nombre_sector }}
+                                                    </option>
+
+                                                @else
+
+                                                    <option value="{{ $element->id }}">
+                                                        {{ $element->nombre_sector }}</option>
+
+                                                @endif
 
                                             @endforeach
 
@@ -231,12 +240,17 @@
 
                                             @foreach ($cargo as $element)
 
-                                                {{-- <option value="{{ $element->id }}">
-                                                {{ $element->nombre_cargo }}</option> --}}
-                                                <option value="{{ $element->id }}"
-                                                    {{ old('cargo_id') == $element->id ? 'selected' : '' }}>
-                                                    {{ $element->nombre_cargo }}</option>
+                                            @if ($element->id == $datos_usuario->cargo_id)
 
+                                            <option selected value="{{ $datos_usuario->cargo_id }}">
+                                                {{ $element->nombre_cargo }}
+                                            </option>
+
+                                        @else
+
+                                            <option value="{{ $element->id }}">{{ $element->nombre_cargo }}</option>
+
+                                        @endif
                                             @endforeach
 
                                         </select>
@@ -267,11 +281,17 @@
 
                                             @foreach ($roles as $element)
 
-                                                {{-- <option value="{{ $element->id }}">
-                                                        {{ $element->nombre_rol }}</option> --}}
-                                                <option value="{{ $element->id }}"
-                                                    {{ old('roles_id') == $element->id ? 'selected' : '' }}>
-                                                    {{ $element->nombre_rol }}</option>
+                                            @if ($element->id == $datos_usuario->roles_id)
+
+                                            <option selected value="{{ $datos_usuario->roles_id }}">
+                                                {{ $element->nombre_rol }}
+                                            </option>
+
+                                        @else
+
+                                            <option value="{{ $element->id }}">{{ $element->nombre_rol }}</option>
+
+                                        @endif
 
                                             @endforeach
 
@@ -279,18 +299,6 @@
 
 
 
-
-
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label for="justificativo">Posee justifivativo para inasistencias:</label>
-                                        <br>
-                                        <select class="form-control @error('justificativo') is-invalid @enderror"
-                                            name="justificativo" style="width: 100%;">
-                                            <option disabled selected>Seleccionar</option>
-                                            <option value="2">No</option>
-                                            <option value="1">Si</option>
-                                        </select>
 
 
                                     </div>

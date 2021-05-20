@@ -37,7 +37,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->unsignedBigInteger('roles_id');
             $table->foreign('roles_id')->references('id')->on('roles');
-            $table->string('justificativo')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

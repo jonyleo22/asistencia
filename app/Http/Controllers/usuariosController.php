@@ -58,7 +58,6 @@ class usuariosController extends Controller
             'cargo_id' => ['required'],
             'password' => ['required'],
             'roles_id' => ['required'],
-            'justificativo' => ['required'],
             'fecha_ingreso_empleado' => ['required'],
         ]);
 
@@ -99,7 +98,6 @@ class usuariosController extends Controller
             'cargo_id'=>$request->cargo_id,
             'password' => Hash::make($request->password),
             'roles_id' =>$request->roles_id,
-            'justificativo' =>$request->justificativo,
          ]);
 
 

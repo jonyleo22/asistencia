@@ -264,18 +264,7 @@
 
 
                                     </div>
-                                    <div class="col-lg-6">
-                                        <label for="justificativo">Posee justifivativo para inasistencias:</label>
-                                        <br>
-                                        <select class="form-control @error('justificativo') is-invalid @enderror"
-                                            name="justificativo" style="width: 100%;">
-                                            <option disabled selected>Seleccionar</option>
-                                            <option value="2">No</option>
-                                            <option value="1">Si</option>
-                                        </select>
 
-
-                                    </div>
 
 
                                 </div>
