@@ -119,14 +119,12 @@
                                         <select class="form-control @error('tipo_dni_id') is-invalid @enderror"
                                             name="tipo_dni_id" style="width: 100%;">
 
-                                            <option disabled selected value>Seleccionar</option>
-
                                             @foreach ($tipo_documento as $element)
 
                                                 @if ($element->id == $datos_usuario->tipo_dni_id)
 
-                                                    <option selected value="{{ $datos_usuario->id }}">
-                                                        {{ $datos_usuario->nombre_tipo_documento }}
+                                                    <option selected value="{{ $datos_usuario->tipo_dni_id }}">
+                                                        {{ $element->nombre_tipo_documento }}
                                                     </option>
 
                                                 @else
