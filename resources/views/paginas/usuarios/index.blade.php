@@ -77,6 +77,7 @@
             </div>
 
         </div>
+
     </div>
     @if (Session::has('ok'))
 
@@ -86,5 +87,15 @@
         </script>
 
     @endif
+
+    @if (Session::has('ok-editar-usuario'))
+
+    <script>
+        toastr.success('Usuario actualizado correctamente.')
+
+    </script>
+
+    @endif
+
 
 @endsection

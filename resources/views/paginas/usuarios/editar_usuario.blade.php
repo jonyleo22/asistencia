@@ -26,9 +26,9 @@
                             </div>
                         @endif
 
-                        <form role="form" method="POST" action="{{ route('registrar.usuario') }}">
+                        <form role="form" method="POST" action="{{ route('actualizar.usuario') }}">
+                            @method('PUT')
                             @csrf
-
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-4">
@@ -296,10 +296,8 @@
                                             @endforeach
 
                                         </select>
-
-
-
-
+                                        <input type="hidden" name="id_usuario" value="{{ $id_usuario }}">
+                                        <input type="hidden" name="password_actual" value="{{ $password_actual }}">
 
                                     </div>
 

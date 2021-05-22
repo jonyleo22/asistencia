@@ -110,7 +110,45 @@ class usuariosController extends Controller
         $sectores = SectoresModel::all();
         $cargo = CargoModel::all();
         $datos_usuario = User::findOrFail($id);
+        $id_usuario = $id;
+        $password = User::where('id', $id)->get();
+        $password_actual = $password[0]->password;
+        return view('paginas.usuarios.editar_usuario', compact('roles','tipo_documento','sectores',
+        'cargo','datos_usuario', 'id_usuario','password_actual'));
+      }
 
-        return view('paginas.usuarios.editar_usuario', compact('roles','tipo_documento','sectores','cargo','datos_usuario'));
+      public function actualizar_usuario(Request $request){
+
+        if ($request->password != "") {
+
+            $nuevoPassword = Hash::make($request->password);
+
+        }else{
+
+            $nuevoPassword = $request->password_actual;
+
+        }
+        $datos_formulario = array(
+            "username" => $request->username,
+            "numero_legajo" => $request->numero_legajo,
+            "categoria" => $request->categoria,
+            "nombre" => $request->nombre,
+            "apellido" => $request->apellido,
+            "fecha_nacimiento" => $request->fecha_nacimiento,
+            "direccion_empleado" => $request->direccion_empleado,
+            "telefono_empleado" => $request->telefono_empleado,
+            "tipo_dni_id" => $request->tipo_dni_id,
+            "dni_empleado" => $request->dni_empleado,
+            "email" => $request->email,
+            "fecha_ingreso_empleado" => $request->fecha_ingreso_empleado,
+            "sector_id" => $request->sector_id,
+            "cargo_id" => $request->cargo_id,
+            "roles_id" => $request->roles_id,
+            "password" => $nuevoPassword
+        );
+
+        $actualizar_datos = User::findOrFail($request->id_usuario)->update($datos_formulario);
+
+        return redirect('/usuarios')->with('ok-editar-usuario','');
       }
 }

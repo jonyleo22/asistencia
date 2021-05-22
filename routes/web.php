@@ -36,3 +36,5 @@ Route::get('/formulario-enfermedad','licenciaController@formulario_enfermedad')-
 Route::get('/formulario-altamedica','licenciaController@formulario_altamedica')->name('formulario.altamedica');
 
 Route::get('/editar-usuario/{id}','usuariosController@mostrar_edicion_usuario')->name('formulario.edicion.usuario') ;
+
+route::put('/actualizar-usuario','usuariosController@actualizar_usuario')->name('actualizar.usuario');
