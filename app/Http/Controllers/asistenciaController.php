@@ -60,6 +60,7 @@ class asistenciaController extends Controller
                 $asistencia = new asistensiaModel();
                 $asistencia->hora_entrada = $hora_actual->format('H:i:s');
                 $asistencia->id_usuario = $id_user;
+                $asistencia->estado = 1;
                 $asistencia->fecha = $fecha_actual;
                 $asistencia->save();
                 return redirect('asistencias-index')->with('okey-asistencia','');
@@ -69,14 +70,14 @@ class asistenciaController extends Controller
         }
 
         if ($request->tipo_asistencia == 2)  {
-            $buscar_asistencia = asistensiaModel::where('id_usuario', $id_user)->get();
-            if ( $buscar_asistencia[0]->fecha == $fecha_actual) {
+            $buscar_asistencia = asistensiaModel::where('id_usuario', $id_user)->get()->last();
+            if ( $buscar_asistencia->fecha == $fecha_actual) {
                 if (Hash::check($request->password, $pass_usuario)) {
-                $datos = array(
+                    $datos = array(
                     "hora_salida" => $hora_actual->format('H:i:s'),
                 );
 
-                $guardar_modificacion = asistensiaModel::findOrFail($buscar_asistencia[0]->id)->update($datos);
+                $guardar_modificacion = asistensiaModel::findOrFail($buscar_asistencia->id)->update($datos);
 
                 return redirect()->back()->with('okey-salida','');
                 }else{
