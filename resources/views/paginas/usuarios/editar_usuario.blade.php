@@ -65,55 +65,8 @@
                                     </div>
 
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="numero_legajo">N° Legajo</label>
-                                            <input type="text" name="numero_legajo"
-                                                class="form-control @error('numero_legajo') is-invalid @enderror"
-                                                placeholder="Ingrese su N° Legajo"
-                                                value="{{ $datos_usuario->numero_legajo }}"
-                                                value="{{ old('numero_legajo') }}">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="form-group">
-                                            <label for="numero_legajo">Categoría</label>
-                                            <input type="text" name="categoria"
-                                                class="form-control @error('categoria') is-invalid @enderror"
-                                                placeholder="Ingrese su categoría"
-                                                value="{{ $datos_usuario->categoria }}"
-                                                value="{{ old('categoria') }}">
-
-                                        </div>
-
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="direccion_empleado">Domicilio</label>
-                                            <input type="text" name="direccion_empleado"
-                                                class="form-control @error('direccion_empleado') is-invalid @enderror"
-                                                placeholder="Ingrese su domicilio"
-                                                value="{{ $datos_usuario->direccion_empleado }}"
-                                                value="{{ old('direccion_empleado') }}">
-
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="form-group row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label for="telefono_empleado">Teléfono</label>
-                                            <input type="text" name="telefono_empleado"
-                                                class="form-control @error('telefono_empleado') is-invalid @enderror"
-                                                placeholder="Ingrese teléfono"
-                                                value="{{ $datos_usuario->telefono_empleado }}"
-                                                value="{{ old('telefono_empleado') }}">
-
-                                        </div>
-                                    </div>
                                     <div class="col-lg-4">
                                         <label for="tipo_dni_id">Tipo de documento:</label>
                                         <br>
@@ -139,10 +92,6 @@
 
                                         </select>
 
-
-
-
-
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
@@ -154,13 +103,7 @@
 
                                         </div>
                                     </div>
-
-
-
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <input type="email" name="email"
@@ -170,31 +113,10 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-lg-2">
-                                        <div class="form-group">
-                                            <label for="fecha_nacimiento">Fecha de nacimiento</label>
-                                            <input type="text" name="fecha_nacimiento"
-                                                class="form-control @error('fecha_nacimiento') is-invalid @enderror"
-                                                value="{{ $datos_usuario->fecha_nacimiento }}"
-                                                value="{{ old('fecha_nacimiento') }}">
-                                        </div>
-                                    </div>
 
                                 </div>
 
-
                                 <div class="form-group row">
-                                    <div class="col-lg-4">
-                                        <label for="fecha_ingreso_empleado">Fecha ingreso</label>
-                                        <input type="text" name="fecha_ingreso_empleado"
-                                            class="form-control @error('fecha_ingreso_empleado') is-invalid @enderror"
-                                            placeholder="Ingrese fecha_ingreso_empleado "
-                                            value="{{ $datos_usuario->fecha_ingreso_empleado }}"
-                                            value="{{ old('fecha_ingreso_empleado') }}">
-
-
-                                    </div>
-
 
                                     <div class="col-lg-4">
                                         <label for="sector_id">Seleccione sector:</label>
@@ -223,12 +145,7 @@
 
                                         </select>
 
-
-
-
-
                                     </div>
-
 
                                     <div class="col-lg-4">
                                         <label for="cargo_id">Seleccione cargo:</label>
@@ -254,24 +171,9 @@
                                             @endforeach
 
                                         </select>
-
-
-
-
-
                                     </div>
 
-                                </div>
-                                <div class="form-group">
-                                    <label for="Contraseña">Contraseña</label>
-                                    <input type="password" name="password"
-                                        class="form-control @error('contraseña') is-invalid @enderror"
-                                        placeholder="Ingrese contraseña">
-
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <label for="id_consumo_persona">Seleccione Rol de usuario:</label>
                                         <br>
                                         <select class="form-control @error('roles_id') is-invalid @enderror" name="roles_id"
@@ -301,6 +203,12 @@
 
                                     </div>
 
+                                </div>
+                                <div class="form-group">
+                                    <label for="Contraseña">Contraseña</label>
+                                    <input type="password" name="password"
+                                        class="form-control @error('contraseña') is-invalid @enderror"
+                                        placeholder="Ingrese contraseña">
 
                                 </div>
 

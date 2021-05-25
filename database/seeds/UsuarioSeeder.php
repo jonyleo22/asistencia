@@ -99,18 +99,11 @@ class UsuarioSeeder extends Seeder
 
         DB::table('users')->insert([
             'username' => 'admin',
-            'numero_legajo' => '123',
-            'categoria' => '19',
             'nombre' => 'jonathan',
             'apellido' => 'estigarribia',
-            'edad' => '27',
-            'fecha_nacimiento' => '28/03/1994',
-            'direccion_empleado' => 'av lavalle 3642',
-            'telefono_empleado' => '3764-817554',
             'tipo_dni_id' => '1',
             'dni_empleado' => '37801086',
             'email' => 'estigarribia273'.'@gmail.com',
-            'fecha_ingreso_empleado' => '10/01/2020',
             'sector_id' => '1',
             'cargo_id' => '1',
             'password' => Hash::make('12345'),

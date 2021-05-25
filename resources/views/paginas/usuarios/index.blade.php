@@ -29,11 +29,8 @@
                                 <th>Usuario</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th>Dirección</th>
-                                <th>Teléfono</th>
                                 <th>Dni</th>
                                 <th>Email</th>
-                                <th>Fecha ingreso</th>
                                 <th>Sector</th>
                                 <th>Cargo</th>
                                 <th>Rol</th>
@@ -47,11 +44,8 @@
                                     <td>{{ $element->username }}</td>
                                     <td>{{ $element->nombre }}</td>
                                     <td>{{ $element->apellido }}</td>
-                                    <td>{{ $element->direccion_empleado }}</td>
-                                    <td>{{ $element->telefono_empleado }}</td>
                                     <td>{{ $element->dni_empleado }}</td>
                                     <td>{{ $element->email }}</td>
-                                    <td>{{ $element->fecha_ingreso_empleado }}</td>
                                     <td>{{ $element->nombre_sector }}</td>
                                     <td>{{ $element->nombre_cargo }}</td>
                                     <td>{{ $element->nombre_rol }}</td>

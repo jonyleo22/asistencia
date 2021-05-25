@@ -44,13 +44,8 @@ class usuariosController extends Controller
 
         $validarDatos = $request->validate([
             'username' => ['required', 'unique:users'],
-            'numero_legajo' => ['required','unique:users'],
-            'categoria' => ['required'],
             'nombre' => ['required'],
             'apellido' => ['required'],
-            'fecha_nacimiento' => ['required'],
-            'direccion_empleado' => ['required'],
-            'telefono_empleado' => ['required'],
             'tipo_dni_id' => ['required'],
             'dni_empleado' => ['required'],
             'email' => ['required'],
@@ -58,7 +53,7 @@ class usuariosController extends Controller
             'cargo_id' => ['required'],
             'password' => ['required'],
             'roles_id' => ['required'],
-            'fecha_ingreso_empleado' => ['required'],
+
         ]);
 
         //METODO DE REGUISTRO 1
@@ -73,27 +68,20 @@ class usuariosController extends Controller
 
         // $registro->save();
 
-        $fecha = Carbon::now();
+        // $fecha = Carbon::now();
 
-        $fecha_nacimiento = $request->fecha_nacimiento;
-        $edad = Carbon::parse($fecha_nacimiento)->age;
+        // $fecha_nacimiento = $request->fecha_nacimiento;
+        // $edad = Carbon::parse($fecha_nacimiento)->age;
 
 
 
         User::create([
             'username'=>$request->username,
-            'numero_legajo'=>$request->numero_legajo,
-            'categoria'=>$request->categoria,
             'nombre'=>$request->nombre,
             'apellido'=>$request->apellido,
-            'edad' =>$edad,
-            'fecha_nacimiento'=>$request->fecha_nacimiento,
-            'direccion_empleado' =>$request->direccion_empleado,
-            'telefono_empleado' =>$request->telefono_empleado,
             'tipo_dni_id' =>$request->tipo_dni_id,
             'dni_empleado'=>$request->dni_empleado,
             'email'=>$request->email,
-            'fecha_ingreso_empleado'=>$request->fecha_ingreso_empleado,
             'sector_id'=>$request->sector_id,
             'cargo_id'=>$request->cargo_id,
             'password' => Hash::make($request->password),
@@ -130,17 +118,11 @@ class usuariosController extends Controller
         }
         $datos_formulario = array(
             "username" => $request->username,
-            "numero_legajo" => $request->numero_legajo,
-            "categoria" => $request->categoria,
             "nombre" => $request->nombre,
             "apellido" => $request->apellido,
-            "fecha_nacimiento" => $request->fecha_nacimiento,
-            "direccion_empleado" => $request->direccion_empleado,
-            "telefono_empleado" => $request->telefono_empleado,
             "tipo_dni_id" => $request->tipo_dni_id,
             "dni_empleado" => $request->dni_empleado,
             "email" => $request->email,
-            "fecha_ingreso_empleado" => $request->fecha_ingreso_empleado,
             "sector_id" => $request->sector_id,
             "cargo_id" => $request->cargo_id,
             "roles_id" => $request->roles_id,

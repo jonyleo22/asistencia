@@ -124,6 +124,30 @@
                     </ul>
                 </li>
 
+                <li class="nav-item has-treeview menu-close">
+
+                    <a href="#" class="nav-link">
+
+                        <i class="nav-icon fas fa-file-archive"></i>
+                        <p>
+                            Legajos
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+
+                            <a href="{{ route('legajos.index') }}" class="nav-link">
+                                <i class=" far fa-circle nav-icon"></i>
+                                <p>Alta de legajos</p>
+                            </a>
+
+                        </li>
+
+                    </ul>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

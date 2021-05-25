@@ -38,3 +38,7 @@ Route::get('/formulario-altamedica','licenciaController@formulario_altamedica')-
 Route::get('/editar-usuario/{id}','usuariosController@mostrar_edicion_usuario')->name('formulario.edicion.usuario') ;
 
 route::put('/actualizar-usuario','usuariosController@actualizar_usuario')->name('actualizar.usuario');
+
+// RUTAS LEGAJO
+
+route::get('/legajos-index','legajosController@index')->name('legajos.index');
