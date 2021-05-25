@@ -15,7 +15,7 @@
             <div class="card-header">
                 <div class="btn-group">
                     <div class="">
-                        <a href="#" type="button"
+                        <a href="{{ route('formulario.legajo') }}" type="button"
                             class="btn btn-block btn-outline-primary">
                             Nuevo legajo</a>
                     </div>

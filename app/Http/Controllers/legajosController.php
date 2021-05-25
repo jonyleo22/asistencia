@@ -10,4 +10,9 @@ class legajosController extends Controller
 
         return view('paginas.legajos.index');
     }
+
+    public function formulario_legajo(){
+
+        return view('paginas.legajos.formulario_legajo');
+    }
 }

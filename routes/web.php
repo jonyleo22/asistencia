@@ -42,3 +42,4 @@ route::put('/actualizar-usuario','usuariosController@actualizar_usuario')->name(
 // RUTAS LEGAJO
 
 route::get('/legajos-index','legajosController@index')->name('legajos.index');
+Route::get('/legajo-formulario','legajoscontroller@formulario_legajo')->name('formulario.legajo');
