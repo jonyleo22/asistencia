@@ -37,9 +37,10 @@ Route::get('/formulario-altamedica','licenciaController@formulario_altamedica')-
 
 Route::get('/editar-usuario/{id}','usuariosController@mostrar_edicion_usuario')->name('formulario.edicion.usuario') ;
 
-route::put('/actualizar-usuario','usuariosController@actualizar_usuario')->name('actualizar.usuario');
+Route::put('/actualizar-usuario','usuariosController@actualizar_usuario')->name('actualizar.usuario');
 
 // RUTAS LEGAJO
 
-route::get('/legajos-index','legajosController@index')->name('legajos.index');
-Route::get('/legajo-formulario','legajoscontroller@formulario_legajo')->name('formulario.legajo');
+Route::get('/legajos-index','legajosController@index')->name('legajos.index');
+Route::get('/legajo-formulario','legajosController@formulario_legajo')->name('formulario.legajo');
+Route::post('/legajo-registro','legajosController@legajo_registro')->name('legajo.registro');

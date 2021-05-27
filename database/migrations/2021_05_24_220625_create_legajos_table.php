@@ -22,6 +22,7 @@ class CreateLegajosTable extends Migration
             $table->string('dni',8)->unique();
             $table->string('fecha_nacimiento');
             $table->string('edad');
+            $table->string('email')->unique();
             $table->string('domicilio');
             $table->string('telefono');
             $table->string('numero_legajo');

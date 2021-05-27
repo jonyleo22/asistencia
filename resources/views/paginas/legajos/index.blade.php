@@ -25,4 +25,12 @@
         </div>
     </div>
 </div>
+@if (Session::has('okey-registro'))
+
+        <script>
+            toastr.success('Legajo registrado correctamente')
+
+        </script>
+
+    @endif
 @endsection
