@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 class legajosController extends Controller
 {
     public function index(){
+        $legajo = legajosModel::all();
 
-        return view('paginas.legajos.index');
+        return view('paginas.legajos.index', compact('legajo'));
     }
 
     public function formulario_legajo(){

@@ -41,6 +41,8 @@
 
     <script src="{{ url('/') }}/js/usuarios.js"></script>
 
+    <script src="{{ url('/') }}/js/legajo.js"></script>
+
     <script src="{{ url('/') }}/js/plugins/adminlte.js"></script>
 
     <script src="{{ url('/') }}/js/plugins/demo.js"></script>

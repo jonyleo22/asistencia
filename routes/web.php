@@ -44,3 +44,7 @@ Route::put('/actualizar-usuario','usuariosController@actualizar_usuario')->name(
 Route::get('/legajos-index','legajosController@index')->name('legajos.index');
 Route::get('/legajo-formulario','legajosController@formulario_legajo')->name('formulario.legajo');
 Route::post('/legajo-registro','legajosController@legajo_registro')->name('legajo.registro');
+
+// vacaciones (lar)
+
+Route::get('/vacaciones-index/{id}','vacacionesController@index')->name('vacaciones.index');
