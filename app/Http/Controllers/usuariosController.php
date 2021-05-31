@@ -20,7 +20,8 @@ class usuariosController extends Controller
         $usuarios = User::join('sectores_empleados', 'sectores_empleados.id', 'users.sector_id')
         ->join('cargo_empleado','cargo_empleado.id','users.cargo_id')
         ->join('roles','roles.id','users.roles_id')
-        ->select('users.*','sectores_empleados.*','cargo_empleado.*','roles.*')
+        ->select('users.id','users.username','users.nombre','users.apellido','users.dni_empleado'
+        ,'users.email','sectores_empleados.nombre_sector','cargo_empleado.nombre_cargo','roles.nombre_rol')
         ->get();
 
         return view('paginas.usuarios.index',compact('usuarios'));

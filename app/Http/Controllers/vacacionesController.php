@@ -11,7 +11,7 @@ class vacacionesController extends Controller
         $vacaciones = legajosModel::join('vacaciones','vacaciones.id_legajo','legajos.id')
         ->where('vacaciones.id_legajo',$id)
         ->get();
-        dd($vacaciones[0]->dias_disponible);
+        //dd($vacaciones[0]->dias_disponible);
 
 
         return view('paginas.vacaciones.index');

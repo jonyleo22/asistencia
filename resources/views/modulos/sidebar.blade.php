@@ -96,6 +96,20 @@
 
                     </ul>
                     @endif
+                    @if (Auth::User()->roles_id == 1)
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+
+                            <a href="{{route ('inasistencia.index')}}" class="nav-link">
+                                <i class=" far fa-circle nav-icon"></i>
+                                <p>inasistencias</p>
+                            </a>
+
+                        </li>
+
+                    </ul>
+                    @endif
 
 
                 </li>

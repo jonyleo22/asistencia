@@ -11,12 +11,19 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/inicio','inicioController@index')->name('inicio.sistema');
+// RUTAS usuarios
 
 Route::get ('/usuarios','usuariosController@index')->name('mostrar.index.usuarios');
 
 Route::get('/formulario-usuarios','usuariosController@formulario')->name('formulario_usuario');
 
 Route::post('/registrar-usuario','usuariosController@registrar_usuario')->name('registrar.usuario');
+
+Route::get('/editar-usuario/{id}','usuariosController@mostrar_edicion_usuario')->name('formulario.edicion.usuario') ;
+
+Route::put('/actualizar-usuario','usuariosController@actualizar_usuario')->name('actualizar.usuario');
+
+// RUTAS asistencias
 
 Route::get('/asistencias-index','asistenciaController@index')->name('asistencias.index');
 
@@ -30,14 +37,14 @@ Route::get('/formulario-observacion/{id}','asistenciaController@formulario_obser
 
 Route::put('/registrar-observacion', 'asistenciaController@registrar_observacion')->name('registrar.observacion');
 
+// RUTAS asistencias
+Route::get('/inasistencia-index','inasistenciaController@index')->name('inasistencia.index');
+
+// RUTAS licencias
 Route::get('/licencias-index','licenciaController@index')->name('licencia.index');
 Route::get('/formulario-maternidad','licenciaController@formulario_maternidad')->name('formulario.maternidad');
 Route::get('/formulario-enfermedad','licenciaController@formulario_enfermedad')->name('formulario.enfermedad');
 Route::get('/formulario-altamedica','licenciaController@formulario_altamedica')->name('formulario.altamedica');
-
-Route::get('/editar-usuario/{id}','usuariosController@mostrar_edicion_usuario')->name('formulario.edicion.usuario') ;
-
-Route::put('/actualizar-usuario','usuariosController@actualizar_usuario')->name('actualizar.usuario');
 
 // RUTAS LEGAJO
 
