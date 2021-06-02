@@ -23,7 +23,7 @@ Route::get('/editar-usuario/{id}','usuariosController@mostrar_edicion_usuario')-
 
 Route::put('/actualizar-usuario','usuariosController@actualizar_usuario')->name('actualizar.usuario');
 
-// RUTAS asistencias
+// RUTAS Asistencias
 
 Route::get('/asistencias-index','asistenciaController@index')->name('asistencias.index');
 
@@ -31,14 +31,15 @@ Route::post('/registrar-asistencia','asistenciaController@registrar_asistencia')
 
 Route::get('/informes','asistenciaController@informes')->name('asistencias.informe');
 
-Route::get('/informe-ifai','asistenciaController@informe_ifai')->name('informe.ifai');
+Route::get('/informe-siap','asistenciaController@informe_siap')->name('informe.siap');
 
 Route::get('/formulario-observacion/{id}','asistenciaController@formulario_observacion')->name('formulario.observacion');
 
 Route::put('/registrar-observacion', 'asistenciaController@registrar_observacion')->name('registrar.observacion');
 
-// RUTAS asistencias
+// RUTAS Inasistencias
 Route::get('/inasistencia-index','inasistenciaController@index')->name('inasistencia.index');
+Route::get('/registrar-inasistencias','inasistenciaController@registrar_inasistencias')->name('registrar.inasistencias');
 
 // RUTAS licencias
 Route::get('/licencias-index','licenciaController@index')->name('licencia.index');

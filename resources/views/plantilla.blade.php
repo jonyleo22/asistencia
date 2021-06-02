@@ -43,6 +43,8 @@
 
     <script src="{{ url('/') }}/js/legajo.js"></script>
 
+    <script src="{{ url('/') }}/js/siap.js"></script>
+
     <script src="{{ url('/') }}/js/plugins/adminlte.js"></script>
 
     <script src="{{ url('/') }}/js/plugins/demo.js"></script>

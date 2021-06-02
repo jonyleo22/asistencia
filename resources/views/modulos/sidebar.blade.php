@@ -87,7 +87,7 @@
 
                         <li class="nav-item">
 
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('informe.siap') }}" class="nav-link">
                                 <i class=" far fa-circle nav-icon"></i>
                                 <p>Informes SIAP</p>
                             </a>
@@ -103,7 +103,7 @@
 
                             <a href="{{route ('inasistencia.index')}}" class="nav-link">
                                 <i class=" far fa-circle nav-icon"></i>
-                                <p>inasistencias</p>
+                                <p>Inasistencias</p>
                             </a>
 
                         </li>

@@ -147,19 +147,18 @@ class asistenciaController extends Controller
 
     }
 
-    public function informe_ifai(){
+    public function informe_siap(Request $request){
 
-        $usuario = User::join('asistencias','asistencias.id_usuario','users.id')
-        ->select('users.apellido','users.nombre')
-        ->select('asistencias.estado.count(*)')
+        $fecha_desde = $request->fecha_desde;
+        $fecha_hasta = $request->fecha_hasta;
+
+        $usuarios = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
+        ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
+        ->select('users.nombre','users.apellido','users.id')
+        ->groupBy('asistencias.id_usuario')
         ->get();
 
-
-
-
-        dd($usuario);
-
-        return view('paginas.asistencias.informe_ifai', compact('usuario'));
+        return view('paginas.asistencias.informe_siap', compact('usuarios'));
 
 }
 
