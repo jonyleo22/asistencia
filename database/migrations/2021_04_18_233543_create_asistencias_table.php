@@ -15,11 +15,11 @@ class CreateAsistenciasTable extends Migration
     {
         Schema::create('asistencias', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_usuario')->nullable();
+            $table->foreign('id_usuario')->references('id')->on('users');
             $table->time('hora_entrada')->nullable();
             $table->time('hora_salida')->nullable();
             $table->string('estado');
-            $table->unsignedBigInteger('id_usuario')->nullable();
-            $table->foreign('id_usuario')->references('id')->on('users');
             $table->date('fecha')->nullable();
             $table->text('observacion_asistencia')->nullable();
             $table->timestamps();

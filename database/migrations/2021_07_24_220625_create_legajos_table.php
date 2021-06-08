@@ -15,21 +15,13 @@ class CreateLegajosTable extends Migration
     {
         Schema::create('legajos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->unsignedBigInteger('tipo_dni_id');
-            $table->foreign('tipo_dni_id')->references('id')->on('tipo_documento');
-            $table->string('dni',8)->unique();
-            $table->string('fecha_nacimiento');
-            $table->string('edad');
-            $table->string('email')->unique();
-            $table->string('domicilio');
-            $table->string('telefono');
+            $table->unsignedBigInteger('id_usuario');
+            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->unsignedBigInteger('id_personas');
+            $table->foreign('id_personas')->references('id')->on('personas');
             $table->string('numero_legajo');
             $table->string('fecha_ingreso');
             $table->string('categoria');
-            $table->unsignedBigInteger('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('users');
             $table->timestamps();
         });
     }

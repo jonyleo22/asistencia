@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\estadoCivilModel;
 use App\legajosModel;
+use App\localidadesModel;
+use App\provinciasModel;
 use App\TipoDocumentoModel;
 use App\User;
 use Carbon\Carbon;
@@ -18,8 +21,11 @@ class legajosController extends Controller
 
     public function formulario_legajo(){
         $tipo_documento = TipoDocumentoModel::all();
+        $provincias =provinciasModel::all();
+        $localidades =localidadesModel::all();
+        $estado_civil=estadoCivilModel::all();
         $usuarios = User::all();
-        return view('paginas.legajos.formulario_legajo',compact('tipo_documento','usuarios'));
+        return view('paginas.legajos.formulario_legajo',compact('tipo_documento','usuarios','provincias','localidades','estado_civil'));
     }
 
     public function legajo_registro(Request $request){
@@ -60,6 +66,15 @@ class legajosController extends Controller
         $datos_formulario->id_usuario = $request->id_usuario;
 
         $datos_formulario->save();
+        return redirect('/legajos-index')->with('okey-registro','');
+
+    }
+
+    public function datos_familia(){
+        return redirect('/legajos-index');
+
+    }
+    public function datos_hijos(){
         return redirect('/legajos-index')->with('okey-registro','');
 
     }
