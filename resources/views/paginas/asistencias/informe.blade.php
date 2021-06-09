@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-lg-2">
                     <label for="dni">DNI</label>
-                    <input type="text" class="form-control" name="dni" required>
+                    <input type="text" class="form-control" name="dni" >
                 </div>
                 <div class="col-lg-2">
                    <button type="submit" class="btn btn-secondary" style="margin-top: 30px;">Buscar</button>
@@ -36,7 +36,13 @@
             <div class="table-responsive">
                 <table class="table table-striped" id="tabla-informe">
                     <thead>
-                        <tr>
+
+
+                        @if (count($asistencia) == 0)
+                            <tr>
+                                <th></th>
+                            </tr>
+                        @else
                             <th>ID</th>
                             <th>Fecha</th>
                             <th>Dni</th>
@@ -46,10 +52,16 @@
                             <th>Hora de salida</th>
                             <th>Observación</th>
                             <th>Acciones</th>
-                        </tr>
+                        @endif
                     </thead>
 
                     <tbody>
+                        @if (count($asistencia) == 0)
+                        <tr>
+                            <td>Ingrese datos</td>
+                        </tr>
+                        @else
+
                         @foreach ($asistencia as $element)
                         <tr>
                             <td>{{ $element->id }}</td>
@@ -74,6 +86,13 @@
                             </td>
                         </tr>
                         @endforeach
+
+
+                        @endif
+
+
+
+
 
                    </tbody>
 

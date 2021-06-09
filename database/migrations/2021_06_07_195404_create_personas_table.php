@@ -33,8 +33,8 @@ class CreatePersonasTable extends Migration
             $table->string('nacionalidad');
             $table->string('telefono')->nullable();
             $table->string('email')->nullable();
-            $table->string('otros_contactos');
-            $table->string('observacion_personas');
+            $table->string('otros_contactos')->nullable();
+            $table->string('observacion_personas')->nullable();
 
             $table->timestamps();
         });

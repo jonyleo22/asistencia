@@ -88,18 +88,36 @@ class asistenciaController extends Controller
         }
 
     }
-
     public function informes(Request $request){
-
+        $fecha = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
+        $fecha_actual = $fecha->format('Y-m-d');
         $fecha_desde = $request->fecha_desde;
         $fecha_hasta = $request->fecha_hasta;
 
-        $asistencia = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
+
+            $asistencia = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
+            ->where('asistencias.fecha', $fecha_actual)
+            ->select('users.nombre','users.apellido','users.dni_empleado', 'asistencias.id', 'asistencias.hora_entrada'
+            ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia')
+            ->get();
+
+        if ($request->$fecha_desde != null && $request->fecha_hasta != null && $request->dni != null ) {
+            $asistencia = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
         ->where('users.dni_empleado', $request->dni)
         ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
         ->select('users.nombre','users.apellido','users.dni_empleado', 'asistencias.id', 'asistencias.hora_entrada'
         ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia')
         ->get();
+        }
+        if ($request->$fecha_desde != null && $request->fecha_hasta != null && $request->dni == null ) {
+            $asistencia = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
+        ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
+        ->select('users.nombre','users.apellido','users.dni_empleado', 'asistencias.id', 'asistencias.hora_entrada'
+        ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia')
+        ->get();
+        }
+
+
 
     // if ($request->fecha_desde && $request->fecha_hasta) {
     //     $asistencias = asistensiaModel::join('users','users.id','asistencias.id_usuario')

@@ -22,6 +22,7 @@ class CreateLegajosTable extends Migration
             $table->string('numero_legajo');
             $table->string('fecha_ingreso');
             $table->string('categoria');
+            $table->string('operador');
             $table->timestamps();
         });
     }

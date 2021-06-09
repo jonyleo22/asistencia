@@ -57,8 +57,6 @@ Route::get('/formulario-altamedica','licenciaController@formulario_altamedica')-
 Route::get('/legajos-index','legajosController@index')->name('legajos.index');
 Route::get('/legajo-formulario','legajosController@formulario_legajo')->name('formulario.legajo');
 Route::post('/legajo-registro','legajosController@legajo_registro')->name('legajo.registro');
-Route::get('/legajo-datos-familia','legajosController@datos_familia')->name('datos.familia');
-Route::get('/legajo-datos-hijos','legajosController@datos_hijos')->name('datos.hijos');
 
 // vacaciones (lar)
 
