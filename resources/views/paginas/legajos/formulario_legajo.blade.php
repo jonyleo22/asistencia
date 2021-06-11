@@ -350,6 +350,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <label for="id_usuario">Usuario asociado</label>
@@ -367,6 +368,27 @@
                                                     | Nombre: {{ $element->nombre }}</option>
                                                 {{-- <option value="{{ $element->id }}"
                                                 {{ old('id_usuario') == $element->id ? 'selected' : '' }}>
+                                                {{ $element->nombre_tipo_documento }}</option> --}}
+
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="cargo_id">Indicar función</label>
+                                        <br>
+                                        <select class="form-control @error('cargo_id') is-invalid @enderror"
+                                            name="cargo_id" style="width: 100%;">
+
+                                            <option disabled selected value>Seleccionar</option>
+
+                                            @foreach ($cargo as $element)
+
+                                                <option value="{{ $element->id }}">
+
+                                                    {{ $element->nombre_cargo }}</option>
+                                                {{-- <option value="{{ $element->id }}"
+                                                {{ old('cargo_id') == $element->id ? 'selected' : '' }}>
                                                 {{ $element->nombre_tipo_documento }}</option> --}}
 
                                             @endforeach

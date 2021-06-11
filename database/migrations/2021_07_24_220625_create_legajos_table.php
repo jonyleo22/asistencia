@@ -19,6 +19,8 @@ class CreateLegajosTable extends Migration
             $table->foreign('id_usuario')->references('id')->on('users');
             $table->unsignedBigInteger('id_personas');
             $table->foreign('id_personas')->references('id')->on('personas');
+            $table->unsignedBigInteger('cargo_id');
+            $table->foreign('cargo_id')->references('id')->on('cargo_empleado');
             $table->string('numero_legajo');
             $table->string('fecha_ingreso');
             $table->string('categoria');
