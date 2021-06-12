@@ -9,7 +9,7 @@
                 </h4>
             </div>
         </div>
-
+    
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
@@ -41,19 +41,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($legajo as $element)
+                                @foreach ($datos  as $element)
                                     <tr>
-                                        <td>{{ $element->nombre }}</td>
-                                        <td>{{ $element->apellido }}</td>
-                                        <td>{{ $element->fecha_ingreso }}</td>
-                                        <td>{{ $element->dni }}</td>
-                                        <td>{{ $element->email }}</td>
-                                        <td>{{ $element->fecha_nacimiento }}</td>
-                                        <td>{{ $element->edad }}</td>
-                                        <td>{{ $element->domicilio }}</td>
-                                        <td>{{ $element->telefono }}</td>
-                                        <td>{{ $element->numero_legajo }}</td>
-                                        <td>{{ $element->categoria }}</td>
+                                        <td>{{$element->nombre}}</td>
+                                        <td>{{$element->apellido}}</td>
+                                        <td>@php echo date('d/m/Y', strtotime($element->fecha_ingreso)); @endphp</td>
+                                        <td>{{$element->dni}}</td>
+                                        <td>{{$element->email}}</td>
+                                        <td>@php echo date('d/m/Y', strtotime($element->fecha_nacimiento)); @endphp</td>
+                                        <td>{{$element->edad}}</td>
+                                        <td>{{$element->descripcion_domicilio}}</td>
+                                        <td>{{$element->telefono}}</td>
+                                        <td>{{$element->numero_legajo}}</td>
+                                        <td>{{$element->categoria}}</td>
                                         <td>
                                             <div class="btn-group">
                                                 @if (Auth::User()->roles_id == 1)
@@ -62,7 +62,7 @@
                                                                 class="fas fa-pencil-alt"></i></a>
                                                     </div>
                                                     <div class="px-1">
-                                                        <a href="{{route ('vacaciones.index',$element->id)}}" class="btn btn-success btn-sm"
+                                                        <a href="#" class="btn btn-success btn-sm"
                                                             title="Vacaciones"><i class="far fa-paper-plane"></i></a>
                                                     </div>
                                                 @endif
@@ -73,6 +73,7 @@
                                     </tr>
 
                                 @endforeach
+                               
 
 
                             </tbody>
@@ -86,7 +87,7 @@
             </div>
         </div>
     </div>
-    @if (Session::has('okey-registro'))
+    @if (Session::has('ok'))
 
         <script>
             toastr.success('Legajo registrado correctamente')

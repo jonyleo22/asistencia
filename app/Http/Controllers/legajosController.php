@@ -21,9 +21,15 @@ use Illuminate\Support\Facades\Auth;
 class legajosController extends Controller
 {
     public function index(){
-        $legajo = legajosModel::all();
+        $datos = personasModel::join('legajos','legajos.id_personas','personas.id')
+        ->join('domicilio_personas','domicilio_personas.id_persona','personas.id')
+        ->select('personas.nombre','personas.apellido','legajos.fecha_ingreso','personas.dni'
+        ,'personas.email','personas.fecha_nacimiento','personas.edad','personas.telefono',
+        'legajos.numero_legajo','legajos.categoria','domicilio_personas.descripcion_domicilio')
+        ->get();
+        //  dd($datos);
 
-        return view('paginas.legajos.index', compact('legajo'));
+        return view('paginas.legajos.index', compact('datos'));
     }
 
     public function formulario_legajo(){
@@ -126,7 +132,7 @@ class legajosController extends Controller
         $datolagajo->cargo_id =$request->cargo_id;
         $datolagajo->operador =$operador;
         $datolagajo->save();
-        return "registre persona legajos completos ";
+        return redirect('/legajos-index')->with('ok','');
 
 
 
