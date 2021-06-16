@@ -4,9 +4,7 @@
         <div class="container-fluid">
             <div class="jumbotron text-center">
                 <h1>Alta de Legajo</h1>
-                <h4>
-                    <p>paso 1: Identificación de datos personales</p>
-                </h4>
+                
             </div>
         </div>
 
