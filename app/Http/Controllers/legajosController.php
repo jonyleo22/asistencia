@@ -25,7 +25,8 @@ class legajosController extends Controller
         ->join('domicilio_personas','domicilio_personas.id_persona','personas.id')
         ->select('personas.nombre','personas.apellido','legajos.fecha_ingreso','personas.dni'
         ,'personas.email','personas.fecha_nacimiento','personas.edad','personas.telefono',
-        'legajos.numero_legajo','legajos.categoria','domicilio_personas.descripcion_domicilio')
+        'legajos.numero_legajo','legajos.categoria','domicilio_personas.descripcion_domicilio',
+        'personas.id')
         ->get();
         //  dd($datos);
 
@@ -133,22 +134,32 @@ class legajosController extends Controller
         $datolagajo->operador =$operador;
         $datolagajo->save();
         return redirect('/legajos-index')->with('ok','');
-
-
-
-
-
-
-
-
     }
 
-    public function datos_familia(){
-        return redirect('/legajos-index');
+    public function editar_legajo($id){
+        $tipo_documento = TipoDocumentoModel::all();
+        $provincias =provinciasModel::all();
+        $localidades =localidadesModel::all();
+        $estado_civil=estadoCivilModel::all();
+        $usuarios = User::all();
+        $sexo = sexoModel::all();
+        $cargo = CargoModel::all();
+        $datos_personales = personasModel::findOrFail($id);
+        $domicilio = domicilioPersonasModel::where('id_persona', $id )->get();
+        $ocupacion = ocupacionPersonasModel::where('id_persona', $id)->get();
+        $dato_familia = personasFamiliaModel::where('id_persona', $id)->get();
+        $datos_legajo = legajosModel::where('id_personas', $id)->get();
+        
+        
+        
+        
 
-    }
-    public function datos_hijos(){
-        return redirect('/legajos-index')->with('okey-registro','');
+         
+
+
+        return view ('paginas.legajos.editar_legajo', compact('tipo_documento','provincias','localidades'
+        ,'estado_civil','usuarios','sexo','cargo','datos_personales','domicilio','ocupacion','dato_familia', 
+     'datos_legajo'));
 
     }
 }

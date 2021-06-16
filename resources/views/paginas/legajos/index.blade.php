@@ -26,6 +26,7 @@
                         <table class="table table-striped" id="tabla-legajo">
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>Fecha ingreso</th>
@@ -38,11 +39,13 @@
                                     <th>N° legajos</th>
                                     <th>Categoria</th>
                                     <th>Acciones</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($datos  as $element)
                                     <tr>
+                                        <td>{{$element->id}}</td>
                                         <td>{{$element->nombre}}</td>
                                         <td>{{$element->apellido}}</td>
                                         <td>@php echo date('d/m/Y', strtotime($element->fecha_ingreso)); @endphp</td>
@@ -54,17 +57,19 @@
                                         <td>{{$element->telefono}}</td>
                                         <td>{{$element->numero_legajo}}</td>
                                         <td>{{$element->categoria}}</td>
+
                                         <td>
                                             <div class="btn-group">
                                                 @if (Auth::User()->roles_id == 1)
                                                     <div class="">
-                                                        <a href="#" class="btn btn-primary btn-sm" title="Editar Legajo"><i
+                                                        <a href="{{route ('editar.legajo',$element->id )}} " class="btn btn-primary btn-sm" title="Editar Legajo"><i
                                                                 class="fas fa-pencil-alt"></i></a>
                                                     </div>
                                                     <div class="px-1">
                                                         <a href="#" class="btn btn-success btn-sm"
                                                             title="Vacaciones"><i class="far fa-paper-plane"></i></a>
                                                     </div>
+
                                                 @endif
 
 
