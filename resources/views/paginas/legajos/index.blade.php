@@ -9,7 +9,7 @@
                 </h4>
             </div>
         </div>
-    
+
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
@@ -60,6 +60,7 @@
 
                                         <td>
                                             <div class="btn-group">
+
                                                 @if (Auth::User()->roles_id == 1)
                                                     <div class="">
                                                         <a href="{{route ('editar.legajo',$element->id )}} " class="btn btn-primary btn-sm" title="Editar Legajo"><i
@@ -72,13 +73,23 @@
 
                                                 @endif
 
+                                                @if (Auth::User()->roles_id ==3 || Auth::User()->roles_id ==1 )
+                                                <div class="">
+                                                    <a href="{{route ('editar.legajo.empleado',$element->id )}} " class="btn btn-info btn-sm" title="Editar Legajo"><i
+                                                            class="fas fa-pencil-alt"></i></a>
+                                                </div>
+
+                                                @endif
+
+
+
 
                                             </div>
                                         </td>
                                     </tr>
 
                                 @endforeach
-                               
+
 
 
                             </tbody>
@@ -96,6 +107,22 @@
 
         <script>
             toastr.success('Legajo registrado correctamente')
+
+        </script>
+
+    @endif
+    @if (Session::has('Okey-actualizar'))
+
+        <script>
+            toastr.success('Legajo actualizado correctamente')
+
+        </script>
+
+    @endif
+    @if (Session::has('Okey-actualizar-empleado'))
+
+        <script>
+            toastr.success('Legajo de empleadoa ctualizado  correctamente')
 
         </script>
 

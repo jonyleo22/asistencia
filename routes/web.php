@@ -58,6 +58,9 @@ Route::get('/legajos-index','legajosController@index')->name('legajos.index');
 Route::get('/legajo-formulario','legajosController@formulario_legajo')->name('formulario.legajo');
 Route::post('/legajo-registro','legajosController@legajo_registro')->name('legajo.registro');
 Route::get('/legajo-editar/{id}','legajosController@editar_legajo')->name('editar.legajo');
+Route::get('/legajo-editar-empleado/{id}','legajosController@editar_legajo_empleado')->name('editar.legajo.empleado');
+Route::put('/legajo-actualizar','legajosController@actualizar_legajo')->name('legajo.actualizar');
+Route::put('/legajo-actualizar-empleado','legajosController@actualizar_legajo_empleado')->name('legajo.actualizar.empleado');
 
 // vacaciones (lar)
 

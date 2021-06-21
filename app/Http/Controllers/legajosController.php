@@ -149,17 +149,94 @@ class legajosController extends Controller
         $ocupacion = ocupacionPersonasModel::where('id_persona', $id)->get();
         $dato_familia = personasFamiliaModel::where('id_persona', $id)->get();
         $datos_legajo = legajosModel::where('id_personas', $id)->get();
-        
-        
-        
-        
-
-         
-
-
+        $id_persona = $id;
         return view ('paginas.legajos.editar_legajo', compact('tipo_documento','provincias','localidades'
-        ,'estado_civil','usuarios','sexo','cargo','datos_personales','domicilio','ocupacion','dato_familia', 
-     'datos_legajo'));
+        ,'estado_civil','usuarios','sexo','cargo','datos_personales','domicilio','ocupacion','dato_familia',
+     'datos_legajo','id_persona'));
 
     }
+    public function actualizar_legajo (Request $request){
+
+        $datos = array(
+            "nombre" => $request->nombre,
+            "apellido" => $request->apellido,
+            "tipo_dni_id" => $request->tipo_dni_id,
+            "dni" => $request->dni,
+            "fecha_nacimiento" => $request->fecha_nacimiento,
+            "nacionalidad" => $request->nacionalidad,
+            "provincia" => $request->provincia,
+            "localidad" => $request->localidad,
+            "id_estado_civil" => $request->id_estado_civil,
+            "sexo_id" => $request->sexo_id,
+            "telefono" => $request->telefono,
+            "email" => $request->email
+        );
+        $datos_personales = personasModel::findOrFail($request->id_persona)->update($datos);
+
+        $dato_domicilio =array(
+            "descripcion_domicilio" => $request->descripcion_domicilio
+        );
+        $domicilio = domicilioPersonasModel::findOrFail($request->id_persona)->update($dato_domicilio);
+
+        $ocupacion_persona =array(
+            "descripcion_ocupacion" => $request->descripcion_ocupacion
+        );
+        $persona_ocupacion = ocupacionPersonasModel::findOrFail($request->id_persona)->update($ocupacion_persona);
+
+
+        $dato_familia =array(
+            "apellido_padre" => $request->apellido_padre,
+            "nombre_padre" => $request->nombre_padre,
+            "fecha_nacimiento_padre" => $request->fecha_nacimiento_padre,
+            "nacionalidad_padre" => $request->nacionalidad_padre,
+            "apellido_madre" => $request->apellido_madre,
+            "nombre_madre" => $request->nombre_madre,
+            "fecha_nacimiento_madre" => $request->fecha_nacimiento_madre,
+            "nacionalidad_madre" => $request->nacionalidad_madre,
+            "cantidad_hijos" => $request->cantidad_hijos,
+            "detalle_hijos" => $request->detalle_hijos
+        );
+        $familia =personasFamiliaModel::findOrFail($request->id_persona)->update($dato_familia);
+
+
+        $dato_legajo =array(
+            "numero_legajo" => $request->numero_legajo,
+            "fecha_ingreso" => $request->fecha_ingreso,
+            "categoria" => $request->categoria,
+            "id_usuario" => $request->id_usuario,
+            "cargo_id" => $request->cargo_id
+
+        );
+        $legajo =legajosModel::findOrFail($request->id_persona)->update($dato_legajo);
+
+        return redirect('/legajos-index')->with('Okey-actualizar','');
+
+
+
+    }
+    public function editar_legajo_empleado($id){
+        $datos_personales = personasModel::findOrFail($id);
+        $domicilio = domicilioPersonasModel::where('id_persona', $id )->get();
+        $id_persona = $id;
+        return view('paginas.legajos.editar_legajo_empleado',compact('datos_personales','domicilio','id_persona'));
+    }
+    public function actualizar_legajo_empleado(Request $request){
+
+        $datos = array(
+            "telefono" => $request->telefono,
+            "email" => $request->email
+        );
+
+        $datos_personales = personasModel::findOrFail($request->id_persona)->update($datos);
+
+        $dato_domicilio =array(
+            "descripcion_domicilio" => $request->descripcion_domicilio
+        );
+
+        $domicilio = domicilioPersonasModel::findOrFail($request->id_persona)->update($dato_domicilio);
+
+        return redirect('/legajos-index')->with('Okey-actualizar-empleado','');
+    }
+
+
 }

@@ -26,7 +26,8 @@
                                 </ul>
                             </div>
                         @endif
-                        <form role="form" method="POST" action="{{ route('legajo.registro') }}">
+                        <form role="form" method="POST" action="{{ route('legajo.actualizar') }}">
+                            @method('PUT')
                             @csrf
                             <div class="card-body">
                                 <div class="row">
@@ -127,9 +128,9 @@
 
                                             @endforeach
 
-                
 
-                                           
+
+
 
                                         </select>
                                     </div>
@@ -403,7 +404,7 @@
 
                                                 @if ($element->id == $datos_legajo[0]->id_usuario)
 
-                                                    <option selected value="{{ $datos_legajo[0]->sid_usuario }}">
+                                                    <option selected value="{{ $datos_legajo[0]->id_usuario }}">
                                                     DNI:
                                                     {{ $element->dni_empleado }} | Apellido: {{ $element->apellido }}
                                                     | Nombre: {{ $element->nombre }}
@@ -447,12 +448,13 @@
                                             @endforeach
 
 
-                        
+
 
                                         </select>
                                     </div>
                                 </div>
                             </div>
+                            <input type="hidden" name="id_persona" value="{{$id_persona}}">
                             <div class="card-footer text-center">
                                 <button type="submit" class="btn btn-success">Guardar</button>
                             </div>
