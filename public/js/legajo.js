@@ -3,3 +3,7 @@ $(document).ready(function() {
         theme: 'bootstrap4'
     })
 });
+
+$(document).ready(function() {
+    bsCustomFileInput.init();
+});

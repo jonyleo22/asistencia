@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\legajosController;
+use App\Http\Controllers\vacacionesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -64,4 +65,7 @@ Route::put('/legajo-actualizar-empleado','legajosController@actualizar_legajo_em
 
 // vacaciones (lar)
 
-Route::get('/vacaciones-index/{id}','vacacionesController@index')->name('vacaciones.index');
+Route::get('/vacaciones-index','vacacionesController@index')->name('vacaciones.index');
+Route::get('/vacaciones-formulario/{id}','vacacionesController@formulario_vacaciones')->name('formulario.vacaciones');
+Route::post('/registrar-vacaiones','vacacionesController@registrar_vacaciones')->name('registrar.vacaciones');
+

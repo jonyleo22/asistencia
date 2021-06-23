@@ -37,6 +37,8 @@
     {{--Fontawesome--}}
     <script src="https://kit.fontawesome.com/8d7c09d224.js" crossorigin="anonymous"></script>
 
+    <script src="{{ url('/') }}/js/plugins/bs-custom-file-input.min.js"></script>
+
     <script src="{{ url('/') }}/js/plugins/jquery.overlayScrollbars.min.js"></script>
 
     <script src="{{ url('/') }}/js/usuarios.js"></script>

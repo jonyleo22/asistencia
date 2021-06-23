@@ -66,13 +66,7 @@
                                                         <a href="{{route ('editar.legajo',$element->id )}} " class="btn btn-primary btn-sm" title="Editar Legajo"><i
                                                                 class="fas fa-pencil-alt"></i></a>
                                                     </div>
-                                                    <div class="px-1">
-                                                        <a href="#" class="btn btn-success btn-sm"
-                                                            title="Vacaciones"><i class="far fa-paper-plane"></i></a>
-                                                    </div>
-
                                                 @endif
-
                                                 @if (Auth::User()->roles_id ==3 || Auth::User()->roles_id ==1 )
                                                 <div class="">
                                                     <a href="{{route ('editar.legajo.empleado',$element->id )}} " class="btn btn-info btn-sm" title="Editar Legajo"><i

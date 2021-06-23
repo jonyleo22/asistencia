@@ -15,12 +15,16 @@ class CreateVacacionesTable extends Migration
     {
         Schema::create('vacaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('año_lar');
-            $table->string('dias_disponible');
+            $table->unsignedBigInteger('id_persona');
+            $table->foreign('id_persona')->references('id')->on('personas');
+            $table->string('año_lar')->nullable();
+            $table->string('dias_disponible')->nullable();
+            $table->string('dias_lar')->nullable();
+            $table->string('fecha_desde_lar')->nullable();
+            $table->string('fecha_hasta_lar')->nullable();
+            $table->string('observacion_lar')->nullable();
             $table->string('operador_lar');
             $table->string('ruta_lar')->nullable();
-            $table->unsignedBigInteger('id_legajo');
-            $table->foreign('id_legajo')->references('id')->on('legajos');
             $table->timestamps();
         });
     }
