@@ -68,4 +68,6 @@ Route::put('/legajo-actualizar-empleado','legajosController@actualizar_legajo_em
 Route::get('/vacaciones-index','vacacionesController@index')->name('vacaciones.index');
 Route::get('/vacaciones-formulario/{id}','vacacionesController@formulario_vacaciones')->name('formulario.vacaciones');
 Route::post('/registrar-vacaiones','vacacionesController@registrar_vacaciones')->name('registrar.vacaciones');
+Route::get('/historial-vacaiones/{id}','vacacionesController@historial_vacaciones')->name('historial.vacaciones');
+
 
