@@ -49,7 +49,7 @@
 
                                                 @if (Auth::User()->roles_id == 1)
                                                     <div class="px-1">
-                                                        <a href="{{ route('formulario.vacaciones', $element->id) }}"
+                                                        <a href="{{ route('formulariosali.vacaciones', $element->id) }}"
                                                             class="btn btn-danger btn-sm" title="Salida"><i
                                                                 class="fa fa-child"></i></a>
                                                     </div>
