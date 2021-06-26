@@ -69,7 +69,6 @@ Route::get('/vacaciones-index','vacacionesController@index')->name('vacaciones.i
 Route::get('/vacaciones-formulario/{id}','vacacionesController@formulario_vacaciones')->name('formulario.vacaciones');
 Route::post('/registrar-vacaiones','vacacionesController@registrar_vacaciones')->name('registrar.vacaciones');
 Route::get('/historial-vacaiones/{id}','vacacionesController@historial_vacaciones')->name('historial.vacaciones');
-
 Route::get('/vacaciones-formulario-sali/{id}','vacacionesController@formulariosali_vacaciones')->name('formulariosali.vacaciones');
 Route::post('/registrarsali-vacaciones','vacacionesController@registrarsali_vacaciones')->name('registrarsali.vacaciones');
 

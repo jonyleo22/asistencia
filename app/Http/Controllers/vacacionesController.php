@@ -6,8 +6,12 @@ use App\legajosModel;
 use App\personasModel;
 use App\vacacionesModel;
 use Carbon\Carbon;
+use DateInterval;
+use DatePeriod;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class vacacionesController extends Controller
 {
@@ -130,12 +134,43 @@ class vacacionesController extends Controller
 
     public function registrarsali_vacaciones (Request $request){
 
+        $fecha_desde = $request->fecha_desde_lar;
+        $fecha_hasta = $request->fecha_hasta_lar;
+        // tus datos de entrada
+        $start = $fecha_desde;
+        $end   = $fecha_hasta;
+        // generas las fechas entre el periodo
+        $end = new DateTime($end); // éstas 2 lineas son necesarias para que DatePeriod incluya la ultima fecha
+        $end->modify('+ 1 day');
+        $period = new DatePeriod(
+            new DateTime($start),
+            new DateInterval('P1D'), $end);
+
+// recorres las fechas y haces tu insert
+
+foreach ($period as $key => $value) {
+    $date = $value->format('Y-m-d');
+    // $dia = $date("D");
+
+    $dia=date("w", strtotime($date));
+
+
+    if ($dia != 6 && $dia != 0) {
+        DB::table('asistencias')->insert([
+            ['estado' => '3', 'id_usuario' => $request->id_persona, 'fecha' => $date]
+        ]);
+    }
+
+    // genera tu sql
+
+    //echo $sql.'<br>';
+
+    // ejecuta el sql (insert)...
+}
+
+
         $ruta = "archivo_vacaciones/".date("Ymdhisv").".".$request->archivo->guessExtension();
             move_uploaded_file($request->archivo, $ruta);
-
-            $dato =legajosModel::where('id_personas', $request->id_persona)->get();
-            $fecha_ingreso = $dato[0]->fecha_ingreso;
-            $antiguedad = Carbon::parse($fecha_ingreso)->age;
 
             $operador = Auth::user()->apellido.' '.Auth::user()->nombre;
 
