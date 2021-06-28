@@ -34,6 +34,12 @@
                             @if ($element->estado == 2)
                             <div class=" badge badge-danger">Ausente</div>
                             @endif
+                            @if ($element->estado == 3)
+                            <div class=" badge badge-warning">Vacaciones</div>
+                            @endif
+                            @if ($element->estado == 4)
+                            <div class=" badge badge-info">Licencia</div>
+                            @endif
                         <td>
 
                         </td>

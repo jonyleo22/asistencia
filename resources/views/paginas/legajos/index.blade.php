@@ -67,8 +67,8 @@
                                                                 class="fas fa-pencil-alt"></i></a>
                                                     </div>
                                                 @endif
-                                                @if (Auth::User()->roles_id ==3 || Auth::User()->roles_id ==1 )
-                                                <div class="">
+                                                @if (Auth::User()->roles_id == 3 || Auth::User()->roles_id == 1 )
+                                                <div class="px-2">
                                                     <a href="{{route ('editar.legajo.empleado',$element->id )}} " class="btn btn-info btn-sm" title="Editar Legajo"><i
                                                             class="fas fa-pencil-alt"></i></a>
                                                 </div>

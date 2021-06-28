@@ -21,6 +21,8 @@ class inasistenciaController extends Controller
         ->where('asistencias.estado', 1)
         ->orwhere('asistencias.estado', 2)
         ->where('asistencias.fecha', $fecha_actual)
+        ->orwhere('asistencias.estado', 3)
+        ->where('asistencias.fecha', $fecha_actual)
         ->get();
 
         return view('paginas.inasistencia.index',compact('presentes'));

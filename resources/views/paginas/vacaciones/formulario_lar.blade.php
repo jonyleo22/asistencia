@@ -65,10 +65,12 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="card-footer text-center">
                                     <button type="submit" class="btn btn-success">Guardar</button>
                                 </div>
                                 <input type="hidden" name="id_persona" value="{{$id_persona}}">
+                                <input type="hidden" name="usuario" value="{{ $id_usuario }}">
                             </form>
                         </div>
                     </div>
