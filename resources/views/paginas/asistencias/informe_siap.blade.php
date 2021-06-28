@@ -48,7 +48,9 @@
                             <td>{{ $element->nombre }}</td>
                             <td>{{ $element->apellido }}</td>
                             <td>@php
-                                $contar = DB::select("select * from asistencias where estado = 1 and id_usuario = $element->id or estado = 3 and id_usuario = $element->id ");
+
+                                $contar = DB::select("select * from asistencias where estado = 1 and id_usuario = $element->id
+                                or estado = 3 and id_usuario = $element->id");
                                 $aux = count($contar);
                                 echo $aux;
                                 @endphp

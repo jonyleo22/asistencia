@@ -160,43 +160,12 @@ class vacacionesController extends Controller
 
     public function formulariosali_vacaciones ($id){
         $id_persona = $id;
-        return view('paginas.vacaciones.salida_lar',compact('id_persona'));
+        $buscar_legajo = legajosModel::where('id_personas', $id)->get();
+        $id_usuario = $buscar_legajo[0]->id_usuario;
+        return view('paginas.vacaciones.salida_lar',compact('id_persona','id_usuario'));
     }
 
     public function registrarsali_vacaciones (Request $request){
-
-        $fecha_desde = $request->fecha_desde_lar;
-        $fecha_hasta = $request->fecha_hasta_lar;
-        // tus datos de entrada
-        $start = $fecha_desde;
-        $end   = $fecha_hasta;
-        // generas las fechas entre el periodo
-        $end = new DateTime($end); // éstas 2 lineas son necesarias para que DatePeriod incluya la ultima fecha
-        $end->modify('+ 1 day');
-        $period = new DatePeriod(
-            new DateTime($start),
-            new DateInterval('P1D'), $end);
-
-        // recorres las fechas y haces tu insert
-
-        $id_usuario = $request->usuario;
-
-        foreach ($period as $key => $value) {
-            $date = $value->format('Y-m-d');
-            // $dia = $date("D");
-
-            $dia=date("w", strtotime($date));
-
-
-            if ($dia != 6 && $dia != 0) {
-                DB::table('asistencias')->insert([
-                    ['estado' => '3', 'id_usuario' => $id_usuario, 'fecha' => $date]
-                ]);
-            }
-
-
-        }
-
 
         $ruta = "archivo_vacaciones/".date("Ymdhisv").".".$request->archivo->guessExtension();
             move_uploaded_file($request->archivo, $ruta);
@@ -223,6 +192,39 @@ class vacacionesController extends Controller
             $dato_vacaciones->operador_lar = $operador;
             $dato_vacaciones->ruta_lar	= $ruta;
             $dato_vacaciones->save();
+
+
+            $fecha_desde = $request->fecha_desde_lar;
+            $fecha_hasta = $request->fecha_hasta_lar;
+            // tus datos de entrada
+            $start = $fecha_desde;
+            $end   = $fecha_hasta;
+            // generas las fechas entre el periodo
+            $end = new DateTime($end); // éstas 2 lineas son necesarias para que DatePeriod incluya la ultima fecha
+            $end->modify('+ 1 day');
+            $period = new DatePeriod(
+                new DateTime($start),
+                new DateInterval('P1D'), $end);
+
+            // recorres las fechas y haces tu insert
+
+            $id_usuario = $request->usuario;
+
+            foreach ($period as $key => $value) {
+                $date = $value->format('Y-m-d');
+                // $dia = $date("D");
+
+                $dia=date("w", strtotime($date));
+
+
+                if ($dia != 6 && $dia != 0) {
+                    DB::table('asistencias')->insert([
+                        ['estado' => '3', 'id_usuario' => $id_usuario, 'fecha' => $date]
+                    ]);
+                }
+
+
+            }
 
             return redirect('/vacaciones-index')->with('Okey-vacaciones','');
 

@@ -98,7 +98,7 @@ class asistenciaController extends Controller
             $asistencia = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
             ->where('asistencias.fecha', $fecha_actual)
             ->select('users.nombre','users.apellido','users.dni_empleado', 'asistencias.id', 'asistencias.hora_entrada'
-            ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia')
+            ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia', 'asistencias.estado')
             ->get();
 
         if ($request->$fecha_desde != null && $request->fecha_hasta != null && $request->dni != null ) {
@@ -106,14 +106,14 @@ class asistenciaController extends Controller
         ->where('users.dni_empleado', $request->dni)
         ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
         ->select('users.nombre','users.apellido','users.dni_empleado', 'asistencias.id', 'asistencias.hora_entrada'
-        ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia')
+        ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia', 'asistencias.estado')
         ->get();
         }
         if ($request->$fecha_desde != null && $request->fecha_hasta != null && $request->dni == null ) {
             $asistencia = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
         ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
         ->select('users.nombre','users.apellido','users.dni_empleado', 'asistencias.id', 'asistencias.hora_entrada'
-        ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia')
+        ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia', 'asistencias.estado')
         ->get();
         }
 
@@ -176,7 +176,7 @@ class asistenciaController extends Controller
         ->groupBy('asistencias.id_usuario')
         ->get();
 
-        return view('paginas.asistencias.informe_siap', compact('usuarios'));
+        return view('paginas.asistencias.informe_siap', compact('usuarios', 'fecha_desde', 'fecha_hasta'));
 
 }
 

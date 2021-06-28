@@ -69,8 +69,28 @@
                             <td>{{ $element->dni_empleado }}</td>
                             <td>{{ $element->apellido }}</td>
                             <td>{{ $element->nombre }}</td>
-                            <td>{{ $element->hora_entrada }}</td>
-                            <td>{{ $element->hora_salida }}</td>
+                            <td>
+                                @if ( $element->hora_entrada != null)
+                                {{ $element->hora_entrada }}
+                                @endif
+                            @if ( $element->hora_entrada == null && $element->estado == 2)
+                            <div class='badge badge-danger'>Ausente</div>
+                            @endif
+                            @if ( $element->hora_entrada == null && $element->estado == 3)
+                            <div class='badge badge-warning'>Vacaciones</div>
+                            @endif
+                            </td>
+                            <td>
+                                @if ( $element->hora_salida != null)
+                                {{ $element->hora_salida }}
+                                @endif
+                                @if ( $element->hora_salida == null && $element->estado == 2)
+                                <div class='badge badge-danger'>Ausente</div>
+                                @endif
+                                @if ( $element->hora_salida == null && $element->estado == 3)
+                                <div class='badge badge-warning'>Vacaciones</div>
+                                @endif
+                            </td>
                             <td>
                                 @if ($element->observacion_asistencia != null)
                                 {{$element->observacion_asistencia }}
