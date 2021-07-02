@@ -71,5 +71,3 @@ Route::post('/registrar-vacaiones','vacacionesController@registrar_vacaciones')-
 Route::get('/historial-vacaiones/{id}','vacacionesController@historial_vacaciones')->name('historial.vacaciones');
 Route::get('/vacaciones-formulario-sali/{id}','vacacionesController@formulariosali_vacaciones')->name('formulariosali.vacaciones');
 Route::post('/registrarsali-vacaciones','vacacionesController@registrarsali_vacaciones')->name('registrarsali.vacaciones');
-
-
