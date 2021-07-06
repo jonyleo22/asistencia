@@ -15,11 +15,17 @@ class CreateLicenciasTable extends Migration
     {
         Schema::create('licencias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('numero_licencias')->unique();
+            $table->unsignedBigInteger('id_legajo');
+            $table->foreign('id_legajo')->references('id')->on('legajos');
+            $table->string('numero_licencia')->unique();
             $table->string('hora_licencia');
             $table->date('fecha_licencia');
             $table->date('fecha_desde')->nullable();
             $table->date('fecha_hasta')->nullable();
+            $table->string('operador_licencia');
+            $table->string('archivo_licencia')->nullable();
+            $table->string('tipo_licencia');
+            $table->string('estado_licencia');
             $table->timestamps();
         });
     }
