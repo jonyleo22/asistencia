@@ -46,21 +46,65 @@ class UsuarioSeeder extends Seeder
 
 
         DB::table('cargo_empleado')->insert([
-            'nombre_cargo' => 'Director',
+            'nombre_cargo' => 'DIREC.GENERAL DE CORDINACIÓN Y CONTROL',
         ]);
 
         DB::table('cargo_empleado')->insert([
-            'nombre_cargo' => 'Sub. Director',
-        ]);
-
-
-        DB::table('cargo_empleado')->insert([
-            'nombre_cargo' => 'Jefe de sector',
+            'nombre_cargo' => 'DIREC. INGRESOS PUBLICOS',
         ]);
 
 
         DB::table('cargo_empleado')->insert([
-            'nombre_cargo' => 'Empleado',
+            'nombre_cargo' => 'DIREC. CONTABIL. Y ADMINISTRACIÓN BANCARIA',
+        ]);
+
+
+        DB::table('cargo_empleado')->insert([
+            'nombre_cargo' => 'DIR. GESTION FINANCIERA',
+        ]);
+
+        DB::table('cargo_empleado')->insert([
+            'nombre_cargo' => 'DPTO. MOVIMIENTO DE FONDO',
+        ]);
+
+        DB::table('cargo_empleado')->insert([
+            'nombre_cargo' => 'DPTO. MOVIMINETO BANCARIO',
+        ]);
+
+        DB::table('cargo_empleado')->insert([
+            'nombre_cargo' => 'DPTO. RENDICION CONTABLE',
+        ]);
+
+        DB::table('cargo_empleado')->insert([
+            'nombre_cargo' => 'DPTO. PATRIMONIO',
+        ]);
+
+        DB::table('cargo_empleado')->insert([
+            'nombre_cargo' => 'DPTO. DESPACHO',
+        ]);
+
+        DB::table('cargo_empleado')->insert([
+            'nombre_cargo' => 'DPTO. INFORMATICA',
+        ]);
+
+        DB::table('cargo_empleado')->insert([
+            'nombre_cargo' => 'DPTO. INGRESOS PROVINCIALES',
+        ]);
+
+        DB::table('cargo_empleado')->insert([
+            'nombre_cargo' => 'DPTO. CONTROL DE GESTION',
+        ]);
+
+        DB::table('cargo_empleado')->insert([
+            'nombre_cargo' => 'DPTO. INGRESOS NACIONALES',
+        ]);
+
+        DB::table('cargo_empleado')->insert([
+            'nombre_cargo' => 'ADMINISTRACIÓN',
+        ]);
+
+        DB::table('cargo_empleado')->insert([
+            'nombre_cargo' => 'PROFECIONAL',
         ]);
 
         DB::table('tipo_documento')->insert([
