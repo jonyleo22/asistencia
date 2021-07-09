@@ -61,40 +61,6 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('#tabla-usuarios').DataTable({
-        orderCellsTop: true,
-        fixedHeader: true,
-        "ordering": false,
-        "pageLength": 25,
-        mark: true,
-        dom: 'Bfrtip',
-        buttons: [{
-                extend: 'print',
-                autoPrint: false,
-                text: 'Imprimir',
-                title: 'Tesoreria de la Provincia de Misiones',
-                messageTop: 'Listado de asistencias',
-                exportOptions: {
-                    columns: ':visible'
-                }
-            },
-            {
-                extend: 'pdfHtml5',
-                title: 'Tesoreria de la Provincia de Misiones',
-                messageTop: 'Listado de asistencias',
-                orientation: 'landscape',
-                pageSize: 'LEGAL',
-                download: 'open',
-                exportOptions: {
-                    columns: ':visible'
-                }
-            },
-            {
-                extend: 'excel',
-            },
-        ],
-        columnDefs: [{
-            visible: false
-        }],
         "language": {
             "sProcessing": "Procesando...",
             "sLengthMenu": "Mostrar _MENU_ registros",
