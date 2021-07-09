@@ -7,3 +7,7 @@ $(document).ready(function() {
 $(document).ready(function() {
     bsCustomFileInput.init();
 });
+
+$(document).ready( function () {
+    $('#tabla-legajo').DataTable();
+} );
