@@ -135,7 +135,7 @@
                                 <div class="col-lg-4">
                                     <label for="cargo_id">Seleccione cargo:</label>
                                     <br>
-                                    <select class="form-control @error('cargo_id') is-invalid @enderror" name="cargo_id"
+                                    <select class="form-control select2 @error('cargo_id') is-invalid @enderror" name="cargo_id"
                                         style="width: 100%;">
 
                                         <option disabled selected value>Seleccionar</option>

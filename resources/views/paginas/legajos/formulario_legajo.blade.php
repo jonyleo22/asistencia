@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="jumbotron text-center">
                 <h1>Alta de Legajo</h1>
-                
+
             </div>
         </div>
 
@@ -353,7 +353,7 @@
                                     <div class="col-lg-6">
                                         <label for="id_usuario">Usuario asociado</label>
                                         <br>
-                                        <select class="form-control @error('id_usuario') is-invalid @enderror"
+                                        <select class="form-control select2 @error('id_usuario') is-invalid @enderror"
                                             name="id_usuario" style="width: 100%;">
 
                                             <option disabled selected value>Seleccionar</option>
@@ -375,7 +375,7 @@
                                     <div class="col-lg-6">
                                         <label for="cargo_id">Indicar función</label>
                                         <br>
-                                        <select class="form-control @error('cargo_id') is-invalid @enderror"
+                                        <select class="form-control select2 @error('cargo_id') is-invalid @enderror"
                                             name="cargo_id" style="width: 100%;">
 
                                             <option disabled selected value>Seleccionar</option>

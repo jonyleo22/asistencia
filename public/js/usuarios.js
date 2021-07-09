@@ -1,9 +1,10 @@
+
 $(document).ready(function () {
     $('#tabla-informe').DataTable({
         orderCellsTop: true,
         fixedHeader: true,
         "ordering": false,
-        "pageLength": 50,
+        "pageLength": 25,
         mark: true,
         dom: 'Bfrtip',
         buttons: [{
@@ -63,7 +64,7 @@ $(document).ready(function () {
         orderCellsTop: true,
         fixedHeader: true,
         "ordering": false,
-        "pageLength": 50,
+        "pageLength": 25,
         mark: true,
         dom: 'Bfrtip',
         buttons: [{
