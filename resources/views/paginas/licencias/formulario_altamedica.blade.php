@@ -36,13 +36,13 @@
                             {{ Auth::User()->nombre }}
                         </div>
                         <div class="col-lg-2">
-                            {{ Auth::User()->edad }}
+                            {{ $edad }}
                         </div>
                         <div class="col-lg-2">
                             {{ Auth::User()->dni_empleado }}
                         </div>
                         <div class="col-lg-2">
-                            {{ Auth::User()->categoria }}
+                            {{ $categoria }}
                         </div>
                     </div>
                     <div class="row">
@@ -65,7 +65,7 @@
                     <br>
                     <div class="row">
                         <div class="col-lg-12">
-                            <strong>Domicilio:</strong> {{ Auth::User()->direccion_empleado }}
+                            <strong>Domicilio:</strong> {{ $domicilio }}
                         </div>
                     </div>
                     <br>

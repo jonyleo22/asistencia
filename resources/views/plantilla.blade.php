@@ -92,7 +92,7 @@
 
         @yield('content')
 
-        @include('modulos.footer')
+        {{-- @include('modulos.footer') --}}
 
 
 

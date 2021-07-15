@@ -53,6 +53,8 @@ Route::get('/formulario-maternidad','licenciaController@formulario_maternidad')-
 Route::get('/formulario-enfermedad','licenciaController@formulario_enfermedad')->name('formulario.enfermedad');
 Route::get('/formulario-altamedica','licenciaController@formulario_altamedica')->name('formulario.altamedica');
 
+Route::post('/maternidad-registro','licenciaController@maternidad_registro')->name('maternidad.registro');
+Route::get('/maternidad-paso2','licenciaController@maternidad_paso2')->name('maternidad.paso2');
 // RUTAS LEGAJO
 
 Route::get('/legajos-index','legajosController@index')->name('legajos.index');
