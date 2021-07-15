@@ -1,15 +1,16 @@
 @extends('plantilla')
 @section('content')
-    <div class="content-wrapper">
-        <div class="container-fluid">
-            <div class="card mt-3">
-                <div class="card-body">
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="card mt-3">
+            <div class="card-body">
 
-
+                <form method="POST" action="{{route ('alta.registro')}}">
+                    @csrf
                     <div class="row text-center">
                         <div class="col-lg-12">
                             <ins>
-                                <h1>Licencia por Alta Médica</h1>
+                                <h1>Alta Medica</h1>
 
                             </ins>
                         </div>
@@ -69,7 +70,6 @@
                         </div>
                     </div>
                     <br>
-
                     <div class="row">
                         <div class="col-lg-12">
                             La presente orden es expedida por: <strong>Tesorería General de la Provincia de
@@ -121,7 +121,6 @@
 
                             </div>
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="col-lg-3">
@@ -146,42 +145,19 @@
                         </div>
                     </div>
                     <br>
+                    <br>
                     <div class="row">
                         <div class="col-lg-12">
                             <p>Se ha dado cumplimiento a la presente Orden con los siguientes resultados: </p>
                         </div>
                     </div>
                     <br>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <strong>
-                                <h3>
-                                    A-Orden de Reconocimiento Médico a Domicilio Nº /{{ $año }}.
-                            </strong></h3>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-lg-12"><strong>El causante se encuentra comprendido en los términos de la resolución
-                                Nº: ____________________Art____________________</strong>
-
-
-                        </div>
-
-                    </div>
-                    <br>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <p>Por lo que le corresponde el alta médica: Desde____________________Hasta____________________</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="card-footer text-center">
-                    <button type="submit" class="btn btn-success">Generar</button>
-                </div>
             </div>
-        @endsection
+        </div>
+        <div class="card-footer text-center">
+            <button type="submit" class="btn btn-success">Generar</button>
+        </div>
+        </form>
+    </div>
+</div>
+@endsection

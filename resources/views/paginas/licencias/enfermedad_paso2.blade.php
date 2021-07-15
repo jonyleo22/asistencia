@@ -1,5 +1,6 @@
 @extends('plantilla')
 @section('content')
+
     <div class="wrapper">
         Licencia Paso 2
     </div>

@@ -4,7 +4,6 @@
         <div class="container-fluid">
             <div class="card mt-3">
                 <div class="card-body">
-
                     <form method="POST" action="{{route ('maternidad.registro')}}">
                         @csrf
                         <div class="row text-center">
@@ -115,14 +114,12 @@
                             </div>
                         </div>
                         <div class="row">
-
                             <div class="col-lg-12">
                                 <div class="p text-right ">
                                     <strong>Firma y sello del emisor de la orden.</strong>
 
                                 </div>
                             </div>
-
                         </div>
                         <div class="row">
                             <div class="col-lg-3">
@@ -153,7 +150,6 @@
                             </div>
                         </div>
                         <br>
-
                         <div class="row">
                             <div class="col-lg-12">
                                 <strong>
@@ -166,22 +162,15 @@
                         <div class="row">
                             <div class="col-lg-12"><strong>El causante se encuentra comprendido en los términos del decreto
                                     Nº: ____________________Art____________________</strong>
-
-
                             </div>
-
                         </div>
                         <br>
-
                         <div class="row">
                             <div class="col-lg-12">
                                 <p>Por lo que le corresponde licencia: Desde____________________Hasta____________________
                                 </p>
                             </div>
                         </div>
-
-
-
                         <div class="card-footer text-center">
                             <button type="submit" class="btn btn-success">Generar</button>
                         </div>

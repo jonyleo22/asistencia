@@ -81,6 +81,32 @@ class licenciaController extends Controller
         return view('paginas.licencias.formulario_enfermedad',compact('año','fecha','hora','categoria','edad','domicilio'));
 
     }
+    public function enfermedad_registro(Request $request ){
+        $operador = Auth::user()->apellido.' '.Auth::user()->nombre;
+        $fecha = carbon::now();
+        $fechaactual =$fecha->format('d-m-Y');
+        $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
+        $hora =$hora_actual->format('H:i:s');
+
+        $id_usuario = Auth::User()->id;
+        $id_legajo = legajosModel::where('id_usuario', $id_usuario)->get();
+        // dd($id_legajo[0]->id);
+        $licencia = new LicenciasModel();
+        $licencia->id_legajo = $id_legajo[0]->id;
+        $licencia->hora_licencia = $hora;
+        $licencia->fecha_licencia = $fechaactual;
+        $licencia->operador_licencia = $operador;
+        $licencia->tipo_licencia = 2;   // 2 = Enfermedad
+        $licencia->estado_licencia = 1; // estado 1 Pendiente
+        $licencia->save();
+
+
+        return redirect('/enfermedad-paso2')->with('okeylicencia','');
+    }
+    public function enfermedad_paso2(){
+        return view('paginas.licencias.enfermedad_paso2');
+    }
+
 
     public function formulario_altamedica(){
         $id_usuario = Auth::user()->id;
@@ -99,5 +125,34 @@ class licenciaController extends Controller
         //dd($fecha);
         // dd($año);
         return view('paginas.licencias.formulario_altamedica',compact('año','fecha','hora','categoria','edad','domicilio'));
+    }
+
+
+    public function alta_registro(Request $request ){
+
+
+        $operador = Auth::user()->apellido.' '.Auth::user()->nombre;
+        $fecha = carbon::now();
+        $fechaactual =$fecha->format('d-m-Y');
+        $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
+        $hora =$hora_actual->format('H:i:s');
+
+        $id_usuario = Auth::User()->id;
+        $id_legajo = legajosModel::where('id_usuario', $id_usuario)->get();
+        // dd($id_legajo[0]->id);
+        $licencia = new LicenciasModel();
+        $licencia->id_legajo = $id_legajo[0]->id;
+        $licencia->hora_licencia = $hora;
+        $licencia->fecha_licencia = $fechaactual;
+        $licencia->operador_licencia = $operador;
+        $licencia->tipo_licencia = 3;   // 3 = Alta
+        $licencia->estado_licencia = 1; // estado 1 Pendiente
+        $licencia->save();
+
+        return redirect('/alta-paso2')->with('okeylicencia','');
+    }
+    public function alta_paso2(){
+
+        return view('paginas.licencias.alta_paso2');
     }
 }
