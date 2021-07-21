@@ -110,11 +110,16 @@ class licenciaController extends Controller
         $licencia->save();
         $id_licencia = $licencia->id;
 
+        $n_licencia = array(
+            'numero_licencia'=> $id_licencia
+        );
 
+        $update_n_licencia = LicenciasModel::findOrFail($id_licencia)->update($n_licencia);
 
-        return redirect('/enfermedad-paso2',compact('id_licencia'));
+        return redirect('/licencias-index')->with('ok-registro-licencia','');
     }
-    public function enfermedad_paso2(){
+
+    public function enfermedad_paso2($id){
 
         $id_usuario = Auth::user()->id;
         $legajo = legajosModel::where('id_usuario', $id_usuario)->get();
@@ -129,9 +134,10 @@ class licenciaController extends Controller
         $fecha =$añoactual->format('d-m-Y');
         $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
         $hora =$hora_actual->format('H:i:s');
+        $n_licencia = $id;
         //dd($fecha);
         // dd($año);
-        return view('paginas.licencias.enfermedad_paso2',compact('año','fecha','hora','categoria','edad','domicilio'));
+        return view('paginas.licencias.enfermedad_paso2',compact('año','fecha','hora','categoria','edad','domicilio','n_licencia'));
     }
 
 

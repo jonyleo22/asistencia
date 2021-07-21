@@ -56,7 +56,7 @@ Route::get('/formulario-altamedica','licenciaController@formulario_altamedica')-
 Route::post('/maternidad-registro','licenciaController@maternidad_registro')->name('maternidad.registro');
 Route::get('/maternidad-paso2','licenciaController@maternidad_paso2')->name('maternidad.paso2');
 Route::post('/enfermedad-registro','licenciaController@enfermedad_registro')->name('enfermedad.registro');
-Route::get('/enfermedad-paso2','licenciaController@enfermedad_paso2')->name('enfermedad.paso2');
+Route::get('/enfermedad-paso2/{id}','licenciaController@enfermedad_paso2')->name('enfermedad.paso2');
 Route::post('/alta-registro','licenciaController@alta_registro')->name('alta.registro');
 Route::get('/alta-paso2','licenciaController@alta_paso2')->name('alta.paso2');
 

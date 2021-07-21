@@ -1,171 +1,214 @@
 @extends('plantilla')
+
 @section('content')
 
-    <div class="wrapper">
+<div class="content-wrapper">
+
+    <section class="content">
 
         <div class="container-fluid">
-            <div class="card mt-3">
-                <div class="card-body">
-                    <form method="POST" action="#">
-                        @csrf
-                        <div class="row text-center">
-                            <div class="col-lg-12">
-                                <ins>
-                                    <h1>Licencia por enfermedad</h1>
 
-                                </ins>
-                            </div>
-                        </div>
-                        <br>
+            <div class="row">
+
+                <div class="col-12">
+
+                    <div class="invoice p-3 mb-3">
+                        <!-- title row -->
+
                         <div class="row">
-                            <div class="col-lg-12">
+
+                            <div class="col-12 text-center">
                                 <strong>
                                     <h3>
-                                        A-Orden de Reconocimiento Médico a Domicilio Nº {{$id_licencia}}/{{ $año }}.
-                                </strong></h3>
+                                        Formulario por enfermedad
+                                    </h3>
+                                </strong>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h5> Se solicita reconocimiento médico a domicilio para el agente:</h5>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2">
-                                {{ Auth::User()->apellido }}
-                            </div>
-                            <div class="col-lg-2">
-                                {{ Auth::User()->nombre }}
-                            </div>
-                            <div class="col-lg-2">
-                                {{ $edad }}
-                            </div>
-                            <div class="col-lg-2">
-                                {{ Auth::User()->dni_empleado }}
-                            </div>
-                            <div class="col-lg-2">
-                                {{ $categoria }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <strong>Apellido</strong>
-                            </div>
-                            <div class="col-lg-2">
-                                <strong>Nombre</strong>
-                            </div>
-                            <div class="col-lg-2">
-                                <strong>Edad</strong>
-                            </div>
-                            <div class="col-lg-2">
-                                <strong>DNI</strong>
-                            </div>
-                            <div class="col-lg-2">
-                                <strong>Categoria</strong>
-                            </div>
+
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-lg-12">
-                                <strong>Domicilio:</strong> {{ $domicilio }}
+
+                            <div class="col-12 pull-left">
+                                <strong>
+                                    <h4>
+                                        A-Orden de Reconocimiento Médico a Domicilio Nº {{$n_licencia}}/{{ $año }}.
+                                </strong></h4>
                             </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                La presente orden es expedida por: <strong>Tesorería General de la Provincia de
-                                    Misiones.</strong>
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                _____________________________________
-                            </div>
-                            <div class="col-lg-3">
-                                _____________________________________
-                            </div>
-                            <div class="col-lg-2">
-                                {{ $hora }}
-                            </div>
-                            <div class="col-lg-2">
-                                {{ $fecha }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <strong>Firma</strong>
-                            </div>
-                            <div class="col-lg-3">
-                                <strong>Aclaración</strong>
-                            </div>
-                            <div class="col-lg-2">
-                                <strong>Hora</strong>
-                            </div>
-                            <div class="col-lg-2">
-                                <strong>Fecha</strong>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="p text-right">
-                                    _________________________________________
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="p text-right ">
-                                    <strong>Firma y sello del emisor de la orden.</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                _____________________________________
-                            </div>
-                            <div class="col-lg-3">
-                                _____________________________________
-                            </div>
-                            <div class="col-lg-3">
-                                _____________________________________
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <strong>Recepión</strong>
-                            </div>
-                            <div class="col-lg-3">
-                                <strong>Hora</strong>
-                            </div>
-                            <div class="col-lg-3">
-                                <strong>Fecha</strong>
-                            </div>
+
                         </div>
                         <br>
 
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <p>Se ha dado cumplimiento a la presente Orden con los siguientes resultados: </p>
+                        <div class="row invoice-info">
+
+                            <div class="col-sm-4 invoice-col">
+
+                                <strong>Apellido</strong><br>
+                                {{ Auth::User()->apellido }}
+
+
                             </div>
+
+                            <div class="col-sm-4 invoice-col">
+
+                                <strong>Nombre:</strong><br>
+                                {{ Auth::User()->nombre }}
+                                <br>
+
+
+                            </div>
+
+                            <div class="col-sm-4 invoice-col">
+                                <strong>Edad</strong><br>
+                                {{ $edad }}
+                                <br>
+                                <br>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row invoice-info">
+
+                            <div class="col-sm-4 invoice-col">
+                                <strong>DNI:</strong><br>
+                                {{ Auth::User()->dni_empleado }}
+                                <br>
+                            </div>
+
+                            <div class="col-sm-4 invoice-col">
+                                <strong>Categoría:</strong><br>
+                                {{ $categoria }}
+                                <br>
+                            </div>
+
+                            <div class="col-sm-4 invoice-col">
+                                <strong>Domicilio:</strong><br>
+                                {{ $domicilio }}
+                                <br>
+                            </div>
+
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+
+                            <div class="col-12 pull-left">
+
+                                <h4>
+                                    La presente orden es expedida por: <strong>Tesorería General de la Provincia de
+                                        Misiones.</strong>
+                                </h4>
+                            </div>
+
                         </div>
                         <br>
+
+                        <div class="row invoice-info">
+
+                            <div class="col-sm-3 invoice-col">
+
+                                <strong>_________________</strong><br>
+                                Firma
+
+
+                            </div>
+
+                            <div class="col-sm-3 invoice-col">
+
+                                <strong>_______________________</strong><br>
+                                Aclaración
+                                <br>
+
+
+                            </div>
+
+                            <div class="col-sm-3 invoice-col">
+                                <strong>{{ $hora }}</strong><br>
+                                Hora
+
+                                <br>
+                            </div>
+                            <div class="col-sm-3 invoice-col">
+
+                                <strong>{{ $fecha }}</strong><br>
+                                Fecha
+
+                                <br>
+
+                            </div>
+
+                        </div>
+                        <br>
+                        <hr>
+                        <br>
+                        <br>
+
+                        <div class="row invoice-info">
+
+                            <div class="col-sm-6 invoice-col">
+
+                                <strong>_________________</strong><br>
+                                Firma
+
+
+                            </div>
+
+                            <div class="col-sm-3 invoice-col">
+
+                               <br>
+                               <br>
+                              Sello del emisor de la orden
+                                <br>
+
+
+                            </div>
+                        </div>
+                        <br><br>
+
+                        <div class="row invoice-info">
+
+                            <div class="col-sm-3 invoice-col">
+
+                                <strong>_________________</strong><br>
+                                Firma
+
+
+                            </div>
+
+                            <div class="col-sm-3 invoice-col">
+
+                                <strong>_______________________</strong><br>
+                                Aclaración
+                                <br>
+
+
+                            </div>
+                        </div>
+
+
+                        <!-- Cosito para imprimir-->
+                        <br>
+                        <div class="row no-print">
+
+                            <div class="col-12">
+                                <a onclick="javascript:window.print()" class="btn btn-default"><i
+                                        class="fas fa-print"></i>Imprimir</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
-            <div class="card-footer text-center">
-                <button type="submit" class="btn btn-success">Generar</button>
-            </div>
-            </form>
+
         </div>
 
+    </section>
 
-    </div>
-    @if (Session::has('okeylicencia'))
-    <script>
-        toastr.success('Paso 1 registrado correctamente')
+</div>
 
-    </script>
-@endif
 @endsection

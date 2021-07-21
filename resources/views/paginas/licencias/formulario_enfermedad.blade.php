@@ -151,9 +151,9 @@
                     </div>
                     <br>
             </div>
-        </div>
-        <div class="card-footer text-center">
-            <button type="submit" class="btn btn-success">Generar</button>
+            <div class="card-footer text-center">
+                <button type="submit" class="btn btn-success">Generar</button>
+            </div>
         </div>
         </form>
     </div>
