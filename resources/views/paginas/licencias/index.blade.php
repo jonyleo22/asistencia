@@ -13,11 +13,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="btn-group">
-                    <div class="">
-                        <a href="{{ route('formulario.maternidad') }}" type="button"
-                            class="btn btn-block btn-outline-primary">
-                            Nueva licencia por maternidad</a>
-                    </div>
+
                     <div class="px-3">
                         <a href="{{ route('formulario.enfermedad') }}" type="button"
                             class="btn btn-block btn-outline-primary">
@@ -97,7 +93,7 @@
                                     @if ($element->archivo_licencia == null)
                                     <div class='badge badge-danger'>No Posee </div>
                                     @else
-                                    {{$element->archivo_licencia}}
+                                    <a href="{{ $element->archivo_licencia }}" title="Ver PDF"  class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-eye"></i></a>
                                     @endif
                                 </td>
                                 <td>
@@ -114,12 +110,31 @@
                                 <td>
                                     <div class="btn-group">
                                         <div class="">
+                                            @if ($element->estado_licencia !=3)
+                                            @if ($element->tipo_licencia == 2 )
+
                                             <a href="{{ route('enfermedad.paso2', $element->id) }}" class="btn btn-primary btn-sm" title="Imprimir"><i
-                                                    class="fas fa-print"></i></a>
+                                                class="fas fa-print"></i></a>
+
+                                            @else
+                                            <a href="{{ route('alta.paso2', $element->id) }}" class="btn btn-secondary btn-sm" title="Imprimir"><i
+                                                class="fas fa-print"></i></a>
+                                            @endif
+                                            @endif
+
                                         </div>
+
                                         <div class="px-2">
-                                            <a href="# " class="btn btn-info btn-sm" title="Finalizar Carga"><i
-                                                    class="fas fa-clipboard-list"></i></a>
+                                            @if ($element->estado_licencia != 3 )
+                                            @if ($element->tipo_licencia == 2 )
+                                            <a href="{{route ('finalizar.enfermedad', $element->id)}} " class="btn btn-info btn-sm" title="Finalizar Carga"><i
+                                                class="fas fa-clipboard-list"></i></a>
+                                            @else
+                                            <a href="{{route ('finalizar.alta.medica', $element->id)}} " class="btn btn-info btn-sm" title="Finalizar Carga"><i
+                                                class="fas fa-clipboard-list"></i></a>
+
+                                            @endif
+                                            @endif
                                         </div>
 
                                     </div>
@@ -146,6 +161,14 @@
 
 <script>
     toastr.success('Registro exitoso!')
+
+</script>
+
+@endif
+@if (Session::has('okey-finalizar'))
+
+<script>
+    toastr.success('Registro de licencia finalizado con éxito!')
 
 </script>
 

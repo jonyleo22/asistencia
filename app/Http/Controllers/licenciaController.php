@@ -9,6 +9,7 @@ use App\personasModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Expr\FuncCall;
 
 class licenciaController extends Controller
 {
@@ -162,14 +163,11 @@ class licenciaController extends Controller
 
 
     public function alta_registro(Request $request ){
-
-
         $operador = Auth::user()->apellido.' '.Auth::user()->nombre;
         $fecha = carbon::now();
         $fechaactual =$fecha->format('d-m-Y');
         $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
         $hora =$hora_actual->format('H:i:s');
-
         $id_usuario = Auth::User()->id;
         $id_legajo = legajosModel::where('id_usuario', $id_usuario)->get();
         // dd($id_legajo[0]->id);
@@ -189,7 +187,7 @@ class licenciaController extends Controller
 
         $update_n_licencia = LicenciasModel::findOrFail($id_licencia)->update($n_licencia);
 
-        return redirect('/alta-paso2')->with('okeylicencia','');
+        return redirect('/licencias-index')->with('okeylicencia','');
     }
     public function alta_paso2($id){
 
@@ -211,5 +209,36 @@ class licenciaController extends Controller
         // dd($año);
 
         return view('paginas.licencias.alta_paso2',compact('año','fecha','hora','categoria','edad','domicilio','n_licencia'));
+    }
+
+    public function finalizar_enfermedad($id){
+
+        $id_enfermedad = $id;
+        return view('paginas.licencias.finalizar_enfermedad',compact('id_enfermedad'));
+    }
+
+    public function finalizar_alta_medica($id){
+
+        return view('paginas.licencias.finalizar_alta_medica');
+    }
+
+    public Function registrar_finalizar_enfermedad (Request $request){
+
+        $ruta = "archivo_licencias/".date("Ymdhisv").".".$request->archivo->guessExtension();
+            move_uploaded_file($request->archivo, $ruta);
+
+       $enfermedad = array(
+           "fecha_desde" => $request->fecha_desde,
+           "fecha_hasta" => $request->fecha_hasta,
+           "archivo_licencia" => $ruta,
+           "estado_licencia" => 3 //finalizado
+
+       );
+       $actualizar_datos = LicenciasModel::findOrFail($request->id_enfermedad)->update($enfermedad);
+
+       return redirect('/licencias-index')->with('okey-finalizar','');
+
+
+
     }
 }
