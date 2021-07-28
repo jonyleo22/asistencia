@@ -9,7 +9,7 @@
                     <div class="row text-center">
                         <div class="col-lg-12">
                             <ins>
-                                <h1>Licencia por enfermedad</h1>
+                                <h1>Formulario de Licencia</h1>
 
                             </ins>
                         </div>

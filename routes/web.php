@@ -63,7 +63,7 @@ Route::get('/alta-paso2/{id}','licenciaController@alta_paso2')->name('alta.paso2
 Route::get('/finalizar-enfermedad/{id}','licenciaController@finalizar_enfermedad')->name('finalizar.enfermedad');
 Route::get('/finalizar-alta-medica/{id}','licenciaController@finalizar_alta_medica')->name('finalizar.alta.medica');
 Route::post('/registrar-finalizar-enfermedad','licenciaController@registrar_finalizar_enfermedad')->name('registrar.finalizar.enfermedad');
-
+Route::post('/registrar-alta-medica','licenciaController@registrar_finalizar_alta')->name('registra.finalizar.alta');
 // RUTAS LEGAJO
 
 Route::get('/legajos-index','legajosController@index')->name('legajos.index');

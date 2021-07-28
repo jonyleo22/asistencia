@@ -11,7 +11,7 @@
                             <div class="col-12 text-center">
                                 <strong>
                                     <h3>
-                                        Formulario por enfermedad
+                                        Formulario de Licencia
                                     </h3>
                                 </strong>
                             </div>
@@ -117,7 +117,7 @@
                         <br>
                         <div class="row invoice-info">
                             <div class="col-sm-9 invoice-col">
-                                Se ha dado cumplimiento a la presnete Orden con los siguientes resultados:
+                                Se ha dado cumplimiento a la presente Orden con los siguientes resultados:
                             </div>
                         </div>
                         <div class="row invoice-info">
@@ -158,7 +158,7 @@
                               El agente <strong>{{ Auth::User()->nombre }}</strong> categoria <strong>{{ $categoria }}</strong> D.N.I. N° <strong>{{ Auth::User()->dni_empleado }}</strong>
                             </div>
                             <div class="col-sm-12 invoice-col">
-                               Que presenta servicios en <strong>Tesoreria General de la Provincia de Misiones</strong>,  se encuentra
+                               Que presta servicios en <strong>Tesoreria General de la Provincia de Misiones</strong>,  se encuentra
                                comprendido en los términos del Decreto N°_________Art.N°__________ <br> conforme a ello se le concedió
                                 Licencia Médica por_________días. Desde____________Hasta____________
                               </div>
@@ -193,7 +193,7 @@
                               El agente <strong>{{ Auth::User()->nombre }}</strong> categoria <strong>{{ $categoria }}</strong> D.N.I. N° <strong>{{ Auth::User()->dni_empleado }}</strong>
                             </div>
                             <div class="col-sm-12 invoice-col">
-                               Que presenta servicios en <strong>Tesoreria General de la Provincia de Misiones</strong>,  se encuentra
+                               Que presta servicios en <strong>Tesoreria General de la Provincia de Misiones</strong>,  se encuentra
                                comprendido en los términos del Decreto N°_________Art.N°__________ <br> conforme a ello se le concedió
                                 Licencia Médica por_________días. Desde____________Hasta____________
                               </div>

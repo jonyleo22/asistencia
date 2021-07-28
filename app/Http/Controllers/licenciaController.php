@@ -218,8 +218,8 @@ class licenciaController extends Controller
     }
 
     public function finalizar_alta_medica($id){
-
-        return view('paginas.licencias.finalizar_alta_medica');
+        $id_alta = $id;
+        return view('paginas.licencias.finalizar_alta_medica',compact('id_alta'));
     }
 
     public Function registrar_finalizar_enfermedad (Request $request){
@@ -237,6 +237,25 @@ class licenciaController extends Controller
        $actualizar_datos = LicenciasModel::findOrFail($request->id_enfermedad)->update($enfermedad);
 
        return redirect('/licencias-index')->with('okey-finalizar','');
+
+
+
+    }
+    public Function registrar_finalizar_alta (Request $request){
+
+        $ruta = "archivo_licencias/".date("Ymdhisv").".".$request->archivo->guessExtension();
+            move_uploaded_file($request->archivo, $ruta);
+
+       $altamedica = array(
+           "fecha_desde" => $request->fecha_desde,
+           "fecha_hasta" => $request->fecha_hasta,
+           "archivo_licencia" => $ruta,
+           "estado_licencia" => 4 //Alta Medica
+
+       );
+       $actualizar_datos = LicenciasModel::findOrFail($request->id_alta)->update($altamedica);
+
+       return redirect('/licencias-index')->with('okey-finalizar alta','');
 
 
 

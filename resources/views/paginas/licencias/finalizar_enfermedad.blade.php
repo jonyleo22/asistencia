@@ -1,32 +1,23 @@
 @extends('plantilla')
 @section('content')
-
 <div class="content-wrapper">
-
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-12 text-center">
                 <strong>
                     <h3>
-                       Finalizar formulario por enfermedad
-                    </h3>
+                       Finalizar formulario por Licencia Médica
+                    </h3
                 </strong>
             </div>
         </div>
         <div class="row">
-
             <div class="col-lg-12">
-
-
                 <div class="card">
-
                     <div class="card-header">
                         Formulario
                     </div>
-
                     <div class="card-body">
-
                        <form action="{{route ('registrar.finalizar.enfermedad')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
@@ -53,23 +44,17 @@
                                                 class="custom-file-input @error ('archivo') is-invalid @enderror"
                                                 name="archivo" id="archivo">
                                             <label class="custom-file-label" for="archivo"></label>
-
                                         </div>
-
                                     </div>
                                     {{-- @error('archivo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong> {{ $message }} </strong>
                                     </span>
                                     @enderror --}}
-
                                 </div>
                             </div>
                         </div>
-
-
                         <input type="hidden" name="id_enfermedad" value="{{$id_enfermedad}}">
-
                     </div>
                     <div class="card-footer text-center">
                         <button type="submit" class="btn btn-success">Guardar</button>
@@ -78,9 +63,6 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
-
 @endsection
