@@ -51,6 +51,8 @@
 
     <script src="{{ url('/') }}/js/plugins/demo.js"></script>
 
+    <script src="{{ url('/') }}/js/licencias.js"></script>
+
 
     {{--Select2--}}
     <link rel="stylesheet" href="{{ url('/') }}/js/plugins/select2.min.css">

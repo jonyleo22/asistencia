@@ -10,4 +10,7 @@ $(document).ready(function() {
 
 $(document).ready( function () {
     $('#tabla-legajo').DataTable();
-} );
+    } );
+
+
+

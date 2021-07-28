@@ -27,7 +27,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-striped" id="tabla-legajo">
+                    <table class="table table-striped" id="tabla-licencia">
                         <thead>
                             <tr>
                                 <th>ID</th>

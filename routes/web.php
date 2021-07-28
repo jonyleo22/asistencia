@@ -59,6 +59,7 @@ Route::post('/enfermedad-registro','licenciaController@enfermedad_registro')->na
 Route::get('/enfermedad-paso2/{id}','licenciaController@enfermedad_paso2')->name('enfermedad.paso2');
 Route::post('/alta-registro','licenciaController@alta_registro')->name('alta.registro');
 Route::get('/alta-paso2/{id}','licenciaController@alta_paso2')->name('alta.paso2');
+Route::post('/actualizar-estado-licencia','licenciaController@actualizar_estado_licencia')->name('actualizar.estado.licencia');
 //finalizar licencia
 Route::get('/finalizar-enfermedad/{id}','licenciaController@finalizar_enfermedad')->name('finalizar.enfermedad');
 Route::get('/finalizar-alta-medica/{id}','licenciaController@finalizar_alta_medica')->name('finalizar.alta.medica');

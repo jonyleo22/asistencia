@@ -5,6 +5,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+                    <form method="POST" action="{{route ('actualizar.estado.licencia')}}" >
+                        @csrf
                     <div class="invoice p-3 mb-3">
                         <!-- title row -->
                         <div class="row">
@@ -209,14 +211,23 @@
                               <strong>Firma y Sello del Sello del Médico</strong>
                             </div>
                         </div>
+
                         <!-- Cosito para imprimir-->
                         <br>
                         <div class="row no-print">
+
                             <div class="col-12">
+                                @if ($imprimir->estado_licencia == 2 )
+
                                 <a onclick="javascript:window.print()" class="btn btn-default"><i
-                                        class="fas fa-print"></i>Imprimir</a>
+                                    class="fas fa-print"></i>Imprimir</a>
+                                @endif
+                                        <button type="submit" class="btn btn-success w-15">Validar</button>
                             </div>
+
                         </div>
+                        <input type="hidden" name="id_licencia" value="{{$n_licencia}}">
+                    </form>
                     </div>
                 </div>
             </div>
