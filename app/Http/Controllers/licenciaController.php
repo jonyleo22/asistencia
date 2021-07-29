@@ -102,11 +102,11 @@ class licenciaController extends Controller
 
     public function actualizar_estado_licencia(Request $request){
 
-
+        // dd($request->all());
         $licencia = array("estado_licencia" => 2 );
-        $actualizar_licencia = LicenciasModel::findOrfail($request->n_licencia)->update($licencia);
+        $actualizar_licencia = LicenciasModel::findOrfail($request->id_licencia)->update($licencia);
 
-        return redirect()->back();
+        return redirect()->back()->with('ok-imprimir', '');
 
     }
 

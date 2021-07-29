@@ -234,4 +234,9 @@
         </div>
     </section>
 </div>
+@if (Session::has('ok-imprimir'))
+<script>
+    toastr.success('Validación éxitosa! Imprima su licencia.')
+</script>
+@endif
 @endsection
