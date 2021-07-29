@@ -21,14 +21,31 @@ use Illuminate\Support\Facades\Auth;
 class legajosController extends Controller
 {
     public function index(){
-        $datos = personasModel::join('legajos','legajos.id_personas','personas.id')
-        ->join('domicilio_personas','domicilio_personas.id_persona','personas.id')
-        ->select('personas.nombre','personas.apellido','legajos.fecha_ingreso','personas.dni'
-        ,'personas.email','personas.fecha_nacimiento','personas.edad','personas.telefono',
-        'legajos.numero_legajo','legajos.categoria','domicilio_personas.descripcion_domicilio',
-        'personas.id')
-        ->get();
-        //  dd($datos);
+
+
+        if (Auth::User()->roles_id == 3) {
+
+            $id_usuario = Auth::User()->id;
+
+            $datos = personasModel::join('legajos','legajos.id_personas','personas.id')
+            ->join('domicilio_personas','domicilio_personas.id_persona','personas.id')
+            ->select('personas.nombre','personas.apellido','legajos.fecha_ingreso','personas.dni'
+            ,'personas.email','personas.fecha_nacimiento','personas.edad','personas.telefono',
+            'legajos.numero_legajo','legajos.categoria','domicilio_personas.descripcion_domicilio',
+            'personas.id','legajos.id_usuario')
+            ->where('legajos.id_usuario', $id_usuario)
+            ->get();
+
+        } else {
+
+            $datos = personasModel::join('legajos','legajos.id_personas','personas.id')
+            ->join('domicilio_personas','domicilio_personas.id_persona','personas.id')
+            ->select('personas.nombre','personas.apellido','legajos.fecha_ingreso','personas.dni'
+            ,'personas.email','personas.fecha_nacimiento','personas.edad','personas.telefono',
+            'legajos.numero_legajo','legajos.categoria','domicilio_personas.descripcion_domicilio',
+            'personas.id','legajos.id_usuario')
+            ->get();
+        }
 
         return view('paginas.legajos.index', compact('datos'));
     }
