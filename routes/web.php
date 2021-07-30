@@ -65,6 +65,10 @@ Route::get('/finalizar-enfermedad/{id}','licenciaController@finalizar_enfermedad
 Route::get('/finalizar-alta-medica/{id}','licenciaController@finalizar_alta_medica')->name('finalizar.alta.medica');
 Route::post('/registrar-finalizar-enfermedad','licenciaController@registrar_finalizar_enfermedad')->name('registrar.finalizar.enfermedad');
 Route::post('/registrar-alta-medica','licenciaController@registrar_finalizar_alta')->name('registra.finalizar.alta');
+//RUTA PARA DECRETOS / LICENCIA
+Route::get('/decreto-index','licenciaController@decreto_index')->name('decreto.index');
+Route::get('/formulario-decreto','licenciaController@formulario_decreto')->name('formulario.decreto');
+Route::get('/formulario-articulo','licenciaController@formulario_articulo')->name('formulario.articulo');
 // RUTAS LEGAJO
 
 Route::get('/legajos-index','legajosController@index')->name('legajos.index');

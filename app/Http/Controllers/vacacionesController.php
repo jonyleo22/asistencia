@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\DB;
 class vacacionesController extends Controller
 {
     public function index(){
+
         $datos = personasModel::join('legajos','legajos.id_personas','personas.id')
          ->select('personas.nombre','personas.apellido','legajos.fecha_ingreso',
        'legajos.categoria','personas.id')
+       ->where('legajos.id_usuario', $id_usuario)
         ->get();
 
         return view('paginas.vacaciones.index',compact('datos'));

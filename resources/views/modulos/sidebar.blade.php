@@ -132,6 +132,10 @@
                                 <i class=" far fa-circle nav-icon"></i>
                                 <p>Alta de Licencia </p>
                             </a>
+                            <a href="{{ route('decreto.index') }}" class="nav-link">
+                                <i class=" far fa-circle nav-icon"></i>
+                                <p>Decretos licencia </p>
+                            </a>
 
                         </li>
 

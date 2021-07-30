@@ -28,6 +28,8 @@ class licenciaController extends Controller
         return view('paginas.licencias.index',compact('licencia'));
     }
 
+
+
         public function formulario_enfermedad(){
         $id_usuario = Auth::user()->id;
         $legajo = legajosModel::where('id_usuario', $id_usuario)->get();
@@ -231,4 +233,22 @@ class licenciaController extends Controller
 
 
     }
+//ALTA DE DECRETO
+    public function decreto_index(){
+
+
+        return view('paginas.decreto.index');
+    }
+    public function formulario_decreto(){
+
+
+        return view('paginas.decreto.formulario_decreto');
+    }
+
+    public function formulario_articulo(){
+
+
+        return view('paginas.decreto.formulario_articulo');
+    }
+
 }
