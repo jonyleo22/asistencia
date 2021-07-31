@@ -13,8 +13,10 @@ class CreateDecretosTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_articulos');
             $table->foreign('id_articulos')->references('id')->on('articulos');
+            $table->unsignedBigInteger('id_legajo');
+            $table->foreign('id_legajo')->references('id')->on('legajos');
             $table->string('numero_decreto');
-            $table->string('operador_decreto');
+            $table->string('operador_licencia');
             $table->timestamps();
         });
     }

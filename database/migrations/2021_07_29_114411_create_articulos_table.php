@@ -13,8 +13,10 @@ class CreateArticulosTable extends Migration
     {
         Schema::create('articulos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_legajo');
+            $table->foreign('id_legajo')->references('id')->on('legajos');
             $table->string('numero_articulo');
-            $table->text('descripcion_articulo');
+            $table->string('descripcion_articulo');
             $table->string('operador_articulo');
             $table->timestamps();
         });

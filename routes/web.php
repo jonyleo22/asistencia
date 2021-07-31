@@ -69,8 +69,6 @@ Route::post('/registrar-alta-medica','licenciaController@registrar_finalizar_alt
 Route::get('/decreto-index','licenciaController@decreto_index')->name('decreto.index');
 Route::get('/formulario-decreto','licenciaController@formulario_decreto')->name('formulario.decreto');
 Route::get('/formulario-articulo','licenciaController@formulario_articulo')->name('formulario.articulo');
-Route::post('/registrar-articulo','licenciaController@registrar_articulo')->name('registrar.articulo');
-Route::post('/registrar-decreto','licenciaController@registrar_decreto')->name('registrar.decreto');
 // RUTAS LEGAJO
 
 Route::get('/legajos-index','legajosController@index')->name('legajos.index');

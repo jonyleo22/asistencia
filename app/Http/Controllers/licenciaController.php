@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\articulosModel;
-use App\decretosModel;
 use App\domicilioPersonasModel;
 use App\legajosModel;
 use App\LicenciasModel;
@@ -187,10 +185,9 @@ class licenciaController extends Controller
     }
 
     public function finalizar_enfermedad($id){
-        $decretos = decretosModel::join('articulos','articulos.id','decretos.id_articulos')->get();
 
         $id_enfermedad = $id;
-        return view('paginas.licencias.finalizar_enfermedad',compact('id_enfermedad','decretos'));
+        return view('paginas.licencias.finalizar_enfermedad',compact('id_enfermedad'));
     }
 
     public function finalizar_alta_medica($id){
@@ -207,7 +204,6 @@ class licenciaController extends Controller
            "fecha_desde" => $request->fecha_desde,
            "fecha_hasta" => $request->fecha_hasta,
            "archivo_licencia" => $ruta,
-           "id_decretos" =>$request->id_decretos,
            "estado_licencia" => 3 //finalizado
 
        );
@@ -244,40 +240,15 @@ class licenciaController extends Controller
         return view('paginas.decreto.index');
     }
     public function formulario_decreto(){
-        $articulos = articulosModel::all();
 
 
-        return view('paginas.decreto.formulario_decreto',compact('articulos'));
+        return view('paginas.decreto.formulario_decreto');
     }
 
     public function formulario_articulo(){
 
 
         return view('paginas.decreto.formulario_articulo');
-    }
-
-    public function registrar_articulo(Request $request){
-        $operador = Auth::user()->apellido.' '.Auth::user()->nombre;
-        $articulo = new articulosModel();
-        $articulo->numero_articulo = $request->numero_articulo;
-        $articulo->descripcion_articulo = $request->descripcion_articulo;
-        $articulo->operador_articulo = $operador;
-        $articulo->save();
-
-        return redirect('/decreto-index')->with('okey-decreto','');
-
-    }
-    public function registrar_decreto(Request $request){
-        $operador = Auth::user()->apellido.' '.Auth::user()->nombre;
-        $decreto = new decretosModel();
-        $decreto->numero_decreto = $request->numero_decreto;
-        $decreto->id_articulos = $request->id_articulos;
-        $decreto->operador_decreto = $operador;
-        $decreto->save();
-
-        return redirect('/decreto-index')->with('okey-articulo','');
-
-
     }
 
 }

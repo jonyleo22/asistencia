@@ -21,7 +21,7 @@
                     <div class="px-1">
                         <a href="{{ route ('formulario.articulo') }}" type="button"
                             class="btn btn-block btn-outline-primary">
-                            Alta artículo</a>
+                            Alta articulo</a>
                     </div>
                 </div>
             </div>
@@ -32,21 +32,4 @@
     </div>
 </div>
 
-@if (Session::has('okey-decreto'))
-
-        <script>
-            toastr.success('Decreto registrado correctamente.')
-
-        </script>
-
-    @endif
-
-    @if (Session::has('okey-articulo'))
-
-        <script>
-            toastr.success('Artículo registrado correctamente.')
-
-        </script>
-
-    @endif
 @endsection
