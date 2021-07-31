@@ -101,6 +101,7 @@ class asistenciaController extends Controller
             ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia', 'asistencias.estado')
             ->get();
 
+
         if ($request->$fecha_desde != null && $request->fecha_hasta != null && $request->dni != null ) {
             $asistencia = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
         ->where('users.dni_empleado', $request->dni)

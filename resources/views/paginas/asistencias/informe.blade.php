@@ -16,11 +16,11 @@
             <div class="row">
                 <div class="col-lg-2">
                     <label for="fecha_desde">Feche desde:</label>
-                    <input type="date" class="form-control" name="fecha_desde" required>
+                    <input type="date" class="form-control" name="fecha_desde">
                 </div>
                 <div class="col-lg-2">
                     <label for="fecha_hasta">Feche hasta:</label>
-                    <input type="date" class="form-control" name="fecha_hasta" required>
+                    <input type="date" class="form-control" name="fecha_hasta">
                 </div>
                 <div class="col-lg-2">
                     <label for="dni">DNI</label>
@@ -79,6 +79,9 @@
                             @if ( $element->hora_entrada == null && $element->estado == 3)
                             <div class='badge badge-warning'>Vacaciones</div>
                             @endif
+                            @if ( $element->hora_entrada == null && $element->estado == 4)
+                            <div class='badge badge-secondary'>Licencia Médica</div>
+                            @endif
                             </td>
                             <td>
                                 @if ( $element->hora_salida != null)
@@ -89,6 +92,9 @@
                                 @endif
                                 @if ( $element->hora_salida == null && $element->estado == 3)
                                 <div class='badge badge-warning'>Vacaciones</div>
+                                @endif
+                                @if ( $element->hora_salida == null && $element->estado == 4)
+                                <div class='badge badge-secondary'>Licencia Médica</div>
                                 @endif
                             </td>
                             <td>

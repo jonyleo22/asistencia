@@ -9,8 +9,12 @@ use App\legajosModel;
 use App\LicenciasModel;
 use App\personasModel;
 use Carbon\Carbon;
+use DateInterval;
+use DatePeriod;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\FuncCall;
 
 class licenciaController extends Controller
@@ -208,10 +212,42 @@ class licenciaController extends Controller
            "fecha_hasta" => $request->fecha_hasta,
            "archivo_licencia" => $ruta,
            "id_decretos" =>$request->id_decretos,
-           "estado_licencia" => 3 //finalizado
+           "estado_licencia" => 4 //licencia médica
 
        );
        $actualizar_datos = LicenciasModel::findOrFail($request->id_enfermedad)->update($enfermedad);
+
+       $fecha_desde = $request->fecha_desde;
+        $fecha_hasta = $request->fecha_hasta;
+        // tus datos de entrada
+        $start = $fecha_desde;
+        $end   = $fecha_hasta;
+        // generas las fechas entre el periodo
+        $end = new DateTime($end); // éstas 2 lineas son necesarias para que DatePeriod incluya la ultima fecha
+        $end->modify('+ 1 day');
+        $period = new DatePeriod(
+            new DateTime($start),
+            new DateInterval('P1D'), $end);
+
+        // recorres las fechas y haces tu insert
+
+        $id_usuario = Auth::user()->id;
+
+        foreach ($period as $key => $value) {
+            $date = $value->format('Y-m-d');
+            // $dia = $date("D");
+
+            $dia=date("w", strtotime($date));
+
+
+            if ($dia != 6 && $dia != 0) {
+                DB::table('asistencias')->insert([
+                    ['estado' => '4', 'id_usuario' => $id_usuario, 'fecha' => $date]
+                ]);
+            }
+
+
+        }
 
        return redirect('/licencias-index')->with('okey-finalizar','');
 

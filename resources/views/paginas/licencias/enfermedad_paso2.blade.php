@@ -223,6 +223,7 @@
                                     class="fas fa-print"></i>Imprimir</a>
                                 @endif
                                         <button type="submit" class="btn btn-success w-15">Validar</button>
+                                        <a href="{{route ('licencia.index')}}" class="btn btn-secondary">Volver</a>
                             </div>
 
                         </div>
