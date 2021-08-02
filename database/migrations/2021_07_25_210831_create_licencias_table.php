@@ -17,8 +17,7 @@ class CreateLicenciasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_legajo');
             $table->foreign('id_legajo')->references('id')->on('legajos');
-
-            $table->string('numero_licencia')->unique()->nullable();
+            $table->string('numero_licencia')->nullable();
             $table->string('hora_licencia');
             $table->string('fecha_licencia');
             $table->date('fecha_desde')->nullable();
