@@ -222,7 +222,7 @@ class licenciaController extends Controller
     public function registrar_finalizar_enfermedad(Request $request)
     {
 
-        $ruta = "archivo_licencias/" . date("Ymdhisv") . "." . $request->archivo->guessExtension();
+        $ruta = "archivo_licencias/".date("Ymdhisv").".".$request->archivo->guessExtension();
         move_uploaded_file($request->archivo, $ruta);
 
         $enfermedad = array(
