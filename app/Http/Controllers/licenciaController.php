@@ -202,7 +202,7 @@ class licenciaController extends Controller
         return view('paginas.licencias.finalizar_alta_medica',compact('id_alta'));
     }
 
-    public Function registrar_finalizar_enfermedad (Request $request){
+    public function registrar_finalizar_enfermedad (Request $request){
 
         $ruta = "archivo_licencias/".date("Ymdhisv").".".$request->archivo->guessExtension();
             move_uploaded_file($request->archivo, $ruta);
@@ -254,7 +254,7 @@ class licenciaController extends Controller
 
 
     }
-    public Function registrar_finalizar_alta (Request $request){
+    public function registrar_finalizar_alta (Request $request){
 
         $ruta = "archivo_licencias/".date("Ymdhisv").".".$request->archivo->guessExtension();
             move_uploaded_file($request->archivo, $ruta);
@@ -275,7 +275,9 @@ class licenciaController extends Controller
     }
 //ALTA DE DECRETO
     public function decreto_index(){
-
+        $datos =decretosModel::join('decretos','decretos.id_articulos','decretos.id')
+        ->select('numero_decreto')->get();
+        dd($datos);
 
         return view('paginas.decreto.index');
     }
