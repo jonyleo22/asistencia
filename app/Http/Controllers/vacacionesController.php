@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\legajosModel;
 use App\personasModel;
 use App\vacacionesModel;
@@ -9,7 +9,6 @@ use Carbon\Carbon;
 use DateInterval;
 use DatePeriod;
 use DateTime;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -37,111 +36,110 @@ class vacacionesController extends Controller
 
     public function registrar_vacaciones (Request $request){
 
-
         $ruta = "archivo_vacaciones/".date("Ymdhisv").".".$request->archivo->guessExtension();
             move_uploaded_file($request->archivo, $ruta);
 
 
-            $dato =legajosModel::where('id_personas', $request->id_persona)->get();
-            $fecha_ingreso = $dato[0]->fecha_ingreso;
-            $antiguedad = Carbon::parse($fecha_ingreso)->age;
+        //     $dato =legajosModel::where('id_personas', $request->id_persona)->get();
+        //     $fecha_ingreso = $dato[0]->fecha_ingreso;
+        //     $antiguedad = Carbon::parse($fecha_ingreso)->age;
 
-            if ($antiguedad < 5) {
-                $dias_disponible = vacacionesModel::where('id_persona',$request->id_persona)->get()->last();
+        //     if ($antiguedad < 5) {
+        //         $dias_disponible = vacacionesModel::where('id_persona',$request->id_persona)->get()->last();
 
-                $disponible =$dias_disponible->dias_disponible;
-                $actualizar =array(
-                    "dias_disponible" => $disponible + 14
-                 );
-                 $actualizar_dias = vacacionesModel::findOrFail($dias_disponible->id)->update($actualizar);
-            }
+        //         $disponible =$dias_disponible->dias_disponible;
+        //         $actualizar =array(
+        //             "dias_disponible" => $disponible + 14
+        //          );
+        //          $actualizar_dias = vacacionesModel::findOrFail($dias_disponible->id)->update($actualizar);
+        //     }
 
-            if ($antiguedad > 5 && $antiguedad < 10) {
-                $dias_disponible = vacacionesModel::where('id_persona',$request->id_persona)->get()->last();
+        //     if ($antiguedad > 5 && $antiguedad < 10) {
+        //         $dias_disponible = vacacionesModel::where('id_persona',$request->id_persona)->get()->last();
 
-                $disponible =$dias_disponible->dias_disponible;
-                $actualizar =array(
-                    "dias_disponible" => $disponible + 21
-                 );
-                 $actualizar_dias = vacacionesModel::findOrFail($dias_disponible->id)->update($actualizar);
-            }
+        //         $disponible =$dias_disponible->dias_disponible;
+        //         $actualizar =array(
+        //             "dias_disponible" => $disponible + 21
+        //          );
+        //          $actualizar_dias = vacacionesModel::findOrFail($dias_disponible->id)->update($actualizar);
+        //     }
 
-            if ($antiguedad > 10 && $antiguedad < 20) {
-                $dias_disponible = vacacionesModel::where('id_persona',$request->id_persona)->get()->last();
+        //     if ($antiguedad > 10 && $antiguedad < 20) {
+        //         $dias_disponible = vacacionesModel::where('id_persona',$request->id_persona)->get()->last();
 
-                $disponible =$dias_disponible->dias_disponible;
-                $actualizar =array(
-                    "dias_disponible" => $disponible + 28
-                 );
-                 $actualizar_dias = vacacionesModel::findOrFail($dias_disponible->id)->update($actualizar);
-            }
+        //         $disponible =$dias_disponible->dias_disponible;
+        //         $actualizar =array(
+        //             "dias_disponible" => $disponible + 28
+        //          );
+        //          $actualizar_dias = vacacionesModel::findOrFail($dias_disponible->id)->update($actualizar);
+        //     }
 
-            if ($antiguedad > 20 ) {
-                $dias_disponible = vacacionesModel::where('id_persona',$request->id_persona)->get()->last();
+        //     if ($antiguedad > 20 ) {
+        //         $dias_disponible = vacacionesModel::where('id_persona',$request->id_persona)->get()->last();
 
-                $disponible =$dias_disponible->dias_disponible;
-                $actualizar =array(
-                    "dias_disponible" => $disponible + 35
-                 );
-                 $actualizar_dias = vacacionesModel::findOrFail($dias_disponible->id)->update($actualizar);
-            }
-
-
-        $operador = Auth::user()->apellido.' '.Auth::user()->nombre;
-
-        $fecha = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
-
-        $año_actual = $fecha->format('Y');
+        //         $disponible =$dias_disponible->dias_disponible;
+        //         $actualizar =array(
+        //             "dias_disponible" => $disponible + 35
+        //          );
+        //          $actualizar_dias = vacacionesModel::findOrFail($dias_disponible->id)->update($actualizar);
+        //     }
 
 
-        $dias_disponible = vacacionesModel::where('id_persona',$request->id_persona)->get()->last();
-        // dd($dias_disponible[0]->dias_disponible);
-        $disponible =$dias_disponible->dias_disponible;
-        $calculo_dias = $disponible - $request->dias_lar;
+        // $operador = Auth::user()->apellido.' '.Auth::user()->nombre;
 
-        $dato_vacaciones = new vacacionesModel();
-        $dato_vacaciones->id_persona = $request->id_persona;
-        $dato_vacaciones->año_lar = $año_actual;
-        $dato_vacaciones->dias_lar = $request->dias_lar;
-        $dato_vacaciones->dias_disponible =$calculo_dias;
-        $dato_vacaciones->fecha_desde_lar = $request->fecha_desde_lar;
-        $dato_vacaciones->fecha_hasta_lar = $request->fecha_hasta_lar;
-        $dato_vacaciones->observacion_lar = $request->observacion_lar;
-        $dato_vacaciones->operador_lar = $operador;
-        $dato_vacaciones->ruta_lar	= $ruta;
-        $dato_vacaciones->save();
+        // $fecha = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
 
-        $fecha_desde = $request->fecha_desde_lar;
-        $fecha_hasta = $request->fecha_hasta_lar;
-        // tus datos de entrada
-        $start = $fecha_desde;
-        $end   = $fecha_hasta;
-        // generas las fechas entre el periodo
-        $end = new DateTime($end); // éstas 2 lineas son necesarias para que DatePeriod incluya la ultima fecha
-        $end->modify('+ 1 day');
-        $period = new DatePeriod(
-            new DateTime($start),
-            new DateInterval('P1D'), $end);
-
-        // recorres las fechas y haces tu insert
-
-        $id_usuario = $request->usuario;
-
-        foreach ($period as $key => $value) {
-            $date = $value->format('Y-m-d');
-            // $dia = $date("D");
-
-            $dia=date("w", strtotime($date));
+        // $año_actual = $fecha->format('Y');
 
 
-            if ($dia != 6 && $dia != 0) {
-                DB::table('asistencias')->insert([
-                    ['estado' => '3', 'id_usuario' => $id_usuario, 'fecha' => $date]
-                ]);
-            }
+        // $dias_disponible = vacacionesModel::where('id_persona',$request->id_persona)->get()->last();
+        // // dd($dias_disponible[0]->dias_disponible);
+        // $disponible =$dias_disponible->dias_disponible;
+        // $calculo_dias = $disponible - $request->dias_lar;
+
+        // $dato_vacaciones = new vacacionesModel();
+        // $dato_vacaciones->id_persona = $request->id_persona;
+        // $dato_vacaciones->año_lar = $año_actual;
+        // $dato_vacaciones->dias_lar = $request->dias_lar;
+        // $dato_vacaciones->dias_disponible =$calculo_dias;
+        // $dato_vacaciones->fecha_desde_lar = $request->fecha_desde_lar;
+        // $dato_vacaciones->fecha_hasta_lar = $request->fecha_hasta_lar;
+        // $dato_vacaciones->observacion_lar = $request->observacion_lar;
+        // $dato_vacaciones->operador_lar = $operador;
+        // $dato_vacaciones->ruta_lar	= $ruta;
+        // $dato_vacaciones->save();
+
+        // $fecha_desde = $request->fecha_desde_lar;
+        // $fecha_hasta = $request->fecha_hasta_lar;
+        // // tus datos de entrada
+        // $start = $fecha_desde;
+        // $end   = $fecha_hasta;
+        // // generas las fechas entre el periodo
+        // $end = new DateTime($end); // éstas 2 lineas son necesarias para que DatePeriod incluya la ultima fecha
+        // $end->modify('+ 1 day');
+        // $period = new DatePeriod(
+        //     new DateTime($start),
+        //     new DateInterval('P1D'), $end);
+
+        // // recorres las fechas y haces tu insert
+
+        // $id_usuario = $request->usuario;
+
+        // foreach ($period as $key => $value) {
+        //     $date = $value->format('Y-m-d');
+        //     // $dia = $date("D");
+
+        //     $dia=date("w", strtotime($date));
 
 
-        }
+        //     if ($dia != 6 && $dia != 0) {
+        //         DB::table('asistencias')->insert([
+        //             ['estado' => '3', 'id_usuario' => $id_usuario, 'fecha' => $date]
+        //         ]);
+        //     }
+
+
+        // }
 
         return redirect('/vacaciones-index')->with('Okey-vacaciones','');
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\articulosModel;
 use App\decretosModel;
 use App\domicilioPersonasModel;
@@ -12,10 +12,9 @@ use Carbon\Carbon;
 use DateInterval;
 use DatePeriod;
 use DateTime;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Expr\FuncCall;
+
 
 class licenciaController extends Controller
 {

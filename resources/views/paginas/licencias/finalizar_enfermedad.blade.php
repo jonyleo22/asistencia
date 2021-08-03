@@ -41,16 +41,16 @@
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file"
-                                                class="custom-file-input @error ('archivo') is-invalid @enderror"
-                                                name="archivo" id="archivo">
+                                                class="custom-file-input @error('archivo') is-invalid @enderror"
+                                                name="archivo" id="archivo" required>
                                             <label class="custom-file-label" for="archivo"></label>
                                         </div>
                                     </div>
-                                    {{-- @error('archivo')
+                                    @error('archivo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong> {{ $message }} </strong>
                                     </span>
-                                    @enderror --}}
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-lg-5">
