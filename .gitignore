@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/archivo_vacaciones
+/public/archivo_licencias
 /public/storage
 /storage/*.key
 /vendor
