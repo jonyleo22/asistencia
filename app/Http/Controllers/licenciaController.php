@@ -289,11 +289,11 @@ class licenciaController extends Controller
     //ALTA DE DECRETO
     public function decreto_index()
     {
-        // $datos = decretosModel::join('decretos', 'decretos.id_articulos', 'decretos.id')
-        //     ->select('numero_decreto')->get();
+        $datos = decretosModel::join('articulos', 'decretos.id_articulos', 'articulos.id')
+        ->select('decretos.id','numero_decreto','numero_articulo')->get();
         // dd($datos);
 
-        return view('paginas.decreto.index');
+        return view('paginas.decreto.index', compact('datos'));
     }
     public function formulario_decreto()
     {
