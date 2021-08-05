@@ -34,6 +34,7 @@
                                     <th>ID</th>
                                     <th>N° Decreto</th>
                                     <th>N° Articulo</th>
+                                    <th>Acciónes</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,9 +43,28 @@
                                         <td>{{$element->id}}</td>
                                         <td>{{$element->numero_decreto}}</td>
                                         <td>{{$element->numero_articulo}}</td>
+                                        <td>
+                                            <div class="btn-group">
+
+
+                                                    <div class="">
+                                                        <a href="{{route ('editar.decreto',$element->id )}} " class="btn btn-primary btn-sm" title="Editar Decreto"><i
+                                                                class="fas fa-pencil-alt"></i></a>
+                                                    </div>
+
+
+                                                <div class="px-2">
+                                                    <a href="{{route ('editar.articulo',$element->id )}} " class="btn btn-info btn-sm" title="Editar articulo"><i
+                                                            class="fas fa-pencil-alt"></i></a>
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
 

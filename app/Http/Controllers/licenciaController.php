@@ -332,4 +332,17 @@ class licenciaController extends Controller
 
         return redirect('/decreto-index')->with('okey-articulo', '');
     }
+
+    public function decreto_editar($id){
+        return view('paginas.decreto.decreto_editar');
+
+    }
+    public function articulo_editar($id){
+        $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
+
+
+
+     return view('paginas.decreto.articulo_editar',compact('articulo','operador'));
+
+    }
 }

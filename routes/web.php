@@ -71,6 +71,9 @@ Route::get('/formulario-decreto','licenciaController@formulario_decreto')->name(
 Route::get('/formulario-articulo','licenciaController@formulario_articulo')->name('formulario.articulo');
 Route::post('/registrar-articulo','licenciaController@registrar_articulo')->name('registrar.articulo');
 Route::post('/registrar-decreto','licenciaController@registrar_decreto')->name('registrar.decreto');
+Route::get('/decreto-editar/{id}','licenciaController@decreto_editar')->name('editar.decreto');
+Route::get('/articulo-editar/{id}','licenciaController@articulo_editar')->name('editar.articulo');
+
 // RUTAS LEGAJO
 
 Route::get('/legajos-index','legajosController@index')->name('legajos.index');
