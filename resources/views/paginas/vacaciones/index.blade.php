@@ -59,7 +59,7 @@
 
                                             <div class="btn-group">
 
-                                                @if (Auth::User()->roles_id == 1)
+                                                @if (Auth::User()->roles_id == 1 || Auth::User()->roles_id == 3 )
                                                     <div class="px-1">
                                                         <a href="{{ route('historial.vacaciones', $element->id) }}"
                                                             class="btn btn-info btn-sm" target="_blank" title="Ver historial"><i
