@@ -19,7 +19,7 @@ class vacacionesController extends Controller
         $datos = personasModel::join('legajos','legajos.id_personas','personas.id')
          ->select('personas.nombre','personas.apellido','legajos.fecha_ingreso',
        'legajos.categoria','personas.id')
-       ->where('legajos.id_usuario', $id_usuario)
+    //    ->where('legajos.id_usuario', $id_usuario)
         ->get();
 
 
