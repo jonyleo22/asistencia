@@ -156,6 +156,7 @@
                 <button type="submit" class="btn btn-success">Generar</button>
             </div>
         </div>
+        <input type="hidden" name="id_usuario" value="{{$id_usuario}}">
         </form>
     </div>
 </div>

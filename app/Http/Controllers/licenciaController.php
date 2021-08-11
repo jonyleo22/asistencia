@@ -75,9 +75,10 @@ class licenciaController extends Controller
         $id_persona = $validardni[0]->id;
         $categoria =legajosModel::where('id_personas',$id_persona)->get();
         $domicilio=domicilioPersonasModel::where('id_persona',$id_persona)->get();
+        $id_usuario = $categoria[0]->id_usuario;
         if (!empty($validardni[0])) {
             //  dd($categoria);
-            return view('paginas.licencias.formulario_enfermedad',compact('dni','hora','fecha','año','validardni','categoria','domicilio'));
+            return view('paginas.licencias.formulario_enfermedad',compact('dni','hora','fecha','año','validardni','categoria','domicilio','id_usuario'));
         } else {
             return back()->with('No-Existe','');
         }
@@ -87,6 +88,7 @@ class licenciaController extends Controller
 
     public function enfermedad_registro(Request $request)
     {
+        // dd($dni);
         $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
         $fecha = carbon::now();
         $año = $fecha->format('Y');
@@ -94,7 +96,7 @@ class licenciaController extends Controller
         $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
         $hora = $hora_actual->format('H:i:s');
 
-        $id_usuario = Auth::User()->id;
+        $id_usuario = $request->id_usuario;
         $id_legajo = legajosModel::where('id_usuario', $id_usuario)->get();
         // dd($id_legajo[0]->id);
         $licencia = new LicenciasModel();
