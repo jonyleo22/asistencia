@@ -12,7 +12,8 @@
 
             <div class="col-12">
                 <div class="card card-primary">
-                    <form method="POST" action="{{route ('registrar.articulo')}}">
+                    <form method="POST" action="{{route ('actualizar.articulo')}}">
+                        @method('PUT')
                         @csrf
 
                         <div class="card-body">
@@ -22,17 +23,17 @@
                                         <label for="numero_articulo">Artículo</label>
                                         <input type="text" name="numero_articulo"
                                             class="form-control @error('numero_articulo') is-invalid @enderror"
-                                            placeholder="Ingrese numero del articulo" value="{{ old('numero_articulo') }}">
+                                            placeholder="Ingrese numero del articulo" value="{{$articulo->numero_articulo}}" value="{{ old('numero_articulo') }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                            <div class="form-group col-lg-10">
+                                <div class="form-group col-lg-10">
                                         <label>Descripcion del Artículo</label>
                                         <textarea class="form-control @error ('descripcion_articulo') is-invalid @enderror" rows="3"
                                             name="descripcion_articulo"
                                             placeholder="ingrese datos del articulo cargado."
-                                            required>{{ old('descripcion_articulo') }}</textarea>
+                                            required>{{$articulo ->descripcion_articulo}} </textarea>
                                     </div>
                             </div>
                             <div class="card-footer text-center">

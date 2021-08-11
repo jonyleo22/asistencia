@@ -71,11 +71,14 @@ Route::get('/decreto-index','licenciaController@decreto_index')->name('decreto.i
 Route::get('/formulario-decreto','licenciaController@formulario_decreto')->name('formulario.decreto');
 Route::post('/registrar-decreto','licenciaController@registrar_decreto')->name('registrar.decreto');
 Route::get('/decreto-editar/{id}','licenciaController@decreto_editar')->name('editar.decreto');
+
 //RUTA PARA ARTICULO / LICENCIA
 Route::get('/articulo-index','licenciaController@articulo_index')->name('articulo.index');
 Route::get('/formulario-articulo','licenciaController@formulario_articulo')->name('formulario.articulo');
 Route::post('/registrar-articulo','licenciaController@registrar_articulo')->name('registrar.articulo');
 Route::get('/articulo-editar/{id}','licenciaController@articulo_editar')->name('editar.articulo');
+Route::put('/actualizar-articulo','licenciaController@actualizar_articulo')->name('actualizar.articulo');
+
 
 // RUTAS LEGAJO
 

@@ -61,15 +61,6 @@
             </div>
         </div>
     </div>
-    @if (Session::has('okey-decreto'))
-
-        <script>
-            toastr.success('Decreto registrado correctamente.')
-
-        </script>
-
-    @endif
-
     @if (Session::has('okey-articulo'))
 
         <script>
@@ -78,4 +69,12 @@
         </script>
 
     @endif
+    @if (Session::has('Okey-actualizar'))
+
+<script>
+    toastr.success('Articulo actualizado correctamente')
+
+</script>
+
+@endif
 @endsection

@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use DateInterval;
 use DatePeriod;
 use DateTime;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -357,23 +358,31 @@ class licenciaController extends Controller
     public function registrar_articulo(Request $request)
     {
         $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
-        $decreto = new decretosModel();
-        $decreto->numero_decreto = $request->numero_decreto;
-        $decreto->id_articulos = $request->id_articulos;
-        $decreto->operador_decreto = $operador;
-        $decreto->save();
+        $articulo = new articulosModel();
+        $articulo->numero_articulo = $request->numero_articulo;
+        $articulo->descripcion_articulo = $request->descripcion_articulo;
+        $articulo->operador_articulo = $operador;
+        $articulo->save();
+
 
         return redirect('/articulo-index')->with('okey-articulo', '');
     }
     public function articulo_editar($id){
         $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
+        $articulo = articulosModel::findOrFail($id);
 
-
-
-     return view('paginas.articulo.articulo_editar',compact('articulo','operador'));
+     return view('paginas.articulo.articulo_editar',compact('operador','articulo'));
 
     }
+    public function actualizar_articulo(Request $request){
+        $articulo =array(
+            "numero_articulo" => $request->numero_articulo,
+            "descripcion_articulo" => $request->descripcion_articulo
+        );
+        $articulo =articulosModel::findOrFail($request->id_articulo)->update($articulo);
 
+        return redirect('/articulo-index')->with('Okey-actualizar','');
+    }
 
 
 }
