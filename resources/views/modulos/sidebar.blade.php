@@ -114,6 +114,7 @@
 
                 </li>
                 @endif
+                @if (Auth::user()->roles_id == 1)
                 <li class="nav-item has-treeview menu-close">
 
                     <a href="#" class="nav-link">
@@ -136,11 +137,18 @@
                                 <i class=" far fa-circle nav-icon"></i>
                                 <p>Decretos licencia </p>
                             </a>
+                            <a href="{{ route('articulo.index') }}" class="nav-link">
+                                <i class=" far fa-circle nav-icon"></i>
+                                <p>Articulo licencia </p>
+                            </a>
 
                         </li>
 
                     </ul>
                 </li>
+
+                @endif
+
 
                 <li class="nav-item has-treeview menu-close">
 

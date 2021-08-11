@@ -52,6 +52,7 @@ Route::get('/licencias-index','licenciaController@index')->name('licencia.index'
 Route::get('/formulario-maternidad','licenciaController@formulario_maternidad')->name('formulario.maternidad');
 Route::get('/formulario-enfermedad','licenciaController@formulario_enfermedad')->name('formulario.enfermedad');
 Route::get('/formulario-altamedica','licenciaController@formulario_altamedica')->name('formulario.altamedica');
+Route::post('/buscar-dni-enfermedad','licenciaController@buscar_dni_enfermedad')->name('buscar.dni.enfermedad');
 //registro paso 2  licencias medicas
 Route::post('/maternidad-registro','licenciaController@maternidad_registro')->name('maternidad.registro');
 Route::get('/maternidad-paso2','licenciaController@maternidad_paso2')->name('maternidad.paso2');
@@ -68,10 +69,12 @@ Route::post('/registrar-alta-medica','licenciaController@registrar_finalizar_alt
 //RUTA PARA DECRETOS / LICENCIA
 Route::get('/decreto-index','licenciaController@decreto_index')->name('decreto.index');
 Route::get('/formulario-decreto','licenciaController@formulario_decreto')->name('formulario.decreto');
-Route::get('/formulario-articulo','licenciaController@formulario_articulo')->name('formulario.articulo');
-Route::post('/registrar-articulo','licenciaController@registrar_articulo')->name('registrar.articulo');
 Route::post('/registrar-decreto','licenciaController@registrar_decreto')->name('registrar.decreto');
 Route::get('/decreto-editar/{id}','licenciaController@decreto_editar')->name('editar.decreto');
+//RUTA PARA ARTICULO / LICENCIA
+Route::get('/articulo-index','licenciaController@articulo_index')->name('articulo.index');
+Route::get('/formulario-articulo','licenciaController@formulario_articulo')->name('formulario.articulo');
+Route::post('/registrar-articulo','licenciaController@registrar_articulo')->name('registrar.articulo');
 Route::get('/articulo-editar/{id}','licenciaController@articulo_editar')->name('editar.articulo');
 
 // RUTAS LEGAJO

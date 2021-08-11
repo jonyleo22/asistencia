@@ -30,19 +30,19 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-2">
-                            {{ Auth::User()->apellido }}
+                            {{$validardni[0]->apellido}}
                         </div>
                         <div class="col-lg-2">
-                            {{ Auth::User()->nombre }}
+                            {{$validardni[0]->nombre}}
                         </div>
                         <div class="col-lg-2">
-                            {{ $edad }}
+                            {{$validardni[0]->edad}}
                         </div>
                         <div class="col-lg-2">
-                            {{ Auth::User()->dni_empleado }}
+                            {{$dni}}
                         </div>
                         <div class="col-lg-2">
-                            {{ $categoria }}
+                            {{$categoria[0]->categoria}}
                         </div>
                     </div>
                     <div class="row">
@@ -65,7 +65,8 @@
                     <br>
                     <div class="row">
                         <div class="col-lg-12">
-                            <strong>Domicilio:</strong> {{ $domicilio }}
+                            <strong>Domicilio:</strong>
+                            {{$domicilio[0]->descripcion_domicilio}}
                         </div>
                     </div>
                     <br>

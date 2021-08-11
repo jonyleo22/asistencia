@@ -47,22 +47,40 @@ class licenciaController extends Controller
 
     public function formulario_enfermedad()
     {
-        $id_usuario = Auth::user()->id;
-        $legajo = legajosModel::where('id_usuario', $id_usuario)->get();
-        $categoria = $legajo[0]->categoria;
-        $id_persona = $legajo[0]->id_personas;
-        $persona = personasModel::where('id', $id_persona)->get();
-        $edad = $persona[0]->edad;
-        $domicilio_persona = domicilioPersonasModel::where('id_persona', $id_persona)->get();
-        $domicilio = $domicilio_persona[0]->descripcion_domicilio;
+
+        // $id_usuario = Auth::user()->id;
+        // $legajo = legajosModel::where('id_usuario', $id_usuario)->get();
+        // $categoria = $legajo[0]->categoria;
+        // $id_persona = $legajo[0]->id_personas;
+        // $persona = personasModel::where('id', $id_persona)->get();
+        // $edad = $persona[0]->edad;
+        // $domicilio_persona = domicilioPersonasModel::where('id_persona', $id_persona)->get();
+        // $domicilio = $domicilio_persona[0]->descripcion_domicilio;
+
+        //dd($fecha);
+        // dd($año);
+        return view('paginas.licencias.dni_enfermedad');
+    }
+
+    public function buscar_dni_enfermedad (Request $request){
+        $dni = $request->dni;
+
         $añoactual = Carbon::now();
         $año = $añoactual->format('Y');
         $fecha = $añoactual->format('d-m-Y');
         $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
         $hora = $hora_actual->format('H:i:s');
-        //dd($fecha);
-        // dd($año);
-        return view('paginas.licencias.formulario_enfermedad', compact('año', 'fecha', 'hora', 'categoria', 'edad', 'domicilio'));
+        $validardni = personasModel::where('dni', $dni)->get();
+        $id_persona = $validardni[0]->id;
+        $categoria =legajosModel::where('id_personas',$id_persona)->get();
+        $domicilio=domicilioPersonasModel::where('id_persona',$id_persona)->get();
+        if (!empty($validardni[0])) {
+            //  dd($categoria);
+            return view('paginas.licencias.formulario_enfermedad',compact('dni','hora','fecha','año','validardni','categoria','domicilio'));
+        } else {
+            return back()->with('No-Existe','');
+        }
+
     }
 
 
@@ -70,6 +88,7 @@ class licenciaController extends Controller
     {
         $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
         $fecha = carbon::now();
+        $año = $fecha->format('Y');
         $fechaactual = $fecha->format('d-m-Y');
         $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
         $hora = $hora_actual->format('H:i:s');
@@ -88,7 +107,7 @@ class licenciaController extends Controller
         $id_licencia = $licencia->id;
 
         $n_licencia = array(
-            'numero_licencia' => $id_licencia
+            'numero_licencia' => $id_licencia."/".$año
         );
 
         $update_n_licencia = LicenciasModel::findOrFail($id_licencia)->update($n_licencia);
@@ -99,24 +118,27 @@ class licenciaController extends Controller
     public function enfermedad_paso2($id)
     {
 
-        $id_usuario = Auth::user()->id;
-        $legajo = legajosModel::where('id_usuario', $id_usuario)->get();
-        $categoria = $legajo[0]->categoria;
-        $id_persona = $legajo[0]->id_personas;
-        $persona = personasModel::where('id', $id_persona)->get();
-        $edad = $persona[0]->edad;
-        $domicilio_persona = domicilioPersonasModel::where('id_persona', $id_persona)->get();
-        $domicilio = $domicilio_persona[0]->descripcion_domicilio;
+       $licencia = LicenciasModel::FindOrFail($id);
+       $idlegajo = $licencia->id_legajo;
+       $legajo = legajosModel::where('id', $idlegajo)->get();
+       $idpersona = $legajo[0]->id_personas;
+       $persona =personasModel::where('id',$idpersona)->get();
+       $domicilio =domicilioPersonasModel::where('id_persona',$idpersona)->get();
+        // dd($domicilio);
+
+
+
         $añoactual = Carbon::now();
         $año = $añoactual->format('Y');
         $fecha = $añoactual->format('d-m-Y');
         $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
         $hora = $hora_actual->format('H:i:s');
-        $n_licencia = $id;
+        $licencia = LicenciasModel::FindOrFail($id);
+        $n_licencia =$licencia->numero_licencia;
         $imprimir = LicenciasModel::findOrFail($id);
         // dd($imprimir);
         // dd($año);
-        return view('paginas.licencias.enfermedad_paso2', compact('año', 'fecha', 'hora', 'categoria', 'edad', 'domicilio', 'n_licencia', 'imprimir'));
+        return view('paginas.licencias.enfermedad_paso2', compact('año', 'fecha', 'hora', 'n_licencia', 'imprimir','legajo','persona','domicilio'));
     }
 
     public function actualizar_estado_licencia(Request $request)
@@ -302,25 +324,6 @@ class licenciaController extends Controller
 
         return view('paginas.decreto.formulario_decreto', compact('articulos'));
     }
-
-    public function formulario_articulo()
-    {
-
-
-        return view('paginas.decreto.formulario_articulo');
-    }
-
-    public function registrar_articulo(Request $request)
-    {
-        $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
-        $articulo = new articulosModel();
-        $articulo->numero_articulo = $request->numero_articulo;
-        $articulo->descripcion_articulo = $request->descripcion_articulo;
-        $articulo->operador_articulo = $operador;
-        $articulo->save();
-
-        return redirect('/decreto-index')->with('okey-decreto', '');
-    }
     public function registrar_decreto(Request $request)
     {
         $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
@@ -337,12 +340,40 @@ class licenciaController extends Controller
         return view('paginas.decreto.decreto_editar');
 
     }
+      //articulo
+
+      public function articulo_index(){
+        $datos = articulosModel::all();
+        return view('paginas.articulo.index',compact('datos'));
+      }
+
+      public function formulario_articulo()
+    {
+
+
+        return view('paginas.articulo.formulario_articulo');
+    }
+
+    public function registrar_articulo(Request $request)
+    {
+        $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
+        $decreto = new decretosModel();
+        $decreto->numero_decreto = $request->numero_decreto;
+        $decreto->id_articulos = $request->id_articulos;
+        $decreto->operador_decreto = $operador;
+        $decreto->save();
+
+        return redirect('/articulo-index')->with('okey-articulo', '');
+    }
     public function articulo_editar($id){
         $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
 
 
 
-     return view('paginas.decreto.articulo_editar',compact('articulo','operador'));
+     return view('paginas.articulo.articulo_editar',compact('articulo','operador'));
 
     }
+
+
+
 }

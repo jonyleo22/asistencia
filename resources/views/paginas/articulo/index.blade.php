@@ -3,9 +3,9 @@
     <div class="content-wrapper">
         <div class="container-fluid">
             <div class="jumbotron text-center">
-                <h1>Decretos</h1>
+                <h1>Articulo</h1>
                 <h4>
-                    <p>Realice aquí la administración de Artículos-Decretos</p>
+                    <p>Realice aquí la administración de Artículos</p>
                 </h4>
             </div>
         </div>
@@ -19,11 +19,7 @@
                             class="btn btn-block btn-outline-primary">
                             Alta artículo</a>
                     </div>
-                    <div class="px-3">
-                        <a href="{{ route ('formulario.decreto') }}" type="button"
-                            class="btn btn-block btn-outline-primary">
-                            Alta decreto</a>
-                    </div>
+
                 </div>
             </div>
                 <div class="card-body">
@@ -32,7 +28,6 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>N° Decreto</th>
                                     <th>N° Articulo</th>
                                     <th>Acciónes</th>
                                 </tr>
@@ -41,21 +36,14 @@
                             @foreach ( $datos as $element )
                                     <tr>
                                         <td>{{$element->id}}</td>
-                                        <td>{{$element->numero_decreto}}</td>
                                         <td>{{$element->numero_articulo}}</td>
                                         <td>
                                             <div class="btn-group">
 
-
-                                                    <div class="">
-                                                        <a href="{{route ('editar.decreto',$element->id )}} " class="btn btn-primary btn-sm" title="Editar Decreto"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                    </div>
-
-
-
-
-
+                                                <div class="px-2">
+                                                    <a href="{{route ('editar.articulo',$element->id )}} " class="btn btn-info btn-sm" title="Editar articulo"><i
+                                                            class="fas fa-pencil-alt"></i></a>
+                                                </div>
 
 
                                             </div>

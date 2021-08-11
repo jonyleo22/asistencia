@@ -23,7 +23,7 @@
                             <div class="col-12 pull-left">
                                 <strong>
                                     <h4>
-                                        A-Orden de Reconocimiento Médico a Domicilio Nº {{$n_licencia}}/{{ $año }}.
+                                        A-Orden de Reconocimiento Médico a Domicilio Nº {{$n_licencia}}.
                                 </strong></h4>
                             </div>
                         </div>
@@ -31,33 +31,38 @@
                         <div class="row invoice-info">
                             <div class="col-sm-4 invoice-col">
                                 <strong>Apellido</strong><br>
-                                {{ Auth::User()->apellido }}
+                                {{$persona[0]->apellido}}
+
                             </div>
                             <div class="col-sm-4 invoice-col">
                                 <strong>Nombre:</strong><br>
-                                {{ Auth::User()->nombre }}
+                                {{$persona[0]->nombre}}
                                 <br>
                             </div>
                             <div class="col-sm-4 invoice-col">
                                 <strong>Edad</strong><br>
-                                {{ $edad }}
+                                {{$persona[0]->edad}}
+
                                 <br>
                             </div>
                         </div>
                         <div class="row invoice-info">
                             <div class="col-sm-4 invoice-col">
                                 <strong>DNI:</strong><br>
-                                {{ Auth::User()->dni_empleado }}
+                                {{$persona[0]->dni}}
+
                                 <br>
                             </div>
                             <div class="col-sm-4 invoice-col">
                                 <strong>Categoría:</strong><br>
-                                {{ $categoria }}
+                                {{$legajo[0]->categoria}}
+
                                 <br>
                             </div>
                             <div class="col-sm-4 invoice-col">
                                 <strong>Domicilio:</strong><br>
-                                {{ $domicilio }}
+                                {{$domicilio[0]->descripcion_domicilio}}
+
                                 <br>
                             </div>
                         </div>
@@ -150,14 +155,14 @@
                             <div class="col-12 pull-left">
                                 <strong>
                                     <h4>
-                                        B-Orden de Reconocimiento Médico a Domicilio Nº {{$n_licencia}}/{{ $año }}.
+                                        B-Orden de Reconocimiento Médico a Domicilio Nº {{$n_licencia}}.
                                 </strong></h4>
                             </div>
                         </div>
                         <br>
                         <div class="row invoice-info">
                             <div class="col-sm-12 invoice-col">
-                              El agente <strong>{{ Auth::User()->nombre }}</strong> categoria <strong>{{ $categoria }}</strong> D.N.I. N° <strong>{{ Auth::User()->dni_empleado }}</strong>
+                              El agente <strong>{{ $persona[0]->nombre}} {{$persona[0]->apellido}}</strong> categoria <strong>{{ $legajo[0]->categoria }}</strong> D.N.I. N° <strong>{{ $persona[0]->dni }}</strong>
                             </div>
                             <div class="col-sm-12 invoice-col">
                                Que presta servicios en <strong>Tesoreria General de la Provincia de Misiones</strong>,  se encuentra
@@ -185,14 +190,14 @@
                            <div class="col-12 pull-left">
                                 <strong>
                                     <h4>
-                                        C-Orden de Reconocimiento Médico a Domicilio Nº {{$n_licencia}}/{{ $año }}.
+                                        C-Orden de Reconocimiento Médico a Domicilio Nº {{$n_licencia}}.
                                 </strong></h4>
                             </div>
                         </div>
                         <br>
                        <div class="row invoice-info">
                             <div class="col-sm-12 invoice-col">
-                              El agente <strong>{{ Auth::User()->nombre }}</strong> categoria <strong>{{ $categoria }}</strong> D.N.I. N° <strong>{{ Auth::User()->dni_empleado }}</strong>
+                              El agente <strong>{{ $persona[0]->nombre}} {{$persona[0]->apellido}}</strong> categoria <strong>{{ $legajo[0]->categoria }}</strong> D.N.I. N° <strong>{{ $persona[0]->dni }}</strong>
                             </div>
                             <div class="col-sm-12 invoice-col">
                                Que presta servicios en <strong>Tesoreria General de la Provincia de Misiones</strong>,  se encuentra
