@@ -22,10 +22,6 @@
                                     <th>Fecha hasta</th>
                                     <th>Operador</th>
                                     <th>Observación</th>
-
-
-
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,11 +31,10 @@
                                         <td>{{ $element->año_lar }}</td>
                                         <td>{{ $element->dias_disponible }}</td>
                                         <td>{{ $element->dias_lar }}</td>
-                                        <td>@php echo date('d/m/Y', strtotime($element->fecha_desde_lar)); @endphp</td>
-                                        <td>@php echo date('d/m/Y', strtotime($element->fecha_hasta_lar)); @endphp</td>
+                                        <td>{{$element->fecha_desde_lar}}</td>
+                                        <td>{{$element->fecha_hasta_lar}}</td>
                                         <td>{{ $element->operador_lar }}</td>
                                         <td>{{ $element->observacion_lar }}</td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
