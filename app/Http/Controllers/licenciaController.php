@@ -372,8 +372,9 @@ class licenciaController extends Controller
     public function articulo_editar($id){
         $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
         $articulo = articulosModel::findOrFail($id);
+        $id_articulo = $id;
 
-     return view('paginas.articulo.articulo_editar',compact('operador','articulo'));
+     return view('paginas.articulo.articulo_editar',compact('operador','articulo','id_articulo'));
 
     }
     public function actualizar_articulo(Request $request){

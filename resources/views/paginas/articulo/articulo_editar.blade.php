@@ -36,9 +36,11 @@
                                             required>{{$articulo ->descripcion_articulo}} </textarea>
                                     </div>
                             </div>
+                            <input type="hidden" name="id_articulo" value="{{$id_articulo}}">
                             <div class="card-footer text-center">
                                 <button type="submit" class="btn btn-success">Guardar</button>
                             </div>
+
                         </form>
                 </div>
             </div>
