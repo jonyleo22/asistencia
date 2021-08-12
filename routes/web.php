@@ -71,6 +71,7 @@ Route::get('/decreto-index','licenciaController@decreto_index')->name('decreto.i
 Route::get('/formulario-decreto','licenciaController@formulario_decreto')->name('formulario.decreto');
 Route::post('/registrar-decreto','licenciaController@registrar_decreto')->name('registrar.decreto');
 Route::get('/decreto-editar/{id}','licenciaController@decreto_editar')->name('editar.decreto');
+Route::put('/actualizar-decreto','licenciaController@actualizar_decreto')->name('actualizar.decreto');
 
 //RUTA PARA ARTICULO / LICENCIA
 Route::get('/articulo-index','licenciaController@articulo_index')->name('articulo.index');

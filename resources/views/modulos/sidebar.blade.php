@@ -89,7 +89,7 @@
 
                             <a href="{{ route('informe.siap') }}" class="nav-link">
                                 <i class=" far fa-circle nav-icon"></i>
-                                <p>Informes SIAP</p>
+                                <p>Informes personal</p>
                             </a>
 
                         </li>

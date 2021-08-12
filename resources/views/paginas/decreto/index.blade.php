@@ -14,11 +14,7 @@
             <div class="card">
             <div class="card-header">
                 <div class="btn-group">
-                <div class="px-1">
-                        <a href="{{ route ('formulario.articulo') }}" type="button"
-                            class="btn btn-block btn-outline-primary">
-                            Alta artículo</a>
-                    </div>
+
                     <div class="px-3">
                         <a href="{{ route ('formulario.decreto') }}" type="button"
                             class="btn btn-block btn-outline-primary">
@@ -82,10 +78,10 @@
 
     @endif
 
-    @if (Session::has('okey-articulo'))
+    @if (Session::has('Okey-actualizar'))
 
         <script>
-            toastr.success('Artículo registrado correctamente.')
+            toastr.success('Decreto actualizado correctamente.')
 
         </script>
 
