@@ -11,8 +11,7 @@ class CreateDecretosTable extends Migration
     {
         Schema::create('decretos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_articulos');
-            $table->foreign('id_articulos')->references('id')->on('articulos');
+            $table->string('id_articulos');
             $table->string('numero_decreto');
             $table->string('operador_decreto');
             $table->timestamps();

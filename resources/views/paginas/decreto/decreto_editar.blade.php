@@ -30,18 +30,9 @@
                                     <label for="id_articulos">Artículo asociado</label>
                                     <br>
                                     <select class="form-control select2 @error('id_articulos') is-invalid @enderror"
-                                        name="id_articulos" style="width: 100%;">
+                                        name="id_articulos[]" multiple style="width: 100%;">
+                                        @foreach ($dato_articulos as $element)
 
-                                        <option disabled selected value>Seleccionar</option>
-
-                                        @foreach ($articulos as $element)
-
-                                            <option value="{{ $element->id }}">
-                                                N° Artículo:
-                                                {{ $element->numero_articulo }}</option>
-                                            {{-- <option value="{{ $element->id }}"
-                                            {{ old('id_usuario') == $element->id ? 'selected' : '' }}>
-                                            {{ $element->nombre_tipo_documento }}</option> --}}
 
                                         @endforeach
 

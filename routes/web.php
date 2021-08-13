@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\legajosController;
+use App\Http\Controllers\licenciaController;
 use App\Http\Controllers\vacacionesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -72,6 +73,7 @@ Route::get('/formulario-decreto','licenciaController@formulario_decreto')->name(
 Route::post('/registrar-decreto','licenciaController@registrar_decreto')->name('registrar.decreto');
 Route::get('/decreto-editar/{id}','licenciaController@decreto_editar')->name('editar.decreto');
 Route::put('/actualizar-decreto','licenciaController@actualizar_decreto')->name('actualizar.decreto');
+Route::get('/ver-articulos/{id}','licenciaController@ver_articulos')->name('ver.articulos');
 
 //RUTA PARA ARTICULO / LICENCIA
 Route::get('/articulo-index','licenciaController@articulo_index')->name('articulo.index');

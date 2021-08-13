@@ -314,8 +314,7 @@ class licenciaController extends Controller
     //ALTA DE DECRETO
     public function decreto_index()
     {
-        $datos = decretosModel::join('articulos', 'decretos.id_articulos', 'articulos.id')
-        ->select('decretos.id','numero_decreto','numero_articulo')->get();
+        $datos = decretosModel::all();
         // dd($datos);
 
         return view('paginas.decreto.index', compact('datos'));
@@ -329,25 +328,30 @@ class licenciaController extends Controller
     }
     public function registrar_decreto(Request $request)
     {
+        // dd($request->all());
         $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
         $decreto = new decretosModel();
         $decreto->numero_decreto = $request->numero_decreto;
-        $decreto->id_articulos = $request->id_articulos;
+        $decreto->id_articulos = json_encode($request->id_articulos);
         $decreto->operador_decreto = $operador;
         $decreto->save();
 
-        return redirect('/decreto-index')->with('okey-articulo', '');
+        return redirect('/decreto-index')->with('okey-decreto', '');
     }
 
     public function decreto_editar($id){
         $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
         $decreto = decretosModel::findOrFail($id);
-        $articulos = decretosModel::join('articulos', 'decretos.id_articulos', 'articulos.id')
-        ->select('numero_articulo')->get();
+        $articulos = json_decode($decreto->id_articulos);
+        $dato_articulos = array();
+        foreach ($articulos as $element ) {
+            $aux = articulosModel::where('id',$element)->get();
+            array_push($dato_articulos,$aux);
+
+        }
         $id_decreto = $id;
 
-
-        return view('paginas.decreto.decreto_editar', compact('operador','decreto','id_decreto','articulos'));
+        return view('paginas.decreto.decreto_editar', compact('operador','decreto','id_decreto','articulos','dato_articulos'));
 
     }
     public function actualizar_decreto(Request $request){
@@ -406,4 +410,10 @@ class licenciaController extends Controller
     }
 
 
+    public function ver_articulos ($id){
+
+        $decreto =decretosModel::where('id',$id)->get();
+        dd($decreto);
+        return view('paginas.decreto.ver_articulo');
+    }
 }
