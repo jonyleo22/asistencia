@@ -4,19 +4,18 @@
     <div class="container-fluid">
         <div class="card mt-3">
             <div class="card-body">
-
                 <form method="POST" action="{{route ('alta.registro')}}">
                     @csrf
                     <div class="row text-center">
                         <div class="col-lg-12">
                             <ins>
-                                <h1>Alta Medica</h1>
+                                <h1>Formulario de Alta</h1>
 
                             </ins>
                         </div>
                     </div>
                     <br>
-                    <div class="row">
+                     <div class="row">
                         <div class="col-lg-12">
                             <strong>
                                 <h3>
@@ -31,19 +30,19 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-2">
-                            {{ Auth::User()->apellido }}
+                            {{$validardni[0]->apellido}}
                         </div>
                         <div class="col-lg-2">
-                            {{ Auth::User()->nombre }}
+                            {{$validardni[0]->nombre}}
                         </div>
                         <div class="col-lg-2">
-                            {{ $edad }}
+                            {{$validardni[0]->edad}}
                         </div>
                         <div class="col-lg-2">
-                            {{ Auth::User()->dni_empleado }}
+                            {{$dni}}
                         </div>
                         <div class="col-lg-2">
-                            {{ $categoria }}
+                            {{$categoria[0]->categoria}}
                         </div>
                     </div>
                     <div class="row">
@@ -66,7 +65,8 @@
                     <br>
                     <div class="row">
                         <div class="col-lg-12">
-                            <strong>Domicilio:</strong> {{ $domicilio }}
+                            <strong>Domicilio:</strong>
+                            {{$domicilio[0]->descripcion_domicilio}}
                         </div>
                     </div>
                     <br>
@@ -114,11 +114,9 @@
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-lg-12">
                             <div class="p text-right ">
                                 <strong>Firma y sello del emisor de la orden.</strong>
-
                             </div>
                         </div>
                     </div>
@@ -145,6 +143,7 @@
                         </div>
                     </div>
                     <br>
+
                     <br>
                     <div class="row">
                         <div class="col-lg-12">
@@ -153,10 +152,11 @@
                     </div>
                     <br>
             </div>
+            <div class="card-footer text-center">
+                <button type="submit" class="btn btn-success">Generar</button>
+            </div>
         </div>
-        <div class="card-footer text-center">
-            <button type="submit" class="btn btn-success">Generar</button>
-        </div>
+        <input type="hidden" name="id_usuario" value="{{$id_usuario}}">
         </form>
     </div>
 </div>

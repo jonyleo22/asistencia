@@ -66,9 +66,7 @@
                                         <option value="{{ $element->id }}">
                                             N° Decreto:
                                             {{ $element->numero_decreto }} | Artículo: {{$element->numero_articulo}} </option>
-                                        {{-- <option value="{{ $element->id }}"
-                                        {{ old('id_usuario') == $element->id ? 'selected' : '' }}>
-                                        {{ $element->nombre_tipo_documento }}</option> --}}
+
 
                                     @endforeach
 

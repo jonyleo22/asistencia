@@ -21,21 +21,21 @@
                        <form action="{{route ('registra.finalizar.alta')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-lg-3">
+                            <div class="col-lg-2">
                                 <div class="form-group">
                                     <label for="fecha_desde">Fecha desde</label>
                                     <input type="date" name="fecha_desde"
                                         class="form-control @error('fecha_desde') is-invalid @enderror">
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-2">
                                 <div class="form-group">
                                     <label for="fecha_hasta">Fecha hasta</label>
                                     <input type="date" name="fecha_hasta"
                                         class="form-control @error('fecha_hasta') is-invalid @enderror">
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="exampleInputFile">Licencia PDF</label>
                                     <div class="input-group">
@@ -52,6 +52,23 @@
                                     </span>
                                     @enderror --}}
                                 </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <label for="id_decretos">Decreto asociado</label>
+
+                                <select class="form-control select2 @error('id_decretos') is-invalid @enderror"
+                                    name="id_decretos" style="width: 100%;">
+
+                                    <option disabled selected value>Seleccionar</option>
+
+                                    @foreach ($decretos as $element)
+
+                                        <option value="{{ $element->id }}">
+                                            N° Decreto:
+                                            {{ $element->numero_decreto }} | Artículo: {{$element->numero_articulo}} </option>
+
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <input type="hidden" name="id_alta" value="{{$id_alta}}">

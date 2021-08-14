@@ -54,6 +54,7 @@ Route::get('/formulario-maternidad','licenciaController@formulario_maternidad')-
 Route::get('/formulario-enfermedad','licenciaController@formulario_enfermedad')->name('formulario.enfermedad');
 Route::get('/formulario-altamedica','licenciaController@formulario_altamedica')->name('formulario.altamedica');
 Route::post('/buscar-dni-enfermedad','licenciaController@buscar_dni_enfermedad')->name('buscar.dni.enfermedad');
+Route::Post('/buscar-dni-alta','licenciaController@buscar_dni_alta')->name('buscar.dni.alta');
 //registro paso 2  licencias medicas
 Route::post('/maternidad-registro','licenciaController@maternidad_registro')->name('maternidad.registro');
 Route::get('/maternidad-paso2','licenciaController@maternidad_paso2')->name('maternidad.paso2');

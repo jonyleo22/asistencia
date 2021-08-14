@@ -144,103 +144,12 @@ class licenciaController extends Controller
         return view('paginas.licencias.enfermedad_paso2', compact('año', 'fecha', 'hora', 'n_licencia', 'imprimir','legajo','persona','domicilio'));
     }
 
-    public function actualizar_estado_licencia(Request $request)
-    {
-
-        // dd($request->all());
-        $licencia = array("estado_licencia" => 2);
-        $actualizar_licencia = LicenciasModel::findOrfail($request->id_licencia)->update($licencia);
-
-        return redirect()->back()->with('ok-imprimir', '');
-    }
-
-
-
-
-    public function formulario_altamedica()
-    {
-        $id_usuario = Auth::user()->id;
-        $legajo = legajosModel::where('id_usuario', $id_usuario)->get();
-        $categoria = $legajo[0]->categoria;
-        $id_persona = $legajo[0]->id_personas;
-        $persona = personasModel::where('id', $id_persona)->get();
-        $edad = $persona[0]->edad;
-        $domicilio_persona = domicilioPersonasModel::where('id_persona', $id_persona)->get();
-        $domicilio = $domicilio_persona[0]->descripcion_domicilio;
-        $añoactual = Carbon::now();
-        $año = $añoactual->format('Y');
-        $fecha = $añoactual->format('d-m-Y');
-        $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
-        $hora = $hora_actual->format('H:i:s');
-        //dd($fecha);
-        // dd($año);
-        return view('paginas.licencias.formulario_altamedica', compact('año', 'fecha', 'hora', 'categoria', 'edad', 'domicilio'));
-    }
-
-
-    public function alta_registro(Request $request)
-    {
-        $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
-        $fecha = carbon::now();
-        $fechaactual = $fecha->format('d-m-Y');
-        $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
-        $hora = $hora_actual->format('H:i:s');
-        $id_usuario = Auth::User()->id;
-        $id_legajo = legajosModel::where('id_usuario', $id_usuario)->get();
-        // dd($id_legajo[0]->id);
-        $licencia = new LicenciasModel();
-        $licencia->id_legajo = $id_legajo[0]->id;
-        $licencia->hora_licencia = $hora;
-        $licencia->fecha_licencia = $fechaactual;
-        $licencia->operador_licencia = $operador;
-        $licencia->tipo_licencia = 3;   // 3 = Alta
-        $licencia->estado_licencia = 1; // estado 1 Pendiente
-        $licencia->save();
-        $id_licencia = $licencia->id;
-
-        $n_licencia = array(
-            'numero_licencia' => $id_licencia
-        );
-
-        $update_n_licencia = LicenciasModel::findOrFail($id_licencia)->update($n_licencia);
-
-        return redirect('/licencias-index')->with('okeylicencia', '');
-    }
-    public function alta_paso2($id)
-    {
-
-        $id_usuario = Auth::user()->id;
-        $legajo = legajosModel::where('id_usuario', $id_usuario)->get();
-        $categoria = $legajo[0]->categoria;
-        $id_persona = $legajo[0]->id_personas;
-        $persona = personasModel::where('id', $id_persona)->get();
-        $edad = $persona[0]->edad;
-        $domicilio_persona = domicilioPersonasModel::where('id_persona', $id_persona)->get();
-        $domicilio = $domicilio_persona[0]->descripcion_domicilio;
-        $añoactual = Carbon::now();
-        $año = $añoactual->format('Y');
-        $fecha = $añoactual->format('d-m-Y');
-        $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
-        $hora = $hora_actual->format('H:i:s');
-        $n_licencia = $id;
-        //dd($fecha);
-        // dd($año);
-
-        return view('paginas.licencias.alta_paso2', compact('año', 'fecha', 'hora', 'categoria', 'edad', 'domicilio', 'n_licencia'));
-    }
-
     public function finalizar_enfermedad($id)
     {
         $decretos = decretosModel::join('articulos', 'articulos.id', 'decretos.id_articulos')->get();
 
         $id_enfermedad = $id;
         return view('paginas.licencias.finalizar_enfermedad', compact('id_enfermedad', 'decretos'));
-    }
-
-    public function finalizar_alta_medica($id)
-    {
-        $id_alta = $id;
-        return view('paginas.licencias.finalizar_alta_medica', compact('id_alta'));
     }
 
     public function registrar_finalizar_enfermedad(Request $request)
@@ -293,6 +202,126 @@ class licenciaController extends Controller
 
         return redirect('/licencias-index')->with('okey-finalizar', '');
     }
+
+
+
+    public function actualizar_estado_licencia(Request $request)
+    {
+
+        // dd($request->all());
+        $licencia = array("estado_licencia" => 2);
+        $actualizar_licencia = LicenciasModel::findOrfail($request->id_licencia)->update($licencia);
+
+        return redirect()->back()->with('ok-imprimir', '');
+    }
+
+
+
+
+    public function formulario_altamedica()
+    {
+        // $id_usuario = Auth::user()->id;
+        // $legajo = legajosModel::where('id_usuario', $id_usuario)->get();
+        // $categoria = $legajo[0]->categoria;
+        // $id_persona = $legajo[0]->id_personas;
+        // $persona = personasModel::where('id', $id_persona)->get();
+        // $edad = $persona[0]->edad;
+        // $domicilio_persona = domicilioPersonasModel::where('id_persona', $id_persona)->get();
+        // $domicilio = $domicilio_persona[0]->descripcion_domicilio;
+        // $añoactual = Carbon::now();
+        // $año = $añoactual->format('Y');
+        // $fecha = $añoactual->format('d-m-Y');
+        // $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
+        // $hora = $hora_actual->format('H:i:s');
+        // //dd($fecha);
+        // // dd($año);
+        return view('paginas.licencias.dni_alta');
+    }
+
+    public function buscar_dni_alta (Request $request){
+        $dni = $request->dni;
+        $añoactual = Carbon::now();
+        $año = $añoactual->format('Y');
+        $fecha = $añoactual->format('d-m-Y');
+        $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
+        $hora = $hora_actual->format('H:i:s');
+        $validardni = personasModel::where('dni', $dni)->get();
+        $id_persona = $validardni[0]->id;
+        $categoria =legajosModel::where('id_personas',$id_persona)->get();
+        $domicilio=domicilioPersonasModel::where('id_persona',$id_persona)->get();
+        $id_usuario = $categoria[0]->id_usuario;
+        if (!empty($validardni[0])) {
+            //  dd($categoria);
+            return view('paginas.licencias.formulario_altamedica',compact('dni','hora','fecha','año','validardni','categoria','domicilio','id_usuario'));
+        } else {
+            return back()->with('No-Existe','');
+        }
+
+    }
+
+
+    public function alta_registro(Request $request)
+    {
+        $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
+        $fecha = carbon::now();
+        $fechaactual = $fecha->format('d-m-Y');
+        $año = $fecha->format('Y');
+        $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
+        $hora = $hora_actual->format('H:i:s');
+        $id_usuario = Auth::User()->id;
+        $id_legajo = legajosModel::where('id_usuario', $id_usuario)->get();
+        // dd($id_legajo[0]->id);
+        $licencia = new LicenciasModel();
+        $licencia->id_legajo = $id_legajo[0]->id;
+        $licencia->hora_licencia = $hora;
+        $licencia->fecha_licencia = $fechaactual;
+        $licencia->operador_licencia = $operador;
+        $licencia->tipo_licencia = 3;   // 3 = Alta
+        $licencia->estado_licencia = 1; // estado 1 Pendiente
+        $licencia->save();
+        $id_licencia = $licencia->id;
+
+        $n_licencia = array(
+            'numero_licencia' => $id_licencia."/".$año
+        );
+
+        $update_n_licencia = LicenciasModel::findOrFail($id_licencia)->update($n_licencia);
+
+        return redirect('/licencias-index')->with('okeylicencia', '');
+    }
+    public function alta_paso2($id)
+    {
+
+        $licencia = LicenciasModel::FindOrFail($id);
+        $idlegajo = $licencia->id_legajo;
+        $legajo = legajosModel::where('id', $idlegajo)->get();
+        $idpersona = $legajo[0]->id_personas;
+        $persona =personasModel::where('id',$idpersona)->get();
+        $domicilio =domicilioPersonasModel::where('id_persona',$idpersona)->get();
+         // dd($domicilio);
+
+         $añoactual = Carbon::now();
+         $año = $añoactual->format('Y');
+         $fecha = $añoactual->format('d-m-Y');
+         $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
+         $hora = $hora_actual->format('H:i:s');
+         $licencia = LicenciasModel::FindOrFail($id);
+         $n_licencia =$licencia->numero_licencia;
+         $imprimir = LicenciasModel::findOrFail($id);
+
+        return view('paginas.licencias.alta_paso2', compact('año', 'fecha', 'hora', 'n_licencia', 'imprimir','legajo','persona','domicilio'));
+    }
+
+
+    public function finalizar_alta_medica($id)
+    {
+        $decretos = decretosModel::join('articulos', 'articulos.id', 'decretos.id_articulos')->get();
+
+        $id_alta = $id;
+        return view('paginas.licencias.finalizar_alta_medica', compact('id_alta', 'decretos'));
+    }
+
+
     public function registrar_finalizar_alta(Request $request)
     {
 
@@ -310,6 +339,31 @@ class licenciaController extends Controller
 
         return redirect('/licencias-index')->with('okey-finalizar alta', '');
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //ALTA DE DECRETO
     public function decreto_index()
