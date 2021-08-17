@@ -42,6 +42,8 @@ Route::get('/formulario-observacion/{id}','asistenciaController@formulario_obser
 
 Route::put('/registrar-observacion', 'asistenciaController@registrar_observacion')->name('registrar.observacion');
 
+Route::post('/lista-siap', 'asistenciaController@lista_siap')->name('lista.siap');
+
 // RUTAS Inasistencias
 
 Route::get('/inasistencia-index','inasistenciaController@index')->name('inasistencia.index');

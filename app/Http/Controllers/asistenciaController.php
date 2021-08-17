@@ -89,20 +89,32 @@ class asistenciaController extends Controller
 
     }
     public function informes(Request $request){
+
         $fecha = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
         $fecha_actual = $fecha->format('Y-m-d');
         $fecha_desde = $request->fecha_desde;
         $fecha_hasta = $request->fecha_hasta;
 
+        // dd($request->all());
 
+        if ($request->fecha_desde == null && $request->fecha_hasta == null && $request->dni == null) {
             $asistencia = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
             ->where('asistencias.fecha', $fecha_actual)
             ->select('users.nombre','users.apellido','users.dni_empleado', 'asistencias.id', 'asistencias.hora_entrada'
             ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia', 'asistencias.estado')
             ->get();
+        }
+
+        if ($request->fecha_desde != null && $request->fecha_hasta != null && $request->dni == null ) {
+            $asistencia = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
+        ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
+        ->select('users.nombre','users.apellido','users.dni_empleado', 'asistencias.id', 'asistencias.hora_entrada'
+        ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia', 'asistencias.estado')
+        ->get();
+        }
 
 
-        if ($request->$fecha_desde != null && $request->fecha_hasta != null && $request->dni != null ) {
+        if ($request->fecha_desde != null && $request->fecha_hasta != null && $request->dni != null ) {
             $asistencia = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
         ->where('users.dni_empleado', $request->dni)
         ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
@@ -110,41 +122,8 @@ class asistenciaController extends Controller
         ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia', 'asistencias.estado')
         ->get();
         }
-        if ($request->$fecha_desde != null && $request->fecha_hasta != null && $request->dni == null ) {
-            $asistencia = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
-        ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
-        ->select('users.nombre','users.apellido','users.dni_empleado', 'asistencias.id', 'asistencias.hora_entrada'
-        ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia', 'asistencias.estado')
-        ->get();
-        }
 
 
-
-    // if ($request->fecha_desde && $request->fecha_hasta) {
-    //     $asistencias = asistensiaModel::join('users','users.id','asistencias.id_usuario')
-    //     ->select('users.nombre','users.dni_empleado','users.apellido','users.id')
-    //     ->groupBy('asistencias.id_usuario')
-    //     ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
-    //     ->get();
-
-    // }
-
-    // if ($request->fecha_desde && $request->fecha_hasta && $request->dni) {
-    //     $asistencias = User::join('asistencias','asistencias.id_usuario','users.id')
-    //     ->join('sectores_empleados','sectores_empleados.id', 'users.sector_id')
-    //     ->join('cargo_empleado','cargo_empleado.id','users.cargo_id')
-    //     ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
-    //     ->where('dni_empleado', $request->dni)
-    //     ->get();
-    // }
-
-    // if ($request->fecha_desde == null && $request->fecha_hasta == null  && $request->dni == null) {
-    //     $asistencias = User::join('asistencias','asistencias.id_usuario','users.id')
-    //     ->join('sectores_empleados','sectores_empleados.id', 'users.sector_id')
-    //     ->join('cargo_empleado','cargo_empleado.id','users.cargo_id')
-    //     ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
-    //     ->get();
-    // }
     return view('paginas.asistencias.informe',compact('asistencia'));
 
 }
@@ -171,14 +150,32 @@ class asistenciaController extends Controller
         $fecha_desde = $request->fecha_desde;
         $fecha_hasta = $request->fecha_hasta;
 
-        $usuarios = asistensiaModel::join('users', 'users.id', 'asistencias.id_usuario')
-        ->whereBetween('asistencias.fecha',[$fecha_desde, $fecha_hasta])
-        ->select('users.nombre','users.apellido','users.id')
-        ->groupBy('asistencias.id_usuario')
-        ->get();
+        // session(['fecha_desde' => $fecha_desde]);
+        // session(['fecha_hasta' => $fecha_hasta]);
 
-        return view('paginas.asistencias.informe_siap', compact('usuarios', 'fecha_desde', 'fecha_hasta'));
+
+        // echo '<pre>'; print_r($usuarios); echo '</pre>';
+        // return;
+        return view('paginas.asistencias.informe_siap');
 
 }
+
+    public function lista_siap(Request $request){
+
+        // dd($request->all());
+        $fecha_desde = $request->fecha_desde;
+        $fecha_hasta = $request->fecha_hasta;
+
+        $usuarios = DB::table('users')
+        ->join('asistencias', 'asistencias.id_usuario', 'users.id')
+        ->select('users.id', 'users.nombre', 'users.apellido')
+        ->whereBetween('asistencias.fecha', [$fecha_desde, $fecha_hasta])
+        ->groupBy('users.id')
+        ->get();
+
+
+    return view('paginas.asistencias.lista_siap', compact('usuarios','fecha_desde','fecha_hasta'));
+
+    }
 
 }

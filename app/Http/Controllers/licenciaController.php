@@ -65,24 +65,22 @@ class licenciaController extends Controller
 
     public function buscar_dni_enfermedad (Request $request){
         $dni = $request->dni;
-
         $añoactual = Carbon::now();
         $año = $añoactual->format('Y');
         $fecha = $añoactual->format('d-m-Y');
         $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
         $hora = $hora_actual->format('H:i:s');
         $validardni = personasModel::where('dni', $dni)->get();
-        $id_persona = $validardni[0]->id;
-        $categoria =legajosModel::where('id_personas',$id_persona)->get();
-        $domicilio=domicilioPersonasModel::where('id_persona',$id_persona)->get();
-        $id_usuario = $categoria[0]->id_usuario;
-        if (!empty($validardni[0])) {
-            //  dd($categoria);
-            return view('paginas.licencias.formulario_enfermedad',compact('dni','hora','fecha','año','validardni','categoria','domicilio','id_usuario'));
-        } else {
-            return back()->with('No-Existe','');
-        }
+        if (count($validardni) > 0) {
+            $id_persona = $validardni[0]->id;
+            $categoria =legajosModel::where('id_personas',$id_persona)->get();
+            $domicilio=domicilioPersonasModel::where('id_persona',$id_persona)->get();
+            $id_usuario = $categoria[0]->id_usuario;
 
+                return view('paginas.licencias.formulario_enfermedad',compact('dni','hora','fecha','año','validardni','categoria','domicilio','id_usuario'));
+        }else {
+            return redirect()->back()->with('No-Existe', '');
+        }
     }
 
 
@@ -240,23 +238,23 @@ class licenciaController extends Controller
 
     public function buscar_dni_alta (Request $request){
         $dni = $request->dni;
+
         $añoactual = Carbon::now();
         $año = $añoactual->format('Y');
         $fecha = $añoactual->format('d-m-Y');
         $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
         $hora = $hora_actual->format('H:i:s');
         $validardni = personasModel::where('dni', $dni)->get();
-        $id_persona = $validardni[0]->id;
-        $categoria =legajosModel::where('id_personas',$id_persona)->get();
-        $domicilio=domicilioPersonasModel::where('id_persona',$id_persona)->get();
-        $id_usuario = $categoria[0]->id_usuario;
-        if (!empty($validardni[0])) {
-            //  dd($categoria);
-            return view('paginas.licencias.formulario_altamedica',compact('dni','hora','fecha','año','validardni','categoria','domicilio','id_usuario'));
-        } else {
-            return back()->with('No-Existe','');
-        }
+        if (count($validardni) > 0) {
+            $id_persona = $validardni[0]->id;
+            $categoria =legajosModel::where('id_personas',$id_persona)->get();
+            $domicilio=domicilioPersonasModel::where('id_persona',$id_persona)->get();
+            $id_usuario = $categoria[0]->id_usuario;
 
+                return view('paginas.licencias.formulario_altamedica',compact('dni','hora','fecha','año','validardni','categoria','domicilio','id_usuario'));
+        }else {
+            return redirect()->back()->with('No-Existe', '');
+        }
     }
 
 

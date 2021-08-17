@@ -36,13 +36,7 @@
             <div class="table-responsive">
                 <table class="table table-striped" id="tabla-informe">
                     <thead>
-
-
-                        @if (count($asistencia) == 0)
-                            <tr>
-                                <th></th>
-                            </tr>
-                        @else
+                        <tr>
                             <th>ID</th>
                             <th>Fecha</th>
                             <th>Dni</th>
@@ -52,15 +46,10 @@
                             <th>Hora de salida</th>
                             <th>Observación</th>
                             <th>Acciones</th>
-                        @endif
+                        </tr>
                     </thead>
 
                     <tbody>
-                        @if (count($asistencia) == 0)
-                        <tr>
-                            <td>Ingrese datos</td>
-                        </tr>
-                        @else
 
                         @foreach ($asistencia as $element)
                         <tr>
@@ -112,13 +101,6 @@
                             </td>
                         </tr>
                         @endforeach
-
-
-                        @endif
-
-
-
-
 
                    </tbody>
 
