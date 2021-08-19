@@ -465,7 +465,7 @@ class licenciaController extends Controller
     public function ver_articulos ($id){
 
         $decreto =decretosModel::where('id',$id)->get();
-        dd($decreto);
+        // dd($decreto);
         return view('paginas.decreto.ver_articulo');
     }
 }

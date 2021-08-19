@@ -193,6 +193,14 @@
                             </a>
 
                         </li>
+                        <li class="nav-item">
+
+                            <a href="{{ route('nota.lar') }}" class="nav-link">
+                                <i class=" far fa-circle nav-icon"></i>
+                                <p>Nota Lar</p>
+                            </a>
+
+                        </li>
 
                     </ul>
                 </li>

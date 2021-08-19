@@ -247,4 +247,9 @@ class vacacionesController extends Controller
 
     }
 
+    public function nota_lar(Request $request){
+
+
+        return view('paginas.vacaciones.nota_lar', compact('fecha','año,','hora'));
+    }
 }

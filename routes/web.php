@@ -13,33 +13,23 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/inicio','inicioController@index')->name('inicio.sistema');
 
 // RUTAS usuarios
 
 Route::get ('/usuarios','usuariosController@index')->name('mostrar.index.usuarios');
-
 Route::get('/formulario-usuarios','usuariosController@formulario')->name('formulario_usuario');
-
 Route::post('/registrar-usuario','usuariosController@registrar_usuario')->name('registrar.usuario');
-
 Route::get('/editar-usuario/{id}','usuariosController@mostrar_edicion_usuario')->name('formulario.edicion.usuario') ;
-
 Route::put('/actualizar-usuario','usuariosController@actualizar_usuario')->name('actualizar.usuario');
 
 // RUTAS Asistencias
 
 Route::get('/asistencias-index','asistenciaController@index')->name('asistencias.index');
-
 Route::post('/registrar-asistencia','asistenciaController@registrar_asistencia')->name('registrar.asistencia');
-
 Route::get('/informes','asistenciaController@informes')->name('asistencias.informe');
-
 Route::get('/informe-siap','asistenciaController@informe_siap')->name('informe.siap');
-
 Route::get('/formulario-observacion/{id}','asistenciaController@formulario_observacion')->name('formulario.observacion');
-
 Route::put('/registrar-observacion', 'asistenciaController@registrar_observacion')->name('registrar.observacion');
 
 Route::post('/lista-siap', 'asistenciaController@lista_siap')->name('lista.siap');
@@ -58,6 +48,7 @@ Route::get('/formulario-altamedica','licenciaController@formulario_altamedica')-
 Route::post('/buscar-dni-enfermedad','licenciaController@buscar_dni_enfermedad')->name('buscar.dni.enfermedad');
 Route::Post('/buscar-dni-alta','licenciaController@buscar_dni_alta')->name('buscar.dni.alta');
 //registro paso 2  licencias medicas
+
 Route::post('/maternidad-registro','licenciaController@maternidad_registro')->name('maternidad.registro');
 Route::get('/maternidad-paso2','licenciaController@maternidad_paso2')->name('maternidad.paso2');
 Route::post('/enfermedad-registro','licenciaController@enfermedad_registro')->name('enfermedad.registro');
@@ -66,11 +57,13 @@ Route::post('/alta-registro','licenciaController@alta_registro')->name('alta.reg
 Route::get('/alta-paso2/{id}','licenciaController@alta_paso2')->name('alta.paso2');
 Route::post('/actualizar-estado-licencia','licenciaController@actualizar_estado_licencia')->name('actualizar.estado.licencia');
 //finalizar licencia
+
 Route::get('/finalizar-enfermedad/{id}','licenciaController@finalizar_enfermedad')->name('finalizar.enfermedad');
 Route::get('/finalizar-alta-medica/{id}','licenciaController@finalizar_alta_medica')->name('finalizar.alta.medica');
 Route::post('/registrar-finalizar-enfermedad','licenciaController@registrar_finalizar_enfermedad')->name('registrar.finalizar.enfermedad');
 Route::post('/registrar-alta-medica','licenciaController@registrar_finalizar_alta')->name('registra.finalizar.alta');
 //RUTA PARA DECRETOS / LICENCIA
+
 Route::get('/decreto-index','licenciaController@decreto_index')->name('decreto.index');
 Route::get('/formulario-decreto','licenciaController@formulario_decreto')->name('formulario.decreto');
 Route::post('/registrar-decreto','licenciaController@registrar_decreto')->name('registrar.decreto');
@@ -79,6 +72,7 @@ Route::put('/actualizar-decreto','licenciaController@actualizar_decreto')->name(
 Route::get('/ver-articulos/{id}','licenciaController@ver_articulos')->name('ver.articulos');
 
 //RUTA PARA ARTICULO / LICENCIA
+
 Route::get('/articulo-index','licenciaController@articulo_index')->name('articulo.index');
 Route::get('/formulario-articulo','licenciaController@formulario_articulo')->name('formulario.articulo');
 Route::post('/registrar-articulo','licenciaController@registrar_articulo')->name('registrar.articulo');
@@ -104,3 +98,4 @@ Route::post('/registrar-vacaiones','vacacionesController@registrar_vacaciones')-
 Route::get('/historial-vacaiones/{id}','vacacionesController@historial_vacaciones')->name('historial.vacaciones');
 Route::get('/vacaciones-formulario-sali/{id}','vacacionesController@formulariosali_vacaciones')->name('formulariosali.vacaciones');
 Route::post('/registrarsali-vacaciones','vacacionesController@registrarsali_vacaciones')->name('registrarsali.vacaciones');
+Route::get('/nota-lar','vacacionesController@nota_lar')->name('nota.lar');
