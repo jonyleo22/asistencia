@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\legajosModel;
 use App\personasModel;
+use App\User;
 use App\vacacionesModel;
 use Carbon\Carbon;
 use DateInterval;
@@ -248,8 +249,13 @@ class vacacionesController extends Controller
     }
 
     public function nota_lar(Request $request){
-
-
-        return view('paginas.vacaciones.nota_lar', compact('fecha','año,','hora'));
+        $date =Carbon::now()->locale('es');
+        $legajo=legajosModel::where('id_usuario', Auth::User()->id)->get();
+        $numero_legajo=$legajo[0]->numero_legajo;
+        $id_persona=$legajo[0]->id_personas;
+        $dias_disponible = vacacionesModel::where('id_persona',$id_persona)->get()
+        ->last();
+        $dias = $dias_disponible->dias_disponible;
+        return view('paginas.vacaciones.nota_lar',compact('date','numero_legajo','dias'));
     }
 }
