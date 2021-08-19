@@ -402,15 +402,15 @@ class licenciaController extends Controller
 
         }
         $id_decreto = $id;
-
-        return view('paginas.decreto.decreto_editar', compact('operador','decreto','id_decreto','articulos','dato_articulos'));
+        $articulos_todos = articulosModel::all();
+        return view('paginas.decreto.decreto_editar', compact('operador','decreto','id_decreto','articulos','dato_articulos','articulos_todos'));
 
     }
     public function actualizar_decreto(Request $request){
         $decreto =array(
             "numero_decreto" => $request->numero_decreto,
 
-            "numero_articulo" => $request->numero_articulo
+            "id_articulos" => json_encode($request->id_articulos)
         );
         $decreto =decretosModel::findOrFail($request->id_decreto)->update($decreto);
 
