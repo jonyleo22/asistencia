@@ -56,7 +56,7 @@
 
                             <div class="col-lg-12">
                                 <h6>Tengo el agrado de dirigirme a Ud. a fin de solicitar la autorización de la licencia anual reglamentaria, corresponde {{$dias}} días LAR disponibles acumulados.
-                                hacer uso de ______días a partir del ____/____ /______ hasta el ____/____ /______  inclusive. </h6>
+                                hacer uso de ______días a partir del {{$fecha_desde}} hasta el {{$fecha_hasta}} inclusive. </h6>
 
                             </div>
 

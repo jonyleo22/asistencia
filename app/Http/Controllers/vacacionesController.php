@@ -250,12 +250,14 @@ class vacacionesController extends Controller
 
     public function nota_lar(Request $request){
         $date =Carbon::now()->locale('es');
+        $fecha_desde =$request->fecha_desde;
+        $fecha_hasta=$request->fecha_hasta;
         $legajo=legajosModel::where('id_usuario', Auth::User()->id)->get();
         $numero_legajo=$legajo[0]->numero_legajo;
         $id_persona=$legajo[0]->id_personas;
         $dias_disponible = vacacionesModel::where('id_persona',$id_persona)->get()
         ->last();
         $dias = $dias_disponible->dias_disponible;
-        return view('paginas.vacaciones.nota_lar',compact('date','numero_legajo','dias'));
+        return view('paginas.vacaciones.nota_lar',compact('date','numero_legajo','dias','fecha_desde','fecha_hasta'));
     }
 }
