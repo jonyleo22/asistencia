@@ -266,7 +266,7 @@ class licenciaController extends Controller
         $año = $fecha->format('Y');
         $hora_actual = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
         $hora = $hora_actual->format('H:i:s');
-        $id_usuario = Auth::User()->id;
+        $id_usuario = $request->id_usuario;
         $id_legajo = legajosModel::where('id_usuario', $id_usuario)->get();
         // dd($id_legajo[0]->id);
         $licencia = new LicenciasModel();
