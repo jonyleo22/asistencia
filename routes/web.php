@@ -98,4 +98,5 @@ Route::post('/registrar-vacaiones','vacacionesController@registrar_vacaciones')-
 Route::get('/historial-vacaiones/{id}','vacacionesController@historial_vacaciones')->name('historial.vacaciones');
 Route::get('/vacaciones-formulario-sali/{id}','vacacionesController@formulariosali_vacaciones')->name('formulariosali.vacaciones');
 Route::post('/registrarsali-vacaciones','vacacionesController@registrarsali_vacaciones')->name('registrarsali.vacaciones');
-Route::get('/nota-lar','vacacionesController@nota_lar')->name('nota.lar');
+Route::get('/requisitos-nota','vacacionesController@requisitos_nota')->name('requisitos.nota');
+Route::post('/nota-lar','vacacionesController@nota_lar')->name('nota.lar');
