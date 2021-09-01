@@ -19,13 +19,13 @@
                         <div class="col-lg-12">
                             <strong>
                                 <h3>
-                                    A-Orden de Reconocimiento Médico a Domicilio Nº /{{ $año }}.
+                                    A-Orden de Reconocimiento Médico a Consultorio Nº /{{ $año }}.
                             </strong></h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <h5> Se solicita reconocimiento médico a domicilio para el agente:</h5>
+                            <h5> Se solicita reconocimiento médico a consultorio para el agente:</h5>
                         </div>
                     </div>
                     <div class="row">

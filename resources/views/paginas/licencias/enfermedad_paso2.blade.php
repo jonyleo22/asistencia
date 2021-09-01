@@ -23,7 +23,7 @@
                             <div class="col-12 pull-left">
                                 <strong>
                                     <h4>
-                                        A-Orden de Reconocimiento Médico a Domicilio Nº {{$n_licencia}}.
+                                        A-Orden de Reconocimiento Médico a Consultorio Nº {{$n_licencia}}.
                                 </strong></h4>
                             </div>
                         </div>
@@ -155,7 +155,7 @@
                             <div class="col-12 pull-left">
                                 <strong>
                                     <h4>
-                                        B-Orden de Reconocimiento Médico a Domicilio Nº {{$n_licencia}}.
+                                        B-Orden de Reconocimiento Médico a Consultorio Nº {{$n_licencia}}.
                                 </strong></h4>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
                            <div class="col-12 pull-left">
                                 <strong>
                                     <h4>
-                                        C-Orden de Reconocimiento Médico a Domicilio Nº {{$n_licencia}}.
+                                        C-Orden de Reconocimiento Médico a Consultorio Nº {{$n_licencia}}.
                                 </strong></h4>
                             </div>
                         </div>
