@@ -104,14 +104,14 @@
                                 <strong></strong><br>
                             </div>
                             <div class="col-sm-5 invoice-col">
-                              <strong>___________________________</strong><br>
+                              <strong>_________________________________________</strong><br>
                               <strong>Firma y Sello del emisor de la orden</strong>
                             </div>
                         </div>
                         <br>
                         <div class="row invoice-info">
                             <div class="col-sm-6 invoice-col">
-                                <strong>Recepción:________________________ Hora _______________   Fecha _______________</strong><br>
+                                <strong>Recepción:_____________ Hora ___________ Fecha ___________</strong><br>
                             </div>
                             <!-- <div class="col-sm-3 invoice-col">
                                 <strong>_________________</strong><br>
@@ -159,6 +159,15 @@
                         </div>
                         <br>
                        <hr>
+                       <div class="row invoice-info">
+                            <div class="col-sm-6 invoice-col">
+                            </div>
+                            <div class="col-sm-5 invoice-col">
+                               <br>
+                               <strong>(Talón para el Organismo de revista del agente)</strong>
+                                <br>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-12 pull-left">
                                 <strong>
@@ -173,8 +182,8 @@
                               El agente <strong>{{ $persona[0]->nombre}} {{$persona[0]->apellido}}</strong> - categoria <strong>{{ $legajo[0]->categoria }}</strong> - D.N.I. N° <strong>{{ $persona[0]->dni }}</strong>
                             </div>
                             <div class="col-sm-12 invoice-col">
-                               Que presta servicios en <strong>Tesoreria General de la Provincia de Misiones</strong>,  se encuentra
-                               comprendido en los términos del Decreto N°_________________Art.N°_________________ <br> <br> conforme a ello se le concedió
+                               Que presta servicios en <strong>Tesoreria General de la Provincia de Misiones</strong>,se encuentra
+                               comprendido en los términos del Decreto N°____________Art.N°________ <br> <br> conforme a ello se le concedió
                                 Licencia Médica por_________días. Desde_________________Hasta_________________
                               </div>
                         </div>
@@ -182,15 +191,19 @@
                         <br>
                         <br>
                         <div class="row invoice-info">
-                            <div class="col-sm-6 invoice-col">
-                                <strong>_________________</strong><br>
-                                Fecha
+                            <div class="col-sm-3 invoice-col">
+                                Posadas,______________________<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha
                             </div>
-                            <div class="col-sm-5 invoice-col">
+                            <div class="col-sm-3 invoice-col">
                                <br>
-                               <br>
-                              <strong>Firma y Sello del Sello del Médico</strong>
+
+                            </div>
+                            <div class="col-sm-3 invoice-col">
                                 <br>
+                                <br>
+                                <br>
+                                <strong>Firma y Sello del Médico</strong>
                             </div>
                         </div>
                         <hr>
@@ -205,30 +218,43 @@
                         <br>
                        <div class="row invoice-info">
                             <div class="col-sm-12 invoice-col">
-                              El agente <strong>{{ $persona[0]->nombre}} {{$persona[0]->apellido}}</strong> categoria <strong>{{ $legajo[0]->categoria }}</strong> D.N.I. N° <strong>{{ $persona[0]->dni }}</strong>
+                              El agente <strong>{{ $persona[0]->nombre}} {{$persona[0]->apellido}}</strong> - categoria <strong>{{ $legajo[0]->categoria }}</strong> - D.N.I. N° <strong>{{ $persona[0]->dni }}</strong>
                             </div>
                             <div class="col-sm-12 invoice-col">
                                Que presta servicios en <strong>Tesoreria General de la Provincia de Misiones</strong>,  se encuentra
-                               comprendido en los términos del Decreto N°_________Art.N°__________ <br> conforme a ello se le concedió
-                                Licencia Médica por_________días. Desde____________Hasta____________
+                               comprendido en los términos del Decreto N°____________Art.N°________ <br><br> conforme a ello se le concedió
+                                Licencia Médica por_________días. Desde_________________Hasta_________________
                               </div>
                         </div>
                         <br>
                         <br>
                         <div class="row invoice-info">
-                            <div class="col-sm-6 invoice-col">
-                                <strong>_________________</strong><br>
-                                Fecha
+                            <div class="col-sm-3 invoice-col">
+                                Posadas,______________________<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha
                             </div>
-                            <div class="col-sm-5 invoice-col">
-                              <strong>Firma y Sello del Sello del Médico</strong>
+                            <div class="col-sm-3 invoice-col">
+                               <br>
+
+                            </div>
+                            <div class="col-sm-3 invoice-col">
+                                <br>
+                                <br>
+                                <br>
+                                <strong>Firma y Sello del Médico</strong>
                             </div>
                         </div>
-
+                        <strong><hr></strong>
+                       <div class="row invoice-info">
+                            <div class="col-sm-12 invoice-col">
+                               <br>
+                               <strong>Este talón quedará en poder del agente, quién deberá presentarlo en su Organismo de revista el día que re reintegra a sus funciones.</strong>
+                                <br>
+                            </div>
+                        </div>
                         <!-- Cosito para imprimir-->
                         <br>
                         <div class="row no-print">
-
                             <div class="col-12">
                                 @if ($imprimir->estado_licencia == 2 )
 
