@@ -75,7 +75,6 @@
                                 </h4>
                             </div>
                         </div>
-                        <br>
                         <div class="row invoice-info">
                             <div class="col-sm-3 invoice-col">
                                 <strong>_________________</strong><br>
@@ -99,18 +98,24 @@
                         </div>
                         <br>
                         <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                         <div class="row invoice-info">
                             <div class="col-sm-6 invoice-col">
-                                <strong>_________________</strong><br>
-                                Firma
+                                <strong></strong><br>
+
                             </div>
                             <div class="col-sm-5 invoice-col">
-                              <strong>Sello del emisor de la orden</strong>
+                              <strong>___________________________</strong><br>
+                              <strong>Firma y Sello del emisor de la orden</strong>
                             </div>
                         </div>
+                        <br>
                         <div class="row invoice-info">
                             <div class="col-sm-3 invoice-col">
-                                <strong>Recepcón:</strong><br>
+                                <strong>Recepción:</strong><br>
                             </div>
                             <div class="col-sm-3 invoice-col">
                                 <strong>_________________</strong><br>

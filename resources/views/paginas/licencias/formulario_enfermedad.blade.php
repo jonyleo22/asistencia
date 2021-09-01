@@ -133,7 +133,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-3">
-                            <strong>Recepión</strong>
+                            <strong>Recepción</strong>
                         </div>
                         <div class="col-lg-3">
                             <strong>Hora</strong>
