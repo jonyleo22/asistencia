@@ -76,7 +76,6 @@ class licenciaController extends Controller
             $categoria =legajosModel::where('id_personas',$id_persona)->get();
             $domicilio=domicilioPersonasModel::where('id_persona',$id_persona)->get();
             $id_usuario = $categoria[0]->id_usuario;
-
                 return view('paginas.licencias.formulario_enfermedad',compact('dni','hora','fecha','año','validardni','categoria','domicilio','id_usuario'));
         }else {
             return redirect()->back()->with('No-Existe', '');

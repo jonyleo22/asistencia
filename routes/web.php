@@ -38,6 +38,10 @@ Route::post('/lista-siap', 'asistenciaController@lista_siap')->name('lista.siap'
 
 Route::get('/inasistencia-index','inasistenciaController@index')->name('inasistencia.index');
 Route::get('/registrar-inasistencias','inasistenciaController@registrar_inasistencias')->name('registrar.inasistencias');
+Route::get('/index-ausente-aviso','inasistenciaController@index_ausente_aviso')->name('index.ausente.aviso');
+Route::get('/dni-ausente-aviso','inasistenciaController@dni_ausente_aviso')->name('dni.ausente.aviso');
+Route::post('/dni-form-ausente-aviso','inasistenciaController@dni_form_ausente_aviso')->name('dni.form.ausente.aviso');
+
 
 // RUTAS licencias
 

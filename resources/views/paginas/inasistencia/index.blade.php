@@ -8,8 +8,16 @@
     </div>
     <div class="card-header">
         <div class="btn-group">
-            <a href="{{ route('registrar.inasistencias') }}" type="button" class="btn btn-block btn-outline-danger">
-                Registrar inasistencias</a>
+            <div class="">
+                <a href="{{ route('registrar.inasistencias') }}" type="button" class="btn btn-block btn-outline-danger">
+                    Registrar inasistencias</a>
+            </div>
+
+                {{--  <div class="px-2">
+                    <a href="{{ route('dni.ausente.aviso') }}" type="button" class="btn btn-block btn-outline-primary">
+                        Ausente con aviso</a>
+                </div>  --}}
+
         </div>
     </div>
     <div class="card-body">

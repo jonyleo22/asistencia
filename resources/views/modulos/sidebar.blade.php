@@ -110,6 +110,18 @@
 
                     </ul>
                     @endif
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+
+                            <a href="{{ route('index.ausente.aviso') }}" class="nav-link">
+                                <i class=" far fa-circle nav-icon"></i>
+                                <p>Ausentes con aviso</p>
+                            </a>
+
+                        </li>
+
+                    </ul>
 
 
                 </li>
