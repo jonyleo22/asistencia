@@ -9,7 +9,7 @@
                     <div class="row text-center">
                         <div class="col-lg-12">
                             <ins>
-                                <h1>Formulario de Licencia</h1>
+                                <h1>Licencia Médica</h1>
 
                             </ins>
                         </div>
@@ -23,6 +23,7 @@
                             </strong></h3>
                         </div>
                     </div>
+                    <br>
                     <div class="row">
                         <div class="col-lg-12">
                             <h5> Se solicita reconocimiento médico a consultorio para el agente:</h5>

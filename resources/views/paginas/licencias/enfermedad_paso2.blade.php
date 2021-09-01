@@ -13,7 +13,7 @@
                             <div class="col-12 text-center">
                                 <strong>
                                     <h3>
-                                        Formulario de Licencia
+                                        Licencia Médica
                                     </h3>
                                 </strong>
                             </div>
@@ -27,12 +27,10 @@
                                 </strong></h4>
                             </div>
                         </div>
-                        <br>
                         <div class="row invoice-info">
                             <div class="col-sm-4 invoice-col">
                                 <strong>Apellido</strong><br>
                                 {{$persona[0]->apellido}}
-
                             </div>
                             <div class="col-sm-4 invoice-col">
                                 <strong>Nombre:</strong><br>
@@ -42,7 +40,6 @@
                             <div class="col-sm-4 invoice-col">
                                 <strong>Edad</strong><br>
                                 {{$persona[0]->edad}}
-
                                 <br>
                             </div>
                         </div>
@@ -50,19 +47,16 @@
                             <div class="col-sm-4 invoice-col">
                                 <strong>DNI:</strong><br>
                                 {{$persona[0]->dni}}
-
                                 <br>
                             </div>
                             <div class="col-sm-4 invoice-col">
                                 <strong>Categoría:</strong><br>
                                 {{$legajo[0]->categoria}}
-
                                 <br>
                             </div>
                             <div class="col-sm-4 invoice-col">
                                 <strong>Domicilio:</strong><br>
                                 {{$domicilio[0]->descripcion_domicilio}}
-
                                 <br>
                             </div>
                         </div>
@@ -75,6 +69,9 @@
                                 </h4>
                             </div>
                         </div>
+                        <br>
+                        <br>
+                        <br>
                         <div class="row invoice-info">
                             <div class="col-sm-3 invoice-col">
                                 <strong>_________________</strong><br>
@@ -105,7 +102,6 @@
                         <div class="row invoice-info">
                             <div class="col-sm-6 invoice-col">
                                 <strong></strong><br>
-
                             </div>
                             <div class="col-sm-5 invoice-col">
                               <strong>___________________________</strong><br>
@@ -114,17 +110,17 @@
                         </div>
                         <br>
                         <div class="row invoice-info">
-                            <div class="col-sm-3 invoice-col">
-                                <strong>Recepción:</strong><br>
+                            <div class="col-sm-6 invoice-col">
+                                <strong>Recepción:________________________ Hora _______________   Fecha _______________</strong><br>
                             </div>
-                            <div class="col-sm-3 invoice-col">
+                            <!-- <div class="col-sm-3 invoice-col">
                                 <strong>_________________</strong><br>
                                 Hora
                             </div>
                             <div class="col-sm-3 invoice-col">
                                 <strong>_______________________</strong><br>
                                 Fecha
-                            </div>
+                            </div> -->
                         </div>
                         <br>
                         <div class="row invoice-info">
@@ -132,20 +128,27 @@
                                 Se ha dado cumplimiento a la presente Orden con los siguientes resultados:
                             </div>
                         </div>
+                        <br>
                         <div class="row invoice-info">
                             <div class="col-sm-12 invoice-col">
-                              El causante se encuentra comprendido en los términos del Decreto N°__________ Art. N°________
+                              El causante se encuentra comprendido en los términos del Decreto N°______________________ Art. N°______________________
                             </div>
+                            <br>
+                            <br>
                             <div class="col-sm-12 invoice-col">
-                               Por lo que le corresponde Licencia Médica, Desde___________Hasta__________
+                               Por lo que le corresponde Licencia Médica, Desde______________________Hasta______________________
                               </div>
                         </div>
                         <br>
                         <br>
                         <div class="row invoice-info">
                             <div class="col-sm-3 invoice-col">
-                                _________________<br>
-                                Fecha
+                                Posadas,______________________<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha
+                            </div>
+                            <div class="col-sm-3 invoice-col">
+                               <br>
+
                             </div>
                             <div class="col-sm-3 invoice-col">
                                 <br>
@@ -167,12 +170,12 @@
                         <br>
                         <div class="row invoice-info">
                             <div class="col-sm-12 invoice-col">
-                              El agente <strong>{{ $persona[0]->nombre}} {{$persona[0]->apellido}}</strong> categoria <strong>{{ $legajo[0]->categoria }}</strong> D.N.I. N° <strong>{{ $persona[0]->dni }}</strong>
+                              El agente <strong>{{ $persona[0]->nombre}} {{$persona[0]->apellido}}</strong> - categoria <strong>{{ $legajo[0]->categoria }}</strong> - D.N.I. N° <strong>{{ $persona[0]->dni }}</strong>
                             </div>
                             <div class="col-sm-12 invoice-col">
                                Que presta servicios en <strong>Tesoreria General de la Provincia de Misiones</strong>,  se encuentra
-                               comprendido en los términos del Decreto N°_________Art.N°__________ <br> conforme a ello se le concedió
-                                Licencia Médica por_________días. Desde____________Hasta____________
+                               comprendido en los términos del Decreto N°_________________Art.N°_________________ <br> <br> conforme a ello se le concedió
+                                Licencia Médica por_________días. Desde_________________Hasta_________________
                               </div>
                         </div>
                         <br>
