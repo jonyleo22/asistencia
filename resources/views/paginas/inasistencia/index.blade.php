@@ -48,6 +48,9 @@
                             @if ($element->estado == 4)
                             <div class=" badge badge-info">Licencia</div>
                             @endif
+                            @if ($element->estado == 5)
+                            <div class=" badge badge-danger">Ausente con aviso</div>
+                            @endif
                         <td>
 
                         </td>

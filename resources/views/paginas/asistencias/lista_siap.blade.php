@@ -39,7 +39,7 @@
                                 @php
                                 $contar = DB::table('asistencias')
                                 ->where('id_usuario', $element->id)
-                                ->where('estado', 2)
+                                ->whereIn('estado', [2,5])
                                 ->whereBetween('fecha', [$fecha_desde, $fecha_hasta])
                                 ->get();
                                 $aux = count($contar);

@@ -31,6 +31,8 @@ Route::get('/informes','asistenciaController@informes')->name('asistencias.infor
 Route::get('/informe-siap','asistenciaController@informe_siap')->name('informe.siap');
 Route::get('/formulario-observacion/{id}','asistenciaController@formulario_observacion')->name('formulario.observacion');
 Route::put('/registrar-observacion', 'asistenciaController@registrar_observacion')->name('registrar.observacion');
+Route::post('/dni-ausente-aviso','inasistenciaController@dni_ausente_aviso')->name('dni.ausente.aviso');
+
 
 Route::post('/lista-siap', 'asistenciaController@lista_siap')->name('lista.siap');
 
@@ -39,8 +41,12 @@ Route::post('/lista-siap', 'asistenciaController@lista_siap')->name('lista.siap'
 Route::get('/inasistencia-index','inasistenciaController@index')->name('inasistencia.index');
 Route::get('/registrar-inasistencias','inasistenciaController@registrar_inasistencias')->name('registrar.inasistencias');
 Route::get('/index-ausente-aviso','inasistenciaController@index_ausente_aviso')->name('index.ausente.aviso');
-Route::get('/dni-ausente-aviso','inasistenciaController@dni_ausente_aviso')->name('dni.ausente.aviso');
+Route::get('/dni-ausente-aviso','inasistenciaController@dni_ausente_aviso_nota')->name('dni.ausente.aviso');
 Route::post('/dni-form-ausente-aviso','inasistenciaController@dni_form_ausente_aviso')->name('dni.form.ausente.aviso');
+Route::get('/buscar-dni-ausente-aviso','inasistenciaController@buscar_dni_ausente_aviso')->name('buscar.dni.ausente.aviso');
+Route::post('/form-registrar-ausente-aviso','inasistenciaController@form_registrar_ausente_aviso')->name('form.registrar.ausente.aviso');
+Route::get('/form-registrar-ausente','inasistenciaController@form_registrar_ausente')->name('form.registrar.ausente');
+Route::post('/registrar-ausente-aviso','inasistenciaController@registrar_ausente_aviso')->name('registrar.ausente.aviso');
 
 
 // RUTAS licencias

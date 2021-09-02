@@ -50,7 +50,7 @@
                     <div class="col-2">
                     </div>
                     <div class="col-10">
-                        POR LA PRESENTE SE COMUNICA LA INASISTENCIA CON AVISO EN EL DÍA DE LA FECHA DEL AGENTE {{ $validardni[0]->apellido }}, {{ $validardni[0]->nombre }} LEGAJO N° {{ $categoria[0]->numero_legajo }}.
+                        POR LA PRESENTE SE COMUNICA LA INASISTENCIA CON AVISO EN EL DÍA DE LA FECHA DEL AGENTE {{ $apellido }} {{ $nombre }} LEGAJO N° {{ $categoria[0]->numero_legajo }}.
                         POR RAZONES DE: {{ $motivo }}.
                     </div>
                 </div>

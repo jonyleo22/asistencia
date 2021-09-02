@@ -14,13 +14,13 @@
             Generar nota Ausente con aviso</a>
         </div>
         <div class="px-2">
-            <a href="#" type="button" class="btn btn-block btn-outline-danger">
+            <a href="{{ route('buscar.dni.ausente.aviso') }}" type="button" class="btn btn-block btn-outline-danger">
                 Registrar Ausente con aviso</a>
         </div>
 
-
     </div>
 </div>
+
 <div class="card-body">
     <div class="table-responsive">
         <table class="table table-striped">
@@ -38,12 +38,12 @@
     </div>
 </div>
 </div>
-{{--
-@if (Session::has('ok-inasistencias'))
+
+@if (Session::has('ok-ausente'))
 
 <script>
-    toastr.success('Inasistencias registradas correctamente.')
+    toastr.success('Ausente con aviso registrado correctamente')
 </script>
 
-@endif  --}}
+@endif
 @endsection
