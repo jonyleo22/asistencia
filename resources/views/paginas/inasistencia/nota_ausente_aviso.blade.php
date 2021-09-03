@@ -58,13 +58,16 @@
             </div>
             <div class="row no-print text-center">
 
-                <div class="col-12">
+                <div class="col-12 p-3">
                     <a onclick="javascript:window.print()" class="btn btn-default"><i
                             class="fas fa-print"></i>Imprimir</a>
+                    <a href="{{route ('index.ausente.aviso')}}" class="btn btn-secondary">Volver</a>
 
                 </div>
 
             </div>
+
+
         </div>
     </div>
     @endsection

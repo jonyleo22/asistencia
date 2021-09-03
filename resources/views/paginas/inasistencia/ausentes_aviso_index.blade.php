@@ -13,13 +13,27 @@
                     <a href="{{ route('dni.ausente.aviso') }}" type="button" class="btn btn-block btn-outline-primary">
             Generar nota Ausente con aviso</a>
         </div>
+
+
+
+    </div>
+
+    <div class="btn-group">
+        @if (Auth::User()->roles_id ==1)
+
         <div class="px-2">
             <a href="{{ route('buscar.dni.ausente.aviso') }}" type="button" class="btn btn-block btn-outline-danger">
                 Registrar Ausente con aviso</a>
         </div>
 
+        @endif
+
+
     </div>
+
 </div>
+
+@if (Auth::User()->roles_id ==1)
 
 <div class="card-body">
     <div class="table-responsive">
@@ -37,6 +51,9 @@
         </table>
     </div>
 </div>
+
+@endif
+
 </div>
 
 @if (Session::has('ok-ausente'))

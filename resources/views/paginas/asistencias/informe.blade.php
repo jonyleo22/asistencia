@@ -71,6 +71,9 @@
                             @if ( $element->hora_entrada == null && $element->estado == 4)
                             <div class='badge badge-secondary'>Licencia Médica</div>
                             @endif
+                            @if ( $element->hora_entrada == null && $element->estado == 5)
+                            <div class='badge badge-danger'>Ausente con Aviso</div>
+                            @endif
                             </td>
                             <td>
                                 @if ( $element->hora_salida != null)
@@ -85,6 +88,9 @@
                                 @if ( $element->hora_salida == null && $element->estado == 4)
                                 <div class='badge badge-secondary'>Licencia Médica</div>
                                 @endif
+                                @if ( $element->hora_entrada == null && $element->estado == 5)
+                            <div class='badge badge-danger'>Ausente con Aviso</div>
+                            @endif
                             </td>
                             <td>
                                 @if ($element->observacion_asistencia != null)
