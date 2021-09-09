@@ -404,12 +404,14 @@ class licenciaController extends Controller
         $operador = Auth::user()->apellido . ' ' . Auth::user()->nombre;
         $decreto = decretosModel::findOrFail($id);
         $articulos = json_decode($decreto->id_articulos);
+
         $dato_articulos = array();
         foreach ($articulos as $element ) {
             $aux = articulosModel::where('id',$element)->get();
             array_push($dato_articulos,$aux);
 
         }
+
         $id_decreto = $id;
         $articulos_todos = articulosModel::all();
         return view('paginas.decreto.decreto_editar', compact('operador','decreto','id_decreto','articulos','dato_articulos','articulos_todos'));
