@@ -151,6 +151,13 @@ class licenciaController extends Controller
 
     public function registrar_finalizar_enfermedad(Request $request)
     {
+        $legajo = LicenciasModel::find($request->id_enfermedad);
+        $idlegajo = $legajo->id_legajo;
+
+        $buscarlegajo = legajosModel::find($idlegajo);
+        $iduser = $buscarlegajo->id_usuario;
+
+
 
         $ruta = "archivo_licencias/".date("Ymdhisv").".".$request->archivo->guessExtension();
         move_uploaded_file($request->archivo, $ruta);
@@ -181,8 +188,11 @@ class licenciaController extends Controller
 
         // recorres las fechas y haces tu insert
 
-        $id_usuario = Auth::user()->id;
+        //buscar usuario
 
+        $id_usuario = $iduser;
+
+        $idlegajo = LicenciasModel::find($request->id_enfermedad);
         foreach ($period as $key => $value) {
             $date = $value->format('Y-m-d');
             // $dia = $date("D");
