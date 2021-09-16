@@ -40,12 +40,21 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Estado</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ( $datos as $element )
+
+                <td>{{$element->id}}</td>
+                <td>{{$element->id_usuario}}</td>
+                <td>apenillido</td>
+                <td>estado</td>
+
+                @endforeach
 
             </tbody>
         </table>
