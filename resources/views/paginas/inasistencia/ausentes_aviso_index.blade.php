@@ -41,19 +41,21 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
+                    <th>Fecha</th>
                     <th>Apellido</th>
-                    <th>Estado</th>
+                    <th>Nombre</th>
+                    <th>PDF</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ( $datos as $element )
-
+                @foreach ( $ausente as $element )
+                <tr>
                 <td>{{$element->id}}</td>
-                <td>{{$element->id_usuario}}</td>
-                <td>apenillido</td>
-                <td>estado</td>
-
+                <td>{{$element->created_at}}</td>
+                <td>{{$element->apellido}}</td>
+                <td>{{$element->nombre}}</td>
+                <td><a href="{{ $element->ruta_ausente_aviso }}" title="Ver PDF"  class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-eye"></i></a></td>
+            </tr>
                 @endforeach
 
             </tbody>

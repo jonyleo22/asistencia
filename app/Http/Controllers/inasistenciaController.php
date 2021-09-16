@@ -104,11 +104,13 @@ class inasistenciaController extends Controller
     //index ausente con aviso
     public function index_ausente_aviso(){
 
-        $datos = AusenteAvisoModel::all();
+        $ausente = AusenteAvisoModel::join('users','users.id','ausentes_aviso.id_usuario')
+        ->select('ausentes_aviso.id','ausentes_aviso.created_at','ausentes_aviso.ruta_ausente_aviso','users.apellido','users.nombre')
+        ->orderby('ausentes_aviso.id','desc')
+        ->get();
 
 
-
-        return view('paginas.inasistencia.ausentes_aviso_index', compact('datos'));
+        return view('paginas.inasistencia.ausentes_aviso_index', compact('ausente'));
     }
 
     public function buscar_dni_ausente_aviso(){
