@@ -67,6 +67,7 @@
                     </ul>
                     @endif
 
+
                     @if (Auth::User()->roles_id == 1)
                     <ul class="nav nav-treeview">
 
@@ -75,6 +76,20 @@
                             <a href="{{ route('asistencias.informe') }}" class="nav-link">
                                 <i class=" far fa-circle nav-icon"></i>
                                 <p>Listar asistencias</p>
+                            </a>
+
+                        </li>
+
+                    </ul>
+                    @endif
+                    @if (Auth::User()->roles_id == 1)
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+
+                            <a href="{{route('siap.index') }}" class="nav-link">
+                                <i class=" far fa-circle nav-icon"></i>
+                                <p>Informe mensual </p>
                             </a>
 
                         </li>

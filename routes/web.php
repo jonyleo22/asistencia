@@ -110,3 +110,7 @@ Route::get('/vacaciones-formulario-sali/{id}','vacacionesController@formulariosa
 Route::post('/registrarsali-vacaciones','vacacionesController@registrarsali_vacaciones')->name('registrarsali.vacaciones');
 Route::get('/requisitos-nota','vacacionesController@requisitos_nota')->name('requisitos.nota');
 Route::post('/nota-lar','vacacionesController@nota_lar')->name('nota.lar');
+
+//buscar Lista SIAP
+Route::get('/siap-index','siapController@index')->name('siap.index');
+Route::post('/lista-siap-mes','siapController@lista_siap_mes')->name('lista.siap.mes');
