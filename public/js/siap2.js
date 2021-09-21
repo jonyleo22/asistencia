@@ -1,7 +1,10 @@
+
 $(document).ready(function () {
-    $('#tabla-siap').DataTable({
+    $('#tabla-siap2').DataTable({
         dom: 'Bfrtip',
-        buttons: [{
+        "ordering": false,
+        "pageLength": 50,
+                buttons: [{
                 extend: 'print',
                 autoPrint: false,
                 text: 'Imprimir',
@@ -28,4 +31,3 @@ $(document).ready(function () {
         ],
     });
 });
-

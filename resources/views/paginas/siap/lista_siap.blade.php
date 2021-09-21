@@ -1,47 +1,55 @@
 @extends('plantilla')
 @section('content')
 <div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="card-title"> <strong>Periódo: </strong> {{ $fecha_desde }} - {{ $fecha_hasta }}
+                </div>
+                <table class="table table-striped text-sm" id="tabla-siap2">
+                    <thead>
+                        <tr>
+                            <th>Apellido y Nombre</th>
+                            @foreach ($fechas as $item)
 
-    <table class=" table-bordered ">
-            <thead>
-                <tr>
-                    <th>Apellido y Nombre</th>
-                    @foreach ($fechas as $item)
-
-                        <th class="px-1">
-                            <td>@php echo date('d-m-Y', strtotime($item->fecha)); @endphp</td>
-                        </th>
+                            <th class="px-1">
+                            @php echo date('d-m-Y', strtotime($item->fecha)); @endphp
+                            </th>
 
 
-                    @endforeach
+                            @endforeach
 
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($usuarios as $element)
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($usuarios as $element)
 
-                <tr>
-                    <td>
-                        {{$element->apellido}} {{$element->nombre}}
-                    </td>
-                    <td>
-                        @php
-                        $contar = DB::table('asistencias')
-                        ->where('id_usuario', $element->id)
-                        ->whereIn('estado', [1,3,4])
-                        ->whereBetween('fecha', [$fecha_desde, $fecha_hasta])
-                        ->select('asistencias.estado')
-                        ->get();
+                        <tr>
+                            <td>
+                                {{$element->apellido}} {{$element->nombre}}
+                            </td>
+                                @foreach ($fechas as $items)
+                                <td>
+                                @php
+                                $contar = DB::table('asistencias')
+                                ->where('id_usuario', $element->id)
+                                ->where('asistencias.fecha', $items->fecha )
+                                ->get();
+                                foreach ($contar as $valor)
+                                {
+                                    echo "$valor->estado";
+                                }
+                                @endphp
+                                </td>
+                                @endforeach
+                        </tr>
 
-                        echo $contar;
-                        @endphp
-                    </td>
-                </tr>
-
-                @endforeach
-            </tbody>
-    </table>
-
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 

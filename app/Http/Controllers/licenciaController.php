@@ -143,9 +143,10 @@ class licenciaController extends Controller
 
     public function finalizar_enfermedad($id)
     {
-        $decretos = decretosModel::join('articulos', 'articulos.id', 'decretos.id_articulos')->get();
+        $decretos = decretosModel::all();
 
         $id_enfermedad = $id;
+
         return view('paginas.licencias.finalizar_enfermedad', compact('id_enfermedad', 'decretos'));
     }
 
@@ -346,31 +347,6 @@ class licenciaController extends Controller
 
         return redirect('/licencias-index')->with('okey-finalizar alta', '');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     //ALTA DE DECRETO
     public function decreto_index()

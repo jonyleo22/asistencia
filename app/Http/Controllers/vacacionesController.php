@@ -210,7 +210,6 @@ class vacacionesController extends Controller
             $dato_vacaciones->ruta_lar	= $ruta;
             $dato_vacaciones->save();
 
-
             $fecha_desde = $request->fecha_desde_lar;
             $fecha_hasta = $request->fecha_hasta_lar;
             // tus datos de entrada

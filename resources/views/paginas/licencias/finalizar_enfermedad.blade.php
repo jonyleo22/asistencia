@@ -65,7 +65,7 @@
 
                                         <option value="{{ $element->id }}">
                                             N° Decreto:
-                                            {{ $element->numero_decreto }} | Artículo: {{$element->numero_articulo}} </option>
+                                            {{ $element->numero_decreto }} </option>
 
 
                                     @endforeach
