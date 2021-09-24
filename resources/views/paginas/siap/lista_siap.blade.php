@@ -14,7 +14,7 @@
                             @foreach ($fechas as $item)
 
                             <th class="px-1">
-                            @php echo date('d-m-Y', strtotime($item->fecha)); @endphp
+                            @php echo date('d', strtotime($item->fecha)); @endphp
                             </th>
 
 

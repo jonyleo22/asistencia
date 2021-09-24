@@ -27,6 +27,8 @@ $(document).ready(function () {
             },
             {
                 extend: 'excel',
+                title: 'Tesoreria de la Provincia de Misiones',
+                messageTop: '1 = Presente | 2 = Ausente | 3 = Vacaciones | 4 = Lic.Médicas | 5 = Ausente con aviso',
             },
         ],
     });
