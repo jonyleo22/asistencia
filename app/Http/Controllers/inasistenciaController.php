@@ -39,7 +39,11 @@ class inasistenciaController extends Controller
     }
 
     public function registrar_inasistencias(Request $request){
-        $users = User::all();
+        $users = User::where('id','!=',4)
+        ->where('id','!=',6)
+        ->get();
+
+
         $contar_presentes = 0;
         $contar_ausentes= 0;
         $fecha = Carbon::now()->timezone("America/Argentina/Buenos_Aires");
