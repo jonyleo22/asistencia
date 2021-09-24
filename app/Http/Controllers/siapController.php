@@ -58,7 +58,7 @@ class siapController extends Controller
 
         $usuarios = DB::table('users')
         ->join('asistencias', 'asistencias.id_usuario', 'users.id')
-        ->select('users.id', 'users.nombre', 'users.apellido')
+        ->select('users.id', 'users.nombre', 'users.apellido','users.dni_empleado')
         ->whereBetween('asistencias.fecha', [$fecha_desde, $fecha_hasta])
         ->groupBy('users.id')
         ->get();

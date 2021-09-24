@@ -10,6 +10,7 @@
                     <thead>
                         <tr>
                             <th>Apellido y Nombre</th>
+                            <th>DNI</th>
                             @foreach ($fechas as $item)
 
                             <th class="px-1">
@@ -28,6 +29,7 @@
                             <td>
                                 {{$element->apellido}} {{$element->nombre}}
                             </td>
+                            <td>{{$element->dni_empleado}}</td>
                                 @foreach ($fechas as $items)
                                 <td>
                                 @php
