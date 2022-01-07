@@ -41,6 +41,7 @@ class inasistenciaController extends Controller
     public function registrar_inasistencias(Request $request){
         $users = User::where('id','!=',4)
         ->where('id','!=',6)
+        ->where('id','!=',26)
         ->get();
 
 

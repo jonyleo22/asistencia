@@ -102,6 +102,7 @@ class asistenciaController extends Controller
             ->where('asistencias.fecha', $fecha_actual)
             ->select('users.nombre','users.apellido','users.dni_empleado', 'asistencias.id', 'asistencias.hora_entrada'
             ,'asistencias.hora_salida','asistencias.fecha','asistencias.observacion_asistencia', 'asistencias.estado')
+            ->orderBy('asistencias.id','DESC')
             ->get();
         }
 
